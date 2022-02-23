@@ -11,9 +11,8 @@ import { InlineIcon } from '@iconify/react';
 import { mdiFoodForkDrink } from '@mdi/js';
 import Iconm from '@mdi/react';
 import { mdiCountertop, mdiTeddyBear, mdiBed, mdiSofa } from '@mdi/js';
-import ReactWeather from 'react-open-weather';
-import 'react-open-weather/lib/css/ReactWeather.css';
 import Scenes from '../components/_dashboard/Scenes';
+import Temperature from '../components/_dashboard/temperature';
 
 class DashboardApp extends React.Component {
   constructor(props) {
@@ -55,7 +54,7 @@ class DashboardApp extends React.Component {
               </Card>
             </Grid>
             <Grid item sm={12} md={6} lg={4}>
-              <ReactWeather forecast="5days" apikey="7ad07aac9b0943040a4abdd2c23dfc4e" type="city" city="Hyderabad" />
+              <Temperature/>
             </Grid>
           </Grid>
         </Container>
