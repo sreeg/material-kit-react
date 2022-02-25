@@ -11,6 +11,8 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const gateway = 'http://192.168.88.122:1880';
 class Temperature extends React.Component {
@@ -47,14 +49,21 @@ class Temperature extends React.Component {
               <Grid item>
                 <Card style={{ background: '#ca7cd8', color: '#ffffff' }}>
                   <CardHeader
-                    title={<Typography fontFamily='roboto' variant='h4' component='h2'>Temperature</Typography>}
+                    title={<Typography fontFamily='roboto' variant='h5' component='h2'>Temperature</Typography>}
                     action={
                       <Icon path={mdiThermometer} size={2} />
                     }
                   />
-                  <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} className="content">
-                      <Typography fontFamily='roboto' variant='h2' component='h2'>{this.state.temperature} °C</Typography>
+                  <CardContent>
+                    <div style={{ width: 150, height: 150 }} className="content">
+                      <CircularProgressbar value={this.state.temperature} maxValue={50} text={this.state.temperature + '°C'} styles={buildStyles({
+                        strokeLinecap: 'butt',
+                        textSize: '14px',
+                        pathColor: '#fff',
+                        textColor: '#ffffff',
+                        trailColor: '#d597e0',
+                        backgroundColor: '#ffffff',
+                      })} />
                     </div>
                   </CardContent>
                 </Card>
@@ -62,14 +71,21 @@ class Temperature extends React.Component {
               <Grid item>
                 <Card style={{ background: '#ff6284', color: '#ffffff' }}>
                   <CardHeader
-                    title={<Typography fontFamily='roboto' variant='h4' component='h2'>Humidity</Typography>}
+                    title={<Typography fontFamily='roboto' variant='h5' component='h2'>Humidity</Typography>}
                     action={
                       <Icon path={mdiWater} size={2} />
                     }
                   />
-                  <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }} className="content">
-                    <Typography fontFamily='roboto' variant='h2' component='h2'>{this.state.humidity} °C</Typography>
+                  <CardContent>
+                    <div style={{ width: 150, height: 150 }} className="content">
+                      <CircularProgressbar value={this.state.humidity} maxValue={100} text={this.state.humidity} styles={buildStyles({
+                        strokeLinecap: 'butt',
+                        textSize: '14px',
+                        pathColor: '#fff',
+                        textColor: '#ffffff',
+                        trailColor: '#ff829e',
+                        backgroundColor: '#ffffff',
+                      })} />
                     </div>
                   </CardContent>
                 </Card>
