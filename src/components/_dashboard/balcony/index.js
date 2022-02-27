@@ -66,6 +66,12 @@ class BalconyArea extends React.Component {
 
   componentDidMount() {
     var that = this;
+    fetch(gateway + '/bboardstatus')
+    .then((response) => response.text())
+    .then((data) => {
+      data = JSON.parse(decodeHtml(data));
+      this.setState({ balconyzone: data['3'].power });
+    });    
     fetch(gateway + '/bboardtwostatus')
       .then((response) => response.text())
       .then((data) => {
