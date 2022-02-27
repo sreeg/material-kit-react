@@ -5,7 +5,8 @@ import Page from '../components/Page';
 import OfficeRoom from '../components/_dashboard/office';
 import { InlineIcon } from '@iconify/react';
 import monitorFill from '@iconify/icons-eva/monitor-fill';
-import Header from '../components/_dashboard/Header';
+import NTabs from './../components/NavSectionTab';
+import sidebarConfig from './../layouts/dashboard/SidebarConfig';
 
 // ----------------------------------------------------------------------
 
@@ -24,7 +25,7 @@ export default function Office() {
             Office Room
           </Typography>
         </Box>
-        <Header tab={2}/>
+        <NTabs navConfig={sidebarConfig} style={{ marginBottom: 24 }} />
         <OfficeRoom />
       </Container>
     </Page>

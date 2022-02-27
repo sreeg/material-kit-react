@@ -50,7 +50,7 @@ class Temperature extends React.Component {
                 <Card style={{ background: '#ca7cd8', color: '#ffffff' }}>
                   <CardHeader
                   className="header-temparature"
-                    title={<Typography fontFamily='roboto' variant='h5' component='h2'>Temperature</Typography>}
+                    title={<Typography fontFamily='roboto' variant='h6' component='h2'>Temperature</Typography>}
                     action={
                       <Icon path={mdiThermometer} size={2} />
                     }
@@ -73,7 +73,7 @@ class Temperature extends React.Component {
                 <Card style={{ background: '#ff6284', color: '#ffffff' }}>
                   <CardHeader
                   className="header-temparature"
-                    title={<Typography fontFamily='roboto' variant='h5' component='h2'>Humidity</Typography>}
+                    title={<Typography fontFamily='roboto' variant='h6' component='h2'>Humidity</Typography>}
                     action={
                       <Icon path={mdiWater} size={2} />
                     }

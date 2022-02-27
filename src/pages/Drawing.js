@@ -5,16 +5,11 @@ import Page from '../components/Page';
 import DrawingRoom from '../components/_dashboard/drawing';
 import { Icon, InlineIcon } from '@iconify/react';
 import tvFill from '@iconify/icons-eva/tv-fill';
-import Header from '../components/_dashboard/Header';
-
+import NTabs from './../components/NavSectionTab';
+import sidebarConfig from './../layouts/dashboard/SidebarConfig';
 // ----------------------------------------------------------------------
 
 export default function Drawing() {
-  function stateHandler(obj, val) {
-    this.setState({
-      [obj]: val
-    });
-  }
   return (
     <Page title="Drawing room">
       <Container maxWidth="xl">
@@ -24,7 +19,7 @@ export default function Drawing() {
             Drawing Room
           </Typography>
         </Box>
-        <Header tab={1}/>
+        <NTabs navConfig={sidebarConfig} style={{marginBottom: 24}}/>
         <DrawingRoom />
       </Container>
     </Page>

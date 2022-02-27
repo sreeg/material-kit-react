@@ -6,7 +6,8 @@ import Page from '../components/Page';
 import React from 'react';
 import Scenes from '../components/_dashboard/Scenes';
 import Temperature from '../components/_dashboard/temperature';
-import Header from '../components/_dashboard/Header';
+import NTabs from './../components/NavSectionTab';
+import sidebarConfig from './../layouts/dashboard/SidebarConfig';
 
 class DashboardApp extends React.Component {
   constructor(props) {
@@ -16,21 +17,15 @@ class DashboardApp extends React.Component {
   routeChange(e) {
     window.location.href = '/dashboard/' + e;
   }
-  stateHandler(obj, val) {
-    this.setState({
-      [obj]: val
-    });
-  }
 
   render() {
-    var stateHandler = this.stateHandler;
     return (
       <Page title="Myhome E302">
         <Container maxWidth="xl">
           <Box sx={{ pb: 3 }}>
             <Typography variant="h4">Welcome, E302!</Typography>
           </Box>
-          <Header tab={0} stateHandler={stateHandler.bind(this)}/>
+          <NTabs navConfig={sidebarConfig} style={{ marginBottom: 24 }} />
           <Grid container spacing={2}>
             <Grid item sm={12} md={6} lg={4}>
               <Temperature />
