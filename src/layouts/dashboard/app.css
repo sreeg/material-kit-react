@@ -13,3 +13,19 @@
     background-image: linear-gradient(to bottom, #1336a6, #284cb8, #3a61ca, #4c77db, #5f8deb) !important;
   }
   
+  @media (max-width: 599.95px) {
+  .content-temparature{
+    width: 100px !important;
+    height: 100px !important;
+  }
+  .header-temparature {
+      padding: 12px !important;
+  }
+  .header-temparature .MuiTypography-h5 {
+    font-size: 16px !important;
+}
+  .MuiCardHeader-action svg {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+}

@@ -49,13 +49,14 @@ class Temperature extends React.Component {
               <Grid item>
                 <Card style={{ background: '#ca7cd8', color: '#ffffff' }}>
                   <CardHeader
+                  className="header-temparature"
                     title={<Typography fontFamily='roboto' variant='h5' component='h2'>Temperature</Typography>}
                     action={
                       <Icon path={mdiThermometer} size={2} />
                     }
                   />
                   <CardContent>
-                    <div style={{ width: 150, height: 150 }} className="content">
+                    <div style={{ width: 150, height: 150 }} className="content-temparature">
                       <CircularProgressbar value={this.state.temperature} maxValue={50} text={this.state.temperature + '°C'} styles={buildStyles({
                         strokeLinecap: 'butt',
                         textSize: '14px',
@@ -71,13 +72,14 @@ class Temperature extends React.Component {
               <Grid item>
                 <Card style={{ background: '#ff6284', color: '#ffffff' }}>
                   <CardHeader
+                  className="header-temparature"
                     title={<Typography fontFamily='roboto' variant='h5' component='h2'>Humidity</Typography>}
                     action={
                       <Icon path={mdiWater} size={2} />
                     }
                   />
                   <CardContent>
-                    <div style={{ width: 150, height: 150 }} className="content">
+                    <div style={{ width: 150, height: 150 }} className="content-temparature">
                       <CircularProgressbar value={this.state.humidity} maxValue={100} text={this.state.humidity} styles={buildStyles({
                         strokeLinecap: 'butt',
                         textSize: '14px',

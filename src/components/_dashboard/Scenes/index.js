@@ -1,6 +1,7 @@
 import React from 'react';
-import { mdiMovieOpen, mdiLedStripVariant, mdiWallSconceFlat, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiCheckboxBlankCircleOutline, mdiCircle } from '@mdi/js';
-import { GiByzantinTemple, GiElectricalSocket, GiCandleFlame } from 'react-icons/gi';
+import { mdiMovieOpen, mdiWallSconceFlat, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiCheckboxBlankCircleOutline, mdiCircle } from '@mdi/js';
+import { GiExitDoor, GiEntryDoor, GiCandleFlame } from 'react-icons/gi';
+import { MdBedtime } from 'react-icons/md';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
@@ -43,6 +44,30 @@ class Scenes extends React.Component {
               </div>
             </Button>
           </Grid>
+          <Grid item>
+            <Button style={{ height: 100 }} variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
+              <div className="content">
+                <GiEntryDoor size={ICON_HEIGHT} />
+                <div>Home entry</div>
+              </div>
+            </Button>
+          </Grid>             
+          <Grid item>
+            <Button style={{ height: 100 }} variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
+              <div className="content">
+                <GiExitDoor size={ICON_HEIGHT} />
+                <div>Home exit</div>
+              </div>
+            </Button>
+          </Grid>    
+          <Grid item>
+            <Button style={{ height: 100 }} variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
+              <div className="content">
+                <MdBedtime size={ICON_HEIGHT} />
+                <div>Bedtime</div>
+              </div>
+            </Button>
+          </Grid>       
         </Grid>
       </>
     );
