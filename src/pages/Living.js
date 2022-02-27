@@ -5,6 +5,8 @@ import Page from '../components/Page';
 import Livingroom from '../components/_dashboard/living';
 import { mdiSofa } from '@mdi/js';
 import Iconm from '@mdi/react';
+import NTabs from './../components/NavSectionTab';
+import sidebarConfig from './../layouts/dashboard/SidebarConfig';
 
 export default function Living() {
   return (
@@ -14,6 +16,7 @@ export default function Living() {
         <Iconm path={mdiSofa} width={22} height={22} />
           <Typography style={{ display: 'inline', marginLeft: '8px' }} variant="h4">Living</Typography>
         </Box>
+        <NTabs navConfig={sidebarConfig} style={{marginBottom: 24}}/>
         <Livingroom />
       </Container>
     </Page>
