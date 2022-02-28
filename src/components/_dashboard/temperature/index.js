@@ -15,6 +15,8 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 const gateway = 'http://192.168.88.122:1880';
+const CIRCLE_WIDTH = 125;
+const CIRCLE_HEIGHT = 125;
 class Temperature extends React.Component {
   constructor(props) {
     super(props);
@@ -52,11 +54,11 @@ class Temperature extends React.Component {
                   className="header-temparature"
                     title={<Typography fontFamily='roboto' variant='h6' component='h2'>Temperature</Typography>}
                     action={
-                      <Icon path={mdiThermometer} size={2} />
+                      <Icon path={mdiThermometer} size={1.5} />
                     }
                   />
                   <CardContent>
-                    <div style={{ width: 150, height: 150 }} className="content-temparature">
+                    <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT }} className="content-temparature">
                       <CircularProgressbar value={this.state.temperature} maxValue={50} text={this.state.temperature + '°C'} styles={buildStyles({
                         strokeLinecap: 'butt',
                         textSize: '14px',
@@ -75,11 +77,11 @@ class Temperature extends React.Component {
                   className="header-temparature"
                     title={<Typography fontFamily='roboto' variant='h6' component='h2'>Humidity</Typography>}
                     action={
-                      <Icon path={mdiWater} size={2} />
+                      <Icon path={mdiWater} size={1.5} />
                     }
                   />
                   <CardContent>
-                    <div style={{ width: 150, height: 150 }} className="content-temparature">
+                    <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT }} className="content-temparature">
                       <CircularProgressbar value={this.state.humidity} maxValue={100} text={this.state.humidity} styles={buildStyles({
                         strokeLinecap: 'butt',
                         textSize: '14px',
