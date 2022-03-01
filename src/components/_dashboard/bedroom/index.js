@@ -21,16 +21,12 @@ class BedRoom extends React.Component {
     this.state = {
       loading: true,
       mfan: 'OFF',
-      olight2: 'OFF',
+      mlight2: 'OFF',
       olight3: 'OFF',
       olight4: 'OFF',
-      olight5: 'OFF',
-      olight6: 'OFF',
-      olight7: 'OFF',
-      olight8: 'OFF',
       mcenterzone: 'OFF',
       maczone: 'OFF',
-      mtvside: 'OFF',
+      mwardrobe: 'OFF',
       mfanspeed: 5,
       mcolor: 5,
       mbrightness: 5,
@@ -75,9 +71,9 @@ class BedRoom extends React.Component {
         this.setState({ mbrightness: Math.round(speed / 20) });
         speed = data['2'].speed;
         this.setState({ mcolor: Math.round(speed / 20) });
-        this.setState({ mcenterzone: data['3'].power });
-        this.setState({ mtvside: data['7'].power });
-        this.setState({ maczone: data['5'].power });
+        this.setState({ mcenterzone: data['5'].power });
+        this.setState({ mwardrobe: data['7'].power });
+        this.setState({ maczone: data['3'].power });
       });
     fetch(gateway + '/mboardtwostatus')
       .then((response) => response.text())
@@ -86,13 +82,9 @@ class BedRoom extends React.Component {
         this.setState({ mfan: data['1'].power });
         var speed = data['1'].speed;
         this.setState({ mfanspeed: Math.round(speed / 20) });
-        this.setState({ olight2: data['2'].power });
+        this.setState({ mlight2: data['2'].power });
         this.setState({ olight3: data['3'].power });
         this.setState({ olight4: data['4'].power });
-        this.setState({ olight5: data['5'].power });
-        this.setState({ olight6: data['6'].power });
-        this.setState({ olight7: data['7'].power });
-        this.setState({ olight8: data['8'].power });
         this.setState({ loading: false });
       });
   }
@@ -122,13 +114,7 @@ class BedRoom extends React.Component {
                     <Zone sVal={this.state.mcenterzone} zoneClass="zone23 zone23center" sID="mcenterzone" sIcon={mdiStringLights} sName="Center" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
                   <Grid item>
-                    <Zone sVal={this.state.mtvside} zoneClass="zone23 zone23bottom" sID="mtvside" sIcon={mdiStringLights} sName="Window" stateHandler={stateHandler.bind(this)}></Zone>
-                  </Grid>
-                  <Grid item>
-                    <Zone sVal={this.state.olight2} zoneClass="zone23 zone23right" sID="olight2" sIcon={mdiLightbulbVariantOutline} sName="Right area" stateHandler={stateHandler.bind(this)}></Zone>
-                  </Grid>
-                  <Grid item>
-                    <Zone sVal={this.state.olight8} zoneClass="zone23 zone23left" sID="olight8" sIcon={mdiLightbulbVariantOutline} sName="Left area" stateHandler={stateHandler.bind(this)}></Zone>
+                    <Zone sVal={this.state.mwardrobe} zoneClass="zone23 zone23center" sID="mwardrobe" sIcon={mdiStringLights} sName="Wardrobe" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
