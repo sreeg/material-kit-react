@@ -23,7 +23,9 @@ class Scenes extends React.Component {
   handleCozyMode = (e) => {
     fetch(gateway + '/dinningcozy/').then((response) => response.json());
   };
-
+  handleBedtime = (e) => {
+    fetch(gateway + '/bedtime/').then((response) => response.json());
+  };
   render() {
     return (
       <>
@@ -61,7 +63,7 @@ class Scenes extends React.Component {
             </Button>
           </Grid>    
           <Grid item>
-            <Button style={{ height: 100 }} variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
+            <Button style={{ height: 100 }} variant="outlined" onClick={this.handleBedtime} size="large" color="secondary" disableFocusRipple={true}>
               <div className="content">
                 <MdBedtime size={ICON_HEIGHT} />
                 <div>Bedtime</div>

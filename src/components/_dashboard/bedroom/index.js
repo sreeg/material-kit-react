@@ -3,7 +3,7 @@ import Switch from '../common/Switch';
 import Curtain from '../common/Curtain';
 import Zone from '../common/Zone';
 import Fan from '../common/Fan';
-import { mdiLightbulbVariantOutline, mdiCurtains, mdiCurtainsClosed, mdiWaterBoiler, mdiStringLights } from '@mdi/js';
+import { mdiLightbulbVariantOutline, mdiCurtains, mdiCoachLamp, mdiWaterBoiler, mdiStringLights } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
@@ -22,11 +22,12 @@ class BedRoom extends React.Component {
       loading: true,
       mfan: 'OFF',
       mlight2: 'OFF',
-      olight3: 'OFF',
-      olight4: 'OFF',
+      mlight3: 'OFF',
+      mlight4: 'OFF',
       mcenterzone: 'OFF',
       maczone: 'OFF',
       mwardrobe: 'OFF',
+      mwalllamp: 'OFF',
       mfanspeed: 5,
       mcolor: 5,
       mbrightness: 5,
@@ -57,6 +58,12 @@ class BedRoom extends React.Component {
         data = JSON.parse(decodeHtml(data));
         this.setState({ mgyser: data['2'].power });
       });
+      fetch(gateway + '/mgyserstatus')
+      .then((response) => response.text())
+      .then((data) => {
+        data = JSON.parse(decodeHtml(data));
+        this.setState({ mgyser: data['2'].power });
+      });
     fetch(gateway + '/mblackoutcurtainstatus')
       .then((response) => response.text())
       .then((data) => {
@@ -71,9 +78,9 @@ class BedRoom extends React.Component {
         this.setState({ mbrightness: Math.round(speed / 20) });
         speed = data['2'].speed;
         this.setState({ mcolor: Math.round(speed / 20) });
-        this.setState({ mcenterzone: data['5'].power });
+        this.setState({ maczone: data['5'].power });
+        this.setState({ mcenterzone: data['3'].power });
         this.setState({ mwardrobe: data['7'].power });
-        this.setState({ maczone: data['3'].power });
       });
     fetch(gateway + '/mboardtwostatus')
       .then((response) => response.text())
@@ -83,8 +90,8 @@ class BedRoom extends React.Component {
         var speed = data['1'].speed;
         this.setState({ mfanspeed: Math.round(speed / 20) });
         this.setState({ mlight2: data['2'].power });
-        this.setState({ olight3: data['3'].power });
-        this.setState({ olight4: data['4'].power });
+        this.setState({ mlight3: data['3'].power });
+        this.setState({ mlight4: data['4'].power });
         this.setState({ loading: false });
       });
   }
@@ -118,7 +125,7 @@ class BedRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                           Color
                         </Typography>
@@ -128,7 +135,7 @@ class BedRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                           Brightness
                         </Typography>
@@ -150,20 +157,17 @@ class BedRoom extends React.Component {
               />
               <CardContent style={{ display: 'flex', alignItems: 'center' }}>
                 <Grid container spacing={2}>
-                  <Grid item>
-                    <Switch sVal={this.state.olight3} sID="olight3" sIcon={mdiLightbulbVariantOutline} sName="Light 3" stateHandler={stateHandler.bind(this)}></Switch>
+                <Grid item>
+                    <Switch sVal={this.state.mwalllamp} sID="mwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
-                    <Switch sVal={this.state.olight4} sID="olight4" sIcon={mdiLightbulbVariantOutline} sName="Light 4" stateHandler={stateHandler.bind(this)}></Switch>
+                    <Switch sVal={this.state.mlight2} sID="mlight2" sIcon={mdiLightbulbVariantOutline} sName="Light 2" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
-                    <Switch sVal={this.state.olight5} sID="olight5" sIcon={mdiLightbulbVariantOutline} sName="Light 5" stateHandler={stateHandler.bind(this)}></Switch>
+                    <Switch sVal={this.state.mlight3} sID="mlight3" sIcon={mdiLightbulbVariantOutline} sName="Light 3" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
-                    <Switch sVal={this.state.olight6} sID="olight6" sIcon={mdiLightbulbVariantOutline} sName="Light 6" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
-                  <Grid item>
-                    <Switch sVal={this.state.olight6} sID="olight7" sIcon={mdiLightbulbVariantOutline} sName="Light 7" stateHandler={stateHandler.bind(this)}></Switch>
+                    <Switch sVal={this.state.mlight4} sID="mlight4" sIcon={mdiLightbulbVariantOutline} sName="Light 4" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
                     <Switch sVal={this.state.mgyser} sID="mgyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
