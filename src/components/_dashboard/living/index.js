@@ -83,7 +83,7 @@ class Living extends React.Component {
         this.setState({ ltv: data['4'].power });
         this.setState({ ldigitalclock: data['3'].power });
         this.setState({ lfloorlamp: data['2'].power });
-        this.setState({ llivingtvsocket: data['1'].power });
+        this.setState({ livingtvsocket: data['1'].power });
       });
     fetch(gateway + '/lacboardstatus')
       .then((response) => response.text())
