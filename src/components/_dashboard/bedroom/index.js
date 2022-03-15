@@ -3,7 +3,7 @@ import Switch from '../common/Switch';
 import Curtain from '../common/Curtain';
 import Zone from '../common/Zone';
 import Fan from '../common/Fan';
-import { mdiLightbulbVariantOutline, mdiCurtains, mdiCoachLamp, mdiWaterBoiler, mdiStringLights } from '@mdi/js';
+import { mdiLightbulbVariantOutline, mdiLedStripVariant, mdiCoachLamp, mdiWaterBoiler, mdiStringLights } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import IconButton from '@mui/material/IconButton';
-import {decodeHtml } from '../../../utils/commons';
+import { decodeHtml } from '../../../utils/commons';
 
 const gateway = 'http://192.168.88.122:1880';
 class BedRoom extends React.Component {
@@ -28,6 +28,7 @@ class BedRoom extends React.Component {
       maczone: 'OFF',
       mwardrobe: 'OFF',
       mwalllamp: 'OFF',
+      mwtvunderlight: 'OFF',
       mfanspeed: 5,
       mcolor: 5,
       mbrightness: 5,
@@ -58,11 +59,12 @@ class BedRoom extends React.Component {
         data = JSON.parse(decodeHtml(data));
         this.setState({ mgyser: data['2'].power });
       });
-      fetch(gateway + '/mgyserstatus')
+    fetch(gateway + '/mentrancestatus')
       .then((response) => response.text())
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
-        this.setState({ mgyser: data['2'].power });
+        this.setState({ mwalllamp: data['1'].power });
+        this.setState({ mwtvunderlight: data['2'].power });
       });
     fetch(gateway + '/mblackoutcurtainstatus')
       .then((response) => response.text())
@@ -157,9 +159,12 @@ class BedRoom extends React.Component {
               />
               <CardContent style={{ display: 'flex', alignItems: 'center' }}>
                 <Grid container spacing={2}>
-                <Grid item>
+                  <Grid item>
                     <Switch sVal={this.state.mwalllamp} sID="mwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
+                  <Grid item>
+                    <Switch sVal={this.state.mwtvunderlight} sID="mwtvunderlight" sIcon={mdiLedStripVariant} sName="TV under light" stateHandler={stateHandler.bind(this)}></Switch>
+                  </Grid>                  
                   <Grid item>
                     <Switch sVal={this.state.mlight2} sID="mlight2" sIcon={mdiLightbulbVariantOutline} sName="Light 2" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
@@ -183,7 +188,7 @@ class BedRoom extends React.Component {
                     <Curtain sVal={this.state.mblackout} sID="mblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
                   </Grid>
                   <Grid item>
-                    <Fan sVal={this.state.mfan} sFval={this.state.mfanspeed} sID="mfan" sIDFS="mfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)}/>
+                    <Fan sVal={this.state.mfan} sFval={this.state.mfanspeed} sID="mfan" sIDFS="mfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
                   </Grid>
                 </Grid>
               </CardContent>
