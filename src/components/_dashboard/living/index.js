@@ -112,8 +112,8 @@ class Living extends React.Component {
         speed = data['2'].speed;
         this.setState({ lcolor: Math.round(speed / 20) });
         this.setState({ lcenterzone: data['5'].power });
-        this.setState({ lhallway: data['7'].power });
-        this.setState({ laczone: data['3'].power });
+        this.setState({ lhallway: data['3'].power });
+        this.setState({ laczone: data['7'].power });
         this.setState({ loading: false });
       });
   }
