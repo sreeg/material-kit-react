@@ -137,10 +137,10 @@ class OfficeRoom extends React.Component {
         this.setState({ olight2: data['2'].power });
         this.setState({ lines: data['3'].power });
         this.setState({ olight4: data['4'].power });
-        this.setState({ olight5: data['5'].power });
-        this.setState({ olight6: data['6'].power });
-        this.setState({ olight7: data['7'].power });
-        this.setState({ olight8: data['8'].power });
+        // this.setState({ olight5: data['5'].power });
+        // this.setState({ olight6: data['6'].power });
+        // this.setState({ olight7: data['7'].power });
+        // this.setState({ olight8: data['8'].power });
         this.setState({ loading: false });
       });
   }
