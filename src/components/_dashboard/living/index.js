@@ -4,7 +4,7 @@ import SwitchCustomIcon from '../common/SwitchCustomIcon';
 import Zone from '../common/Zone';
 import Curtain from '../common/Curtain';
 import Fan from '../common/Fan';
-import { mdiMovieOpen, mdiLedStripVariant, mdiLightbulbVariantOutline, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiChandelier, mdiEiffelTower  } from '@mdi/js';
+import { mdiMovieOpen, mdiLedStripVariant, mdiLightbulbVariantOutline, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiChandelier, mdiEiffelTower } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
@@ -50,7 +50,24 @@ class Living extends React.Component {
   }
 
   handleColor = (e, v) => {
-    fetch(gateway + '/lcolor/' + v * 20).then((response) => response.json());
+    switch (v) {
+      case 1:
+        v = 0;
+        break;
+      case 2:
+        v = 25;
+        break;
+      case 3:
+        v = 50;
+        break;
+      case 4:
+        v = 75;
+        break;
+      case 5:
+        v = 100;
+        break;
+    }
+    fetch(gateway + '/lcolor/' + v).then((response) => response.json());
   };
 
   handleBrightness = (e, v) => {
@@ -147,7 +164,7 @@ class Living extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px'  }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                           Color
                         </Typography>
@@ -157,7 +174,7 @@ class Living extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px'  }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                           Brightness
                         </Typography>
@@ -186,7 +203,7 @@ class Living extends React.Component {
                     <SwitchCustomIcon sVal={this.state.lcurtainlight} sID="lcurtainlight" sIcon={GiTheaterCurtains} sName="Curtain light" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>
                   <Grid item>
-                    <Switch sVal={this.state.ldigitalclock} sID="ldigitalclock" sIcon={mdiEiffelTower } sName="Eiffel Tower" stateHandler={stateHandler.bind(this)}></Switch>
+                    <Switch sVal={this.state.ldigitalclock} sID="ldigitalclock" sIcon={mdiEiffelTower} sName="Eiffel Tower" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
                     <Switch sVal={this.state.ltv} sID="ltv" sIcon={mdiTelevision} sName="Frame TV" stateHandler={stateHandler.bind(this)}></Switch>

@@ -44,7 +44,24 @@ class BedRoom extends React.Component {
   }
 
   handleColor = (e, v) => {
-    fetch(gateway + '/mcolor/' + v * 20).then((response) => response.json());
+    switch (v) {
+      case 1:
+        v = 0;
+        break;
+      case 2:
+        v = 25;
+        break;
+      case 3:
+        v = 50;
+        break;
+      case 4:
+        v = 75;
+        break;
+      case 5:
+        v = 100;
+        break;
+    }
+    fetch(gateway + '/mcolor/' + v).then((response) => response.json());
   };
 
   handleBrightness = (e, v) => {
@@ -164,7 +181,7 @@ class BedRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Switch sVal={this.state.mwtvunderlight} sID="mwtvunderlight" sIcon={mdiLedStripVariant} sName="TV under light" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>                  
+                  </Grid>
                   <Grid item>
                     <Switch sVal={this.state.mlight2} sID="mlight2" sIcon={mdiLightbulbVariantOutline} sName="Light 2" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>

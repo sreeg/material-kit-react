@@ -3,7 +3,7 @@ import Switch from '../common/Switch';
 import SwitchCustomIcon from '../common/SwitchCustomIcon';
 import Zone from '../common/Zone';
 import Curtain from '../common/Curtain';
-import { mdiMovieOpen, mdiLedStripVariant, mdiLightbulbVariantOutline, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiChandelier , mdiCircle } from '@mdi/js';
+import { mdiMovieOpen, mdiLedStripVariant, mdiLightbulbVariantOutline, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiChandelier, mdiCircle } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
@@ -14,11 +14,11 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import Icon from '@mdi/react';
-import {decodeHtml } from '../../../utils/commons';
+import { decodeHtml } from '../../../utils/commons';
 import { mdiHandsPray } from '@mdi/js';
-import { GiByzantinTemple, GiElectricalSocket, GiCandleFlame } from "react-icons/gi";
-import { FaFan } from "react-icons/fa";
-import { MdBalcony } from "react-icons/md";
+import { GiByzantinTemple, GiElectricalSocket, GiCandleFlame } from 'react-icons/gi';
+import { FaFan } from 'react-icons/fa';
+import { MdBalcony } from 'react-icons/md';
 
 const gateway = 'http://192.168.88.122:1880';
 class BalconyArea extends React.Component {
@@ -53,7 +53,24 @@ class BalconyArea extends React.Component {
   }
 
   handleColor = (e, v) => {
-    fetch(gateway + '/dinningcolor/' + v * 20).then((response) => response.json());
+    switch (v) {
+      case 1:
+        v = 0;
+        break;
+      case 2:
+        v = 25;
+        break;
+      case 3:
+        v = 50;
+        break;
+      case 4:
+        v = 75;
+        break;
+      case 5:
+        v = 100;
+        break;
+    }
+    fetch(gateway + '/dinningcolor/' + v).then((response) => response.json());
   };
 
   handleBrightness = (e, v) => {
@@ -67,18 +84,18 @@ class BalconyArea extends React.Component {
   componentDidMount() {
     var that = this;
     fetch(gateway + '/bboardstatus')
-    .then((response) => response.text())
-    .then((data) => {
-      data = JSON.parse(decodeHtml(data));
-      this.setState({ balconyzone: data['3'].power });
-    });    
+      .then((response) => response.text())
+      .then((data) => {
+        data = JSON.parse(decodeHtml(data));
+        this.setState({ balconyzone: data['3'].power });
+      });
     fetch(gateway + '/bboardtwostatus')
       .then((response) => response.text())
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
         this.setState({ bsocket: data['1'].power });
         this.setState({ bexhaust: data['2'].power });
-      });    
+      });
     fetch(gateway + '/bsheercurtainstatus')
       .then((response) => response.text())
       .then((data) => {
@@ -90,7 +107,7 @@ class BalconyArea extends React.Component {
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
         this.setState({ bblackout: data['1'].curtain });
-      });    
+      });
     fetch(gateway + '/dinningboardstatus')
       .then((response) => response.text())
       .then((data) => {
@@ -104,7 +121,7 @@ class BalconyArea extends React.Component {
         this.setState({ poojaroom: data['7'].power });
         this.setState({ dinningaczone: data['3'].power });
       });
-      fetch(gateway + '/poojaboardstatus')
+    fetch(gateway + '/poojaboardstatus')
       .then((response) => response.text())
       .then((data) => {
         data = decodeHtml(data);
@@ -112,7 +129,7 @@ class BalconyArea extends React.Component {
         this.setState({ poojaroompanel: data['1'].power });
         this.setState({ poojaroomunderlight: data['2'].power });
       });
-      fetch(gateway + '/dinningboardtwostatus')
+    fetch(gateway + '/dinningboardtwostatus')
       .then((response) => response.text())
       .then((data) => {
         data = decodeHtml(data);
@@ -154,10 +171,10 @@ class BalconyArea extends React.Component {
                   </Grid>
                   <Grid item>
                     <SwitchCustomIcon sVal={this.state.balconyzone} sID="balconyzone" sIcon={MdBalcony} sName="Balcony" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
-                  </Grid>                                
+                  </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px'  }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                           Color
                         </Typography>
@@ -167,7 +184,7 @@ class BalconyArea extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px'  }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                           Brightness
                         </Typography>
@@ -200,10 +217,10 @@ class BalconyArea extends React.Component {
                   </Grid>
                   <Grid item>
                     <SwitchCustomIcon sVal={this.state.bsocket} sID="bsocket" sIcon={GiElectricalSocket} sName="Balcony socket" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
-                  </Grid>     
+                  </Grid>
                   <Grid item>
                     <SwitchCustomIcon sVal={this.state.bexhaust} sID="bexhaust" sIcon={FaFan} sName="Balcony exhaust" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
-                  </Grid> 
+                  </Grid>
                   <Grid item>
                     <Switch sVal={this.state.dlight1} sID="dlight1" sIcon={mdiLightbulbVariantOutline} sName="Dinning light 1" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
@@ -212,7 +229,7 @@ class BalconyArea extends React.Component {
                   </Grid>
                   <Grid item>
                     <Switch sVal={this.state.dlight3} sID="dlight3" sIcon={mdiLightbulbVariantOutline} sName="Dinning light 3" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>                                                      
+                  </Grid>
                 </Grid>
               </CardContent>
             </Card>
@@ -228,7 +245,7 @@ class BalconyArea extends React.Component {
                   </Grid>
                 </Grid>
               </CardContent>
-            </Card>            
+            </Card>
             <Card sx={{ minWidth: 100, mb: 2 }}>
               <CardHeader title="Scenes" />
               <CardContent style={{ display: 'flex', alignItems: 'center' }}>

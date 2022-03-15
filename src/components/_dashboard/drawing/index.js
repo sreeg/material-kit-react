@@ -14,7 +14,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import Icon from '@mdi/react';
-import {decodeHtml } from './../../../utils/commons';
+import { decodeHtml } from './../../../utils/commons';
 
 const gateway = 'http://192.168.88.122:1880';
 class OfficeRoom extends React.Component {
@@ -35,7 +35,7 @@ class OfficeRoom extends React.Component {
       dcolor: 5,
       dbrightness: 5,
       dsheer: 'CLOSE',
-      dblackout: 'CLOSE',
+      dblackout: 'CLOSE'
     };
   }
 
@@ -46,7 +46,24 @@ class OfficeRoom extends React.Component {
   }
 
   handleColor = (e, v) => {
-    fetch(gateway + '/dcolor/' + v * 20).then((response) => response.json());
+    switch (v) {
+      case 1:
+        v = 0;
+        break;
+      case 2:
+        v = 25;
+        break;
+      case 3:
+        v = 50;
+        break;
+      case 4:
+        v = 75;
+        break;
+      case 5:
+        v = 100;
+        break;
+    }
+    fetch(gateway + '/dcolor/' + v).then((response) => response.json());
   };
 
   handleBrightness = (e, v) => {
@@ -72,7 +89,7 @@ class OfficeRoom extends React.Component {
         //console.log('dblackoutcurtainstatus : ' + decodeHtml(data));
         data = JSON.parse(decodeHtml(data));
         this.setState({ dblackout: data['1'].curtain });
-      });    
+      });
     fetch(gateway + '/dboardmainstatus')
       .then((response) => response.text())
       .then((data) => {
@@ -134,7 +151,7 @@ class OfficeRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px'  }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                           Color
                         </Typography>
@@ -144,7 +161,7 @@ class OfficeRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px'  }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                           Brightness
                         </Typography>
@@ -195,11 +212,11 @@ class OfficeRoom extends React.Component {
                     <Curtain sVal={this.state.dblackout} sID="dblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
                   </Grid>
                   <Grid item>
-                    <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="dfan" sIDFS="dfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)}/>
+                    <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="dfan" sIDFS="dfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
                   </Grid>
                 </Grid>
               </CardContent>
-            </Card>            
+            </Card>
             <Card sx={{ minWidth: 100, mb: 2 }}>
               <CardHeader title="Scenes" />
               <CardContent style={{ display: 'flex', alignItems: 'center' }}>

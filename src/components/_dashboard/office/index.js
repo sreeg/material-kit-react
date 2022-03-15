@@ -81,7 +81,24 @@ class OfficeRoom extends React.Component {
   };
 
   handleColor = (e, v) => {
-    fetch(gateway + '/ocolor/' + v * 20).then((response) => response.json());
+    switch (v) {
+      case 1:
+        v = 0;
+        break;
+      case 2:
+        v = 25;
+        break;
+      case 3:
+        v = 50;
+        break;
+      case 4:
+        v = 75;
+        break;
+      case 5:
+        v = 100;
+        break;
+    }
+    fetch(gateway + '/ocolor/' + v).then((response) => response.json());
   };
 
   handleBrightness = (e, v) => {
@@ -180,7 +197,7 @@ class OfficeRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px'  }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                           Color
                         </Typography>
@@ -190,7 +207,7 @@ class OfficeRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px'  }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                           Brightness
                         </Typography>
