@@ -123,13 +123,13 @@ class Kids extends React.Component {
               <CardContent style={{ display: 'flex', alignItems: 'center' }}>
                 <Grid container spacing={2}>
                   <Grid item>
-                    <Zone sVal={this.state.kaczone} zoneClass="zone23 zone23top" sID="maczone" sIcon={mdiStringLights} sName="AC" stateHandler={stateHandler.bind(this)}></Zone>
+                    <Zone sVal={this.state.kaczone} zoneClass="zone23 zone23top" sID="kaczone" sIcon={mdiStringLights} sName="AC" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
                   <Grid item>
-                    <Zone sVal={this.state.kcenterzone} zoneClass="zone23 zone23center" sID="mcenterzone" sIcon={mdiStringLights} sName="Center" stateHandler={stateHandler.bind(this)}></Zone>
+                    <Zone sVal={this.state.kcenterzone} zoneClass="zone23 zone23center" sID="kcenterzone" sIcon={mdiStringLights} sName="Center" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
                   <Grid item>
-                    <Zone sVal={this.state.kwardrobe} zoneClass="zone23 zone23center" sID="mwardrobe" sIcon={mdiStringLights} sName="Wardrobe" stateHandler={stateHandler.bind(this)}></Zone>
+                    <Zone sVal={this.state.kwardrobe} zoneClass="zone23 zone23center" sID="kwardrobe" sIcon={mdiStringLights} sName="Wardrobe" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
@@ -166,10 +166,10 @@ class Kids extends React.Component {
               <CardContent style={{ display: 'flex', alignItems: 'center' }}>
                 <Grid container spacing={2}>
                   <Grid item>
-                    <Switch sVal={this.state.kwalllamp} sID="mwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>
+                    <Switch sVal={this.state.kwalllamp} sID="kwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
-                    <Switch sVal={this.state.kgyser} sID="mgyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
+                    <Switch sVal={this.state.kgyser} sID="kgyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                 </Grid>
               </CardContent>
@@ -179,10 +179,10 @@ class Kids extends React.Component {
               <CardContent style={{ display: 'flex', alignItems: 'center' }}>
                 <Grid container spacing={2}>
                   <Grid item>
-                    <Curtain sVal={this.state.kblackout} sID="mblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
+                    <Curtain sVal={this.state.kblackout} sID="kblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
                   </Grid>
                   <Grid item>
-                    <Fan sVal={this.state.kfan} sFval={this.state.kfanspeed} sID="mfan" sIDFS="mfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+                    <Fan sVal={this.state.kfan} sFval={this.state.kfanspeed} sID="kfan" sIDFS="kfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
                   </Grid>
                 </Grid>
               </CardContent>
