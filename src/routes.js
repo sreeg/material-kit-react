@@ -8,7 +8,7 @@ import Drawing from './pages/Drawing';
 import Office from './pages/Office';
 import Balcony from './pages/Balcony';
 import Bedroom from './pages/Bedroom';
-import Kids from './pages/Balcony';
+import Kids from './pages/Kids';
 import Kitchen from './pages/Balcony';
 import Living from './pages/Living';
 import NotFound from './pages/Page404';
