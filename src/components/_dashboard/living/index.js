@@ -78,9 +78,15 @@ class Living extends React.Component {
   handleCozyMode = (e) => {
     fetch(gateway + '/dinningcozy/').then((response) => response.json());
   };
-  handlelac = (e) => {
-    fetch(gateway + '/livingac/').then((response) => response.json());
+
+  handlelAcON = (e) => {
+    fetch(gateway + '/lAC/on').then((response) => response.json());
   };
+
+  handlelAcOFF = (e) => {
+    fetch(gateway + '/lAC/off').then((response) => response.json());
+  };
+
   componentDidMount() {
     var that = this;
     fetch(gateway + '/lsheercurtainstatus')
@@ -218,8 +224,22 @@ class Living extends React.Component {
                     <SwitchCustomIcon sVal={this.state.livingtvsocket} sID="livingtvsocket" sIcon={GiCeilingLight} sName="Cabnet light" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>
                   <Grid item>
-                    <Switch sVal={this.state.lAC} sID="lAC" sIcon={mdiAirConditioner} sName="ACs" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>                  
+                    <Card sx={{ minWidth: 100, mb: 2 }}>
+                      <CardContent style={{ display: 'flex', alignItems: 'center' }}>
+                        <Button style={{ height: 50 }} variant="outlined" onClick={this.handlelAcON} size="large" color="secondary" disableFocusRipple={true}>
+                          <div className="content">
+                            <div>ON</div>
+                          </div>
+                        </Button>
+                        <Icon style={{ marginLeft: 16, marginRight: 16 }} path={mdiAirConditioner} size={2} />
+                        <Button style={{ height: 50 }} variant="outlined" onClick={this.handlelAcOFF} size="large" color="secondary" disableFocusRipple={true}>
+                          <div className="content">
+                            <div>OFF</div>
+                          </div>
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </Grid>
                 </Grid>
               </CardContent>
             </Card>
