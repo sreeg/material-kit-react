@@ -4,7 +4,7 @@ import SwitchCustomIcon from '../common/SwitchCustomIcon';
 import Zone from '../common/Zone';
 import Curtain from '../common/Curtain';
 import Fan from '../common/Fan';
-import { mdiMovieOpen, mdiLedStripVariant, mdiLightbulbVariantOutline, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiChandelier, mdiEiffelTower } from '@mdi/js';
+import { mdiMovieOpen, mdiLedStripVariant, mdiAirConditioner, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiChandelier, mdiEiffelTower } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
@@ -39,7 +39,8 @@ class Living extends React.Component {
       lscallop: 'OFF',
       lfanspeed: 5,
       lfan: 'OFF',
-      livingtvsocket: 'OFF'
+      livingtvsocket: 'OFF',
+      lAC: 'OFF'
     };
   }
 
@@ -77,7 +78,9 @@ class Living extends React.Component {
   handleCozyMode = (e) => {
     fetch(gateway + '/dinningcozy/').then((response) => response.json());
   };
-
+  handlelac = (e) => {
+    fetch(gateway + '/livingac/').then((response) => response.json());
+  };
   componentDidMount() {
     var that = this;
     fetch(gateway + '/lsheercurtainstatus')
@@ -214,6 +217,9 @@ class Living extends React.Component {
                   <Grid item>
                     <SwitchCustomIcon sVal={this.state.livingtvsocket} sID="livingtvsocket" sIcon={GiCeilingLight} sName="Cabnet light" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>
+                  <Grid item>
+                    <Switch sVal={this.state.lAC} sID="lAC" sIcon={mdiAirConditioner} sName="ACs" stateHandler={stateHandler.bind(this)}></Switch>
+                  </Grid>                  
                 </Grid>
               </CardContent>
             </Card>
@@ -236,13 +242,15 @@ class Living extends React.Component {
             <Card sx={{ minWidth: 100, mb: 2 }}>
               <CardHeader title="Scenes" />
               <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid item xs={6}>
-                  <Button style={{ height: 100 }} variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
-                    <div className="content">
-                      <GiCandleFlame size={48} />
-                      <div>Cozy mode</div>
-                    </div>
-                  </Button>
+                <Grid container spacing={2}>
+                  <Grid item>
+                    <Button style={{ height: 100 }} variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
+                      <div className="content">
+                        <GiCandleFlame size={48} />
+                        <div>Cozy mode</div>
+                      </div>
+                    </Button>
+                  </Grid>
                 </Grid>
               </CardContent>
             </Card>
