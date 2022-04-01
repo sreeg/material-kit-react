@@ -23,6 +23,16 @@ const sidebarConfig = [
     icon: getIcon(tvFill)
   },
   {
+    title: 'living',
+    path: '/dashboard/living',
+    icon: getIconM(mdiSofa)
+  },
+  {
+    title: 'bedroom',
+    path: '/dashboard/bedroom',
+    icon: getIconM(mdiBed)
+  },
+  {
     title: 'office room',
     path: '/dashboard/office',
     icon: getIcon(monitorFill)
@@ -31,17 +41,6 @@ const sidebarConfig = [
     title: 'dining & balcony',
     path: '/dashboard/balcony',
     icon: getIconM(mdiFoodForkDrink)
-  },
-  {
-    title: 'living',
-    path: '/dashboard/living',
-    icon: getIconM(mdiSofa)
-  }
-  ,
-  {
-    title: 'bedroom',
-    path: '/dashboard/bedroom',
-    icon: getIconM(mdiBed)
   },
   {
     title: 'kids',

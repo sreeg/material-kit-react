@@ -24,11 +24,11 @@ export default function Router() {
         { element: <Navigate to="/dashboard/app" replace /> },
         { path: 'app', element: <DashboardApp /> },
         { path: 'drawing', element: <Drawing /> },
-        { path: 'office', element: <Office /> },
-        { path: 'balcony', element: <Balcony /> },
-        { path: 'bedroom', element: <Bedroom /> },
-        { path: 'kids', element: <Kids /> },
         { path: 'living', element: <Living /> },
+        { path: 'bedroom', element: <Bedroom /> },
+        { path: 'balcony', element: <Balcony /> },
+        { path: 'kids', element: <Kids /> },
+        { path: 'office', element: <Office /> },
         { path: 'kitchen', element: <Kitchen /> }
       ]
     },
