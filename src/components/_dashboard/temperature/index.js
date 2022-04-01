@@ -15,8 +15,8 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 const gateway = 'http://192.168.88.122:1880';
-const CIRCLE_WIDTH = 125;
-const CIRCLE_HEIGHT = 125;
+const CIRCLE_WIDTH = 115;
+const CIRCLE_HEIGHT = 115;
 class Temperature extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +29,12 @@ class Temperature extends React.Component {
 
   componentDidMount() {
     var that = this;
-    fetch(gateway + '/temperature')
+    var room ="/livingtemp";
+    if(this.props.room === "office")
+    {
+      room ="/officetemp";
+    }
+    fetch(gateway + room)
       .then((response) => response.text())
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
@@ -52,16 +57,16 @@ class Temperature extends React.Component {
                 <Card style={{ background: '#ca7cd8', color: '#ffffff' }}>
                   <CardHeader
                   className="header-temparature"
-                    title={<Typography fontFamily='roboto' variant='h6' component='h2'>Temperature</Typography>}
+                    title={<Typography fontFamily='roboto' variant='h7' component='p'>Temperature</Typography>}
                     action={
-                      <Icon path={mdiThermometer} size={1.5} />
+                      <Icon path={mdiThermometer} size={1.25} />
                     }
                   />
                   <CardContent>
                     <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT }} className="content-temparature">
                       <CircularProgressbar value={this.state.temperature} maxValue={50} text={this.state.temperature + '°C'} styles={buildStyles({
                         strokeLinecap: 'butt',
-                        textSize: '14px',
+                        textSize: '18px',
                         pathColor: '#fff',
                         textColor: '#ffffff',
                         trailColor: '#d597e0',
@@ -75,16 +80,16 @@ class Temperature extends React.Component {
                 <Card style={{ background: '#ff6284', color: '#ffffff' }}>
                   <CardHeader
                   className="header-temparature"
-                    title={<Typography fontFamily='roboto' variant='h6' component='h2'>Humidity</Typography>}
+                    title={<Typography fontFamily='roboto' variant='h7' component='p'>Humidity</Typography>}
                     action={
-                      <Icon path={mdiWater} size={1.5} />
+                      <Icon path={mdiWater} size={1.25} />
                     }
                   />
                   <CardContent>
                     <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT }} className="content-temparature">
                       <CircularProgressbar value={this.state.humidity} maxValue={100} text={this.state.humidity} styles={buildStyles({
                         strokeLinecap: 'butt',
-                        textSize: '14px',
+                        textSize: '18px',
                         pathColor: '#fff',
                         textColor: '#ffffff',
                         trailColor: '#ff829e',

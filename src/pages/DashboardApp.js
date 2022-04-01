@@ -28,10 +28,21 @@ class DashboardApp extends React.Component {
           <NTabs navConfig={sidebarConfig} style={{ marginBottom: 24 }} />
           <Grid container spacing={2}>
             <Grid item sm={12} md={6} lg={5}>
-              <Temperature />
+              <Card style={{margin: 8, marginBottom: 24}}>
+                <CardHeader title="Office" />
+                <CardContent>
+                  <Temperature room="office" />
+                </CardContent>
+              </Card>
+              <Card style={{margin: 8}}>
+                <CardHeader title="Living" />
+                <CardContent>
+                  <Temperature room="living" />
+                </CardContent>
+              </Card>
             </Grid>
             <Grid sm={12} md={6} item lg={7}>
-              <Card style={{}}>
+              <Card style={{margin: 8}}>
                 <CardHeader title="Scenes" />
                 <CardContent>
                   <Scenes />
