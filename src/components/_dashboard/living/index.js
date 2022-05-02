@@ -16,7 +16,7 @@ import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import Icon from '@mdi/react';
 import { decodeHtml } from '../../../utils/commons';
-import { GiDoubleStreetLights, GiCeilingLight, GiCandleFlame, GiTheaterCurtains, GiScallop } from 'react-icons/gi';
+import { GiDoubleStreetLights, GiCeilingLight, GiCandleFlame, GiTheaterCurtains, GiScallop, GiDjedPillar } from 'react-icons/gi';
 import { FaFan } from 'react-icons/fa';
 //E8:DB:84:9B:64:A0
 const gateway = 'http://192.168.88.122:1880';
@@ -40,6 +40,7 @@ class Living extends React.Component {
       lfanspeed: 5,
       lfan: 'OFF',
       livingtvsocket: 'OFF',
+      lfloorikea: 'OFF',
       lAC: 'OFF'
     };
   }
@@ -218,10 +219,13 @@ class Living extends React.Component {
                     <Switch sVal={this.state.ltv} sID="ltv" sIcon={mdiTelevision} sName="Frame TV" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
-                    <SwitchCustomIcon sVal={this.state.lfloorlamp} sID="lfloorlamp" sIcon={GiDoubleStreetLights} sName="Floor lamp" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
+                    <SwitchCustomIcon sVal={this.state.lfloorlamp} sID="lfloorlamp" sIcon={GiDjedPillar} sName="Floor lamp" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>
                   <Grid item>
                     <SwitchCustomIcon sVal={this.state.livingtvsocket} sID="livingtvsocket" sIcon={GiCeilingLight} sName="Cabnet light" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
+                  </Grid>
+                  <Grid item>
+                    <SwitchCustomIcon sVal={this.state.lfloorikea} sID="lfloorikea" sIcon={GiDoubleStreetLights} sName="Ikea Floor light" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>
                   <Grid item>
                     <Card sx={{ minWidth: 100, mb: 2 }}>
