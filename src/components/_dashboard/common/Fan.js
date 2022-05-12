@@ -19,7 +19,7 @@ class Fan extends React.Component {
     let { sVal, sFval, sID, sIDFS, sName, stateHandler, stateHandlerFs } = this.props;
 
     return (
-      <Paper variant="outlined" sx={{ minWidth: 150 }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 16 }}>
+      <Paper variant="outlined" sx={{ minWidth: 150 }} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 16, background: 'transparent' }}>
         <Switch sVal={sVal} sID={sID} sIcon={mdiCeilingFan} sName={sName} stateHandler={stateHandler.bind(this)}></Switch>
         <Slider defaultValue={sFval} step={1} sx={{ mt: 2 }} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleFanspeed} />
       </Paper>

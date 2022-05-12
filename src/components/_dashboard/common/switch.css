@@ -12,8 +12,9 @@ Button.switch-off {
 }
 
 Button.switch-off {
-  color: rgb(100, 100, 100);
+  color: #ffffff;
   opacity: 0.6;
+  border-color: #ffffff;
 }
 
 Button.switch-on .content,
@@ -41,12 +42,23 @@ Button.switch-off .content {
   height: 14px;
 }
 
+.MuiSlider-markActive {
+  background-color: transparent;
+}
+
 .MuiSlider-markActive ~ .MuiSlider-mark {
   color: transparent;
-  border: 2px solid #3366ff;
+  border: 2px solid #ffffff;
 }
 
 .MuiSlider-mark {
   width: 10px;
   height: 10px;
+}
+
+.MuiButtonBase-root.MuiToggleButtonGroup-groupedHorizontal {
+  color: #ffffff;
+}
+.MuiButtonBase-root.MuiToggleButtonGroup-groupedHorizontal.Mui-selected {
+  color: #3366FF;
 }

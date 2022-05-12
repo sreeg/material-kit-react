@@ -24,7 +24,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
-
+import Temperature from '../temperature';
 const gateway = 'http://192.168.88.122:1880';
 const MenuProps = {
   PaperProps: {
@@ -169,6 +169,11 @@ class OfficeRoom extends React.Component {
           <div>Loading</div>
         ) : (
           <>
+            <Card style={{marginBottom: 24 }}>
+              <CardContent>
+                <Temperature room="office" />
+              </CardContent>
+            </Card>
             <Card sx={{ minWidth: 100, mb: 2 }}>
               <CardHeader
                 action={
@@ -198,23 +203,24 @@ class OfficeRoom extends React.Component {
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
                       <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        <Typography sx={{ fontSize: 14 }} color="text.white">
                           Color
                         </Typography>
                         <Slider defaultValue={this.state.ocolor} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleColor} />
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                  <Grid item>
-                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        <Typography sx={{ fontSize: 14 }} color="text.while">
                           Brightness
                         </Typography>
                         <Slider defaultValue={this.state.obrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleBrightness} />
                       </CardContent>
                     </Card>
                   </Grid>
+                  {/* <Grid item>
+                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
+
+                      </CardContent>
+                    </Card>
+                  </Grid> */}
                 </Grid>
               </CardContent>
             </Card>

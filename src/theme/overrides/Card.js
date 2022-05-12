@@ -8,6 +8,8 @@ export default function Card(theme) {
           boxShadow: theme.customShadows.z16,
           borderRadius: theme.shape.borderRadiusMd,
           position: 'relative',
+          background: "#23272f",
+          color: "#ffffff",
           zIndex: 0 // Fix Safari overflow: hidden with border radius
         }
       }
@@ -26,7 +28,7 @@ export default function Card(theme) {
     MuiCardContent: {
       styleOverrides: {
         root: {
-          padding: theme.spacing(3)
+          padding: theme.spacing(3),
         }
       }
     }

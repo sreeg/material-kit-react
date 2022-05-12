@@ -35,3 +35,11 @@
     height: 2rem !important;
   }
 }
+body {
+  background-color: #1a1e25;
+  color: #ffffff;
+}
+header {
+  background-color: #23272f !important;
+  color: #ffffff;
+}

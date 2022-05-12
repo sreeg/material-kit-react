@@ -15,8 +15,8 @@ import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 
 const gateway = 'http://192.168.88.122:1880';
-const CIRCLE_WIDTH = 115;
-const CIRCLE_HEIGHT = 115;
+const CIRCLE_WIDTH = "100%";
+const CIRCLE_HEIGHT = 140;
 class Temperature extends React.Component {
   constructor(props) {
     super(props);
@@ -29,10 +29,9 @@ class Temperature extends React.Component {
 
   componentDidMount() {
     var that = this;
-    var room ="/livingtemp";
-    if(this.props.room === "office")
-    {
-      room ="/officetemp";
+    var room = '/livingtemp';
+    if (this.props.room === 'office') {
+      room = '/officetemp';
     }
     fetch(gateway + room)
       .then((response) => response.text())
@@ -54,50 +53,20 @@ class Temperature extends React.Component {
           <>
             <Grid container spacing={2}>
               <Grid item>
-                <Card style={{ background: '#ca7cd8', color: '#ffffff' }}>
-                  <CardHeader
-                  className="header-temparature"
-                    title={<Typography fontFamily='roboto' variant='h7' component='p'>Temperature</Typography>}
-                    action={
-                      <Icon path={mdiThermometer} size={1.25} />
-                    }
-                  />
-                  <CardContent>
-                    <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT }} className="content-temparature">
-                      <CircularProgressbar value={this.state.temperature} maxValue={50} text={this.state.temperature + '°C'} styles={buildStyles({
+                <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT }} className="content-temparature">
+                  <p>Room temparature</p>
+                  <h1>{this.state.temperature}°C</h1>
+                  <p>Humidity</p>
+                  <h1>{this.state.humidity}%</h1>
+                  {/* <CircularProgressbar value={this.state.temperature} maxValue={50} text={this.state.temperature + '°C'} styles={buildStyles({
                         strokeLinecap: 'butt',
                         textSize: '18px',
                         pathColor: '#fff',
                         textColor: '#ffffff',
                         trailColor: '#d597e0',
                         backgroundColor: '#ffffff',
-                      })} />
-                    </div>
-                  </CardContent>
-                </Card>
-              </Grid>
-              <Grid item>
-                <Card style={{ background: '#ff6284', color: '#ffffff' }}>
-                  <CardHeader
-                  className="header-temparature"
-                    title={<Typography fontFamily='roboto' variant='h7' component='p'>Humidity</Typography>}
-                    action={
-                      <Icon path={mdiWater} size={1.25} />
-                    }
-                  />
-                  <CardContent>
-                    <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT }} className="content-temparature">
-                      <CircularProgressbar value={this.state.humidity} maxValue={100} text={this.state.humidity} styles={buildStyles({
-                        strokeLinecap: 'butt',
-                        textSize: '18px',
-                        pathColor: '#fff',
-                        textColor: '#ffffff',
-                        trailColor: '#ff829e',
-                        backgroundColor: '#ffffff',
-                      })} />
-                    </div>
-                  </CardContent>
-                </Card>
+                      })} /> */}
+                </div>
               </Grid>
             </Grid>
           </>

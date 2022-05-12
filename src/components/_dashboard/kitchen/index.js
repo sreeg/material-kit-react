@@ -22,6 +22,7 @@ class Kitchen extends React.Component {
       loading: true,
       kicenterzone: 'OFF',
       kiwalllamp: 'OFF',
+      kiservicelight: 'OFF',
       kicolor: 5,
       kibrightness: 5
     };
@@ -64,24 +65,20 @@ class Kitchen extends React.Component {
       .then((response) => response.text())
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
+        
         var speed = data['1'].speed;
         this.setState({ kbrightness: Math.round(speed / 20) });
         speed = data['2'].speed;
-        this.setState({ kcolor: Math.round(speed / 20) });
-        this.setState({ kaczone: data['5'].power });
-        this.setState({ kcenterzone: data['3'].power });
-        this.setState({ kwardrobe: data['7'].power });
+        this.setState({ kicolor: Math.round(speed / 20) });
+        this.setState({ kicenterzone: data['3'].power });
       });
     fetch(gateway + '/kiboardtwostatus')
       .then((response) => response.text())
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
-        this.setState({ mfan: data['1'].power });
-        var speed = data['1'].speed;
-        this.setState({ kfanspeed: Math.round(speed / 20) });
-        this.setState({ mlight2: data['2'].power });
-        this.setState({ mlight3: data['3'].power });
-        this.setState({ mlight4: data['4'].power });
+        console.log(data);
+        this.setState({ kiservicelight: data['2'].power });
+        this.setState({ kiwalllamp: data['3'].power });
         this.setState({ loading: false });
       });
   }
@@ -105,25 +102,19 @@ class Kitchen extends React.Component {
               <CardContent style={{ display: 'flex', alignItems: 'center' }}>
                 <Grid container spacing={2}>
                   <Grid item>
-                    <Zone sVal={this.state.kicenterzone} zoneClass="zone23 zone23center" sID="kcenterzone" sIcon={mdiStringLights} sName="Center" stateHandler={stateHandler.bind(this)}></Zone>
+                    <Zone sVal={this.state.kicenterzone} zoneClass="zone23 zone23center" sID="kicenterzone" sIcon={mdiStringLights} sName="Center" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
                       <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        <Typography sx={{ fontSize: 14 }} color="#ffffff">
                           Color
                         </Typography>
-                        <Slider defaultValue={this.state.kcolor} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleColor} />
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                  <Grid item>
-                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        <Slider defaultValue={this.state.kicolor} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleColor} />
+                        <Typography sx={{ fontSize: 14 }} color="#ffffff">
                           Brightness
                         </Typography>
-                        <Slider defaultValue={this.state.kbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleBrightness} />
+                        <Slider defaultValue={this.state.kibrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleBrightness} />
                       </CardContent>
                     </Card>
                   </Grid>
@@ -142,7 +133,10 @@ class Kitchen extends React.Component {
               <CardContent style={{ display: 'flex', alignItems: 'center' }}>
                 <Grid container spacing={2}>
                   <Grid item>
-                    <Switch sVal={this.state.kwalllamp} sID="kwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>
+                    <Switch sVal={this.state.kiwalllamp} sID="kiwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>
+                  </Grid>
+                  <Grid item>
+                    <Switch sVal={this.state.kiservicelight} sID="kiservicelight" sIcon={mdiStringLights} sName="Service balcony" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                 </Grid>
               </CardContent>
