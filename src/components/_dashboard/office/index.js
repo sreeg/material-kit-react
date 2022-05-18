@@ -169,22 +169,14 @@ class OfficeRoom extends React.Component {
           <div>Loading</div>
         ) : (
           <>
-            <Card style={{marginBottom: 24 }}>
+            <Card style={{ marginBottom: 24 }}>
               <CardContent>
                 <Temperature room="office" />
               </CardContent>
             </Card>
             <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title="Zones"
-              />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid container spacing={2}>
+              <CardContent>
+                <Grid container pb={3} spacing={2}>
                   <Grid item>
                     <Zone sVal={this.state.oaczone} zoneClass="zone23 zone23top" sID="oaczone" sIcon={mdiStringLights} sName="AC" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
@@ -207,34 +199,22 @@ class OfficeRoom extends React.Component {
                           Color
                         </Typography>
                         <Slider defaultValue={this.state.ocolor} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleColor} />
-                        <Typography sx={{ fontSize: 14 }} color="text.while">
+                      </CardContent>
+                    </Card>
+                  </Grid>
+                  <Grid item>
+                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
+                        <Typography sx={{ fontSize: 14 }} color="text.white">
                           Brightness
                         </Typography>
                         <Slider defaultValue={this.state.obrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleBrightness} />
                       </CardContent>
                     </Card>
                   </Grid>
-                  {/* <Grid item>
-                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-
-                      </CardContent>
-                    </Card>
-                  </Grid> */}
                 </Grid>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title="Switches"
-              />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid container spacing={2}>
+
+                <Grid container pb={3} spacing={2}>
                   <Grid item>
                     <SwitchCustomIcon sVal={this.state.lines} sID="lines" sIcon={FaPagelines} sName="Nano lines" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>
@@ -278,11 +258,7 @@ class OfficeRoom extends React.Component {
                     <SwitchCustomIcon sVal={this.state.lines} sID="lines" sIcon={FaPagelines} sName="Nano Lines" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>                   */}
                 </Grid>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader title="Curtains & fan" />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
+
                 <Grid container spacing={2}>
                   <Grid item>
                     <Curtain sVal={this.state.osheer} sID="osheer" sName="Sheer curtain" stateHandler={stateHandler.bind(this)}></Curtain>

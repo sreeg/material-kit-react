@@ -130,16 +130,8 @@ class OfficeRoom extends React.Component {
         ) : (
           <>
             <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title="Zones"
-              />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid container spacing={2}>
+              <CardContent>
+                <Grid container pb={3} spacing={2}>
                   <Grid item>
                     <Zone sVal={this.state.dhallway} zoneClass="zone33 zone33left" sID="dhallway" sIcon={mdiStringLights} sName="Hallway" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
@@ -152,7 +144,7 @@ class OfficeRoom extends React.Component {
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
                       <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
                           Color
                         </Typography>
                         <Slider defaultValue={this.state.dcolor} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleColor} />
@@ -162,7 +154,7 @@ class OfficeRoom extends React.Component {
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
                       <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
                           Brightness
                         </Typography>
                         <Slider defaultValue={this.state.dbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleBrightness} />
@@ -170,19 +162,8 @@ class OfficeRoom extends React.Component {
                     </Card>
                   </Grid>
                 </Grid>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title="Switches"
-              />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid container spacing={2}>
+
+                <Grid container pb={3} spacing={2}>
                   <Grid item>
                     <Switch sVal={this.state.dwalllamp} sID="dwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
@@ -199,12 +180,7 @@ class OfficeRoom extends React.Component {
                     <Switch sVal={this.state.dwallwasher} sID="dwallwasher" sIcon={mdiWallSconceFlat} sName="Wall washer" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                 </Grid>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader title="Curtains & fan" />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid container spacing={2}>
+                <Grid container pb={1} spacing={2}>
                   <Grid item>
                     <Curtain sVal={this.state.dsheer} sID="dsheer" sName="Sheer curtain" stateHandler={stateHandler.bind(this)}></Curtain>
                   </Grid>
@@ -215,18 +191,15 @@ class OfficeRoom extends React.Component {
                     <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="dfan" sIDFS="dfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
                   </Grid>
                 </Grid>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader title="Scenes" />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid item xs={6}>
-                  <Button style={{ height: 100 }} variant="outlined" onClick={this.handleMovieMode} size="large" color="secondary" disableFocusRipple={true}>
-                    <div className="content">
-                      <Icon path={mdiMovieOpen} size={2} />
-                      <div>Movie mode</div>
-                    </div>
-                  </Button>
+                <Grid container spacing={2}>
+                  <Grid item>
+                    <Button style={{ height: 100 }} variant="outlined" onClick={this.handleMovieMode} size="large" color="secondary" disableFocusRipple={true}>
+                      <div className="content">
+                        <Icon path={mdiMovieOpen} size={2} />
+                        <div>Movie mode</div>
+                      </div>
+                    </Button>
+                  </Grid>
                 </Grid>
               </CardContent>
             </Card>

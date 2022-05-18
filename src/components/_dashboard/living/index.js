@@ -153,16 +153,8 @@ class Living extends React.Component {
         ) : (
           <>
             <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title="Zones"
-              />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid container spacing={2}>
+              <CardContent>
+                <Grid container pb={3} spacing={2}>
                   <Grid item>
                     <Zone sVal={this.state.laczone} zoneClass="zone33 zone33ac" sID="laczone" sName="AC" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
@@ -175,7 +167,7 @@ class Living extends React.Component {
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
                       <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
                           Color
                         </Typography>
                         <Slider defaultValue={this.state.lcolor} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleColor} />
@@ -185,7 +177,7 @@ class Living extends React.Component {
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
                       <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
                           Brightness
                         </Typography>
                         <Slider defaultValue={this.state.lbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleBrightness} />
@@ -193,19 +185,8 @@ class Living extends React.Component {
                     </Card>
                   </Grid>
                 </Grid>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title="Switches"
-              />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid container spacing={2}>
+
+                <Grid container pb={1} spacing={2}>
                   <Grid item>
                     <SwitchCustomIcon sVal={this.state.lscallop} sID="lscallop" sIcon={GiScallop} sName="Scallop" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>
@@ -245,12 +226,7 @@ class Living extends React.Component {
                     </Card>
                   </Grid>
                 </Grid>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader title="Curtains & Fan" />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid container spacing={2}>
+                <Grid container pb={1} spacing={2}>
                   <Grid item>
                     <Curtain sVal={this.state.lsheer} sID="lsheer" sName="Sheer curtain" stateHandler={stateHandler.bind(this)}></Curtain>
                   </Grid>
@@ -261,11 +237,7 @@ class Living extends React.Component {
                     <Fan sVal={this.state.lfan} sFval={this.state.lfanspeed} sID="lfan" sIDFS="lfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
                   </Grid>
                 </Grid>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader title="Scenes" />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
+
                 <Grid container spacing={2}>
                   <Grid item>
                     <Button style={{ height: 100 }} variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
