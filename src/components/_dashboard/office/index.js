@@ -222,8 +222,8 @@ class OfficeRoom extends React.Component {
                     <>
                       <Grid item>
                         <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
-                          <InputLabel id="demo-simple-select-helper-label">Scene name</InputLabel>
-                          <Select label="Scene name" labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={this.state.selectedEffect} onChange={this.handleEffect}>
+                          <InputLabel id="demo-simple-select-helper-label" style={{color: "white"}}>Scene name</InputLabel>
+                          <Select style={{color: "white"}} label="Scene name" labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={this.state.selectedEffect} onChange={this.handleEffect}>
                             {this.state.effects.map((name) => (
                               <MenuItem key={name} value={name}>
                                 {name}
