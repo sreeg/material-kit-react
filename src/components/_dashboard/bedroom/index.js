@@ -3,7 +3,7 @@ import Switch from '../common/Switch';
 import Curtain from '../common/Curtain';
 import Zone from '../common/Zone';
 import Fan from '../common/Fan';
-import { mdiLightbulbVariantOutline, mdiLedStripVariant, mdiCoachLamp, mdiWaterBoiler, mdiStringLights } from '@mdi/js';
+import { mdiLightbulbVariantOutline, mdiLedStripVariant, mdiCoachLamp, mdiWaterBoiler, mdiStringLights, mdiTelevision } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
@@ -28,6 +28,7 @@ class BedRoom extends React.Component {
       maczone: 'OFF',
       mwardrobe: 'OFF',
       mwalllamp: 'OFF',
+      mtv: 'OFF',
       mwtvunderlight: 'OFF',
       mfanspeed: 5,
       mcolor: 5,
@@ -100,6 +101,14 @@ class BedRoom extends React.Component {
         this.setState({ maczone: data['5'].power });
         this.setState({ mcenterzone: data['3'].power });
         this.setState({ mwardrobe: data['7'].power });
+      });
+      fetch(gateway + '/mtvboardstatus')
+      .then((response) => response.text())
+      .then((data) => {
+        data = JSON.parse(decodeHtml(data));
+        this.setState({ mtv: data['2'].power });
+        this.setState({ mwtvunderlight: data['4'].power });
+        this.setState({ loading: false });
       });
     fetch(gateway + '/mboardtwostatus')
       .then((response) => response.text())
@@ -182,6 +191,9 @@ class BedRoom extends React.Component {
                   <Grid item>
                     <Switch sVal={this.state.mwtvunderlight} sID="mwtvunderlight" sIcon={mdiLedStripVariant} sName="TV under light" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
+                  <Grid item>
+                    <Switch sVal={this.state.mtv} sID="mtv" sIcon={mdiTelevision} sName="TV" stateHandler={stateHandler.bind(this)}></Switch>
+                  </Grid>                  
                   <Grid item>
                     <Switch sVal={this.state.mlight2} sID="mlight2" sIcon={mdiLightbulbVariantOutline} sName="Light 2" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
