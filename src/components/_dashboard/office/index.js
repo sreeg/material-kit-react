@@ -4,7 +4,7 @@ import Switch from '../common/Switch';
 import Curtain from '../common/Curtain';
 import Zone from '../common/Zone';
 import Fan from '../common/Fan';
-import { mdiLightbulbVariantOutline, mdiWaterBoiler, mdiStringLights } from '@mdi/js';
+import { mdiLightbulbVariantOutline, mdiWaterBoiler, mdiStringLights, mdiVanityLight } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
@@ -40,7 +40,7 @@ class OfficeRoom extends React.Component {
     this.state = {
       loading: true,
       ofan: 'OFF',
-      olight2: 'OFF',
+      lines: 'OFF',
       olight4: 'OFF',
       olight5: 'OFF',
       olight6: 'OFF',
@@ -55,7 +55,6 @@ class OfficeRoom extends React.Component {
       osheer: 'CLOSE',
       oblackout: 'CLOSE',
       ogyser: 'OFF',
-      lines: 'OFF',
       color: '#FFFFFF',
       effects: [],
       selectedEffect: ''
@@ -151,13 +150,13 @@ class OfficeRoom extends React.Component {
         this.setState({ ofan: data['1'].power });
         var speed = data['1'].speed;
         this.setState({ ofanspeed: Math.round(speed / 20) });
-        this.setState({ olight2: data['2'].power });
-        this.setState({ lines: data['3'].power });
+        this.setState({ lines: data['2'].power });
+        this.setState({ olight3: data['3'].power });
         this.setState({ olight4: data['4'].power });
-        // this.setState({ olight5: data['5'].power });
-        // this.setState({ olight6: data['6'].power });
-        // this.setState({ olight7: data['7'].power });
-        // this.setState({ olight8: data['8'].power });
+        this.setState({ olight5: data['5'].power });
+        this.setState({ olight6: data['6'].power });
+        this.setState({ olight7: data['7'].power });
+        this.setState({ olight8: data['8'].power });
         this.setState({ loading: false });
       });
   }
@@ -187,10 +186,10 @@ class OfficeRoom extends React.Component {
                     <Zone sVal={this.state.owindowside} zoneClass="zone23 zone23bottom" sID="owindowside" sIcon={mdiStringLights} sName="Window" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
                   <Grid item>
-                    <Zone sVal={this.state.olight2} zoneClass="zone23 zone23right" sID="olight2" sIcon={mdiLightbulbVariantOutline} sName="Right area" stateHandler={stateHandler.bind(this)}></Zone>
+                    <Zone sVal={this.state.olight3} zoneClass="zone23 zone23right" sID="olight3" sIcon={mdiLightbulbVariantOutline} sName="Right area" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
                   <Grid item>
-                    <Zone sVal={this.state.olight8} zoneClass="zone23 zone23left" sID="olight8" sIcon={mdiLightbulbVariantOutline} sName="Left area" stateHandler={stateHandler.bind(this)}></Zone>
+                    <Zone sVal={this.state.olight4} zoneClass="zone23 zone23left" sID="olight4" sIcon={mdiLightbulbVariantOutline} sName="Left area" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
@@ -246,10 +245,10 @@ class OfficeRoom extends React.Component {
                     <Switch sVal={this.state.olight5} sID="olight5" sIcon={mdiLightbulbVariantOutline} sName="Light 5" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
-                    <Switch sVal={this.state.olight6} sID="olight6" sIcon={mdiLightbulbVariantOutline} sName="Light 6" stateHandler={stateHandler.bind(this)}></Switch>
+                    <Switch sVal={this.state.olight6} sID="olight6" sIcon={mdiVanityLight} sName="Curtain light" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
-                    <Switch sVal={this.state.olight6} sID="olight7" sIcon={mdiLightbulbVariantOutline} sName="Light 7" stateHandler={stateHandler.bind(this)}></Switch>
+                    <Switch sVal={this.state.olight7} sID="olight7" sIcon={mdiLightbulbVariantOutline} sName="Wardrobe light" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
                     <Switch sVal={this.state.ogyser} sID="ogyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
