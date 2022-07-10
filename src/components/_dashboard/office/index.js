@@ -41,6 +41,7 @@ class OfficeRoom extends React.Component {
       loading: true,
       ofan: 'OFF',
       lines: 'OFF',
+      olight3: 'OFF',
       olight4: 'OFF',
       olight5: 'OFF',
       olight6: 'OFF',
@@ -238,9 +239,6 @@ class OfficeRoom extends React.Component {
                   ) : (
                     ''
                   )}
-                  <Grid item>
-                    <Switch sVal={this.state.olight4} sID="olight4" sIcon={mdiLightbulbVariantOutline} sName="Light 4" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
                   <Grid item>
                     <Switch sVal={this.state.olight5} sID="olight5" sIcon={mdiLightbulbVariantOutline} sName="Light 5" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
