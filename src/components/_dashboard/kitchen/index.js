@@ -111,6 +111,12 @@ class Kitchen extends React.Component {
                           Color
                         </Typography>
                         <Slider defaultValue={this.state.kicolor} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleColor} />
+                        </CardContent>
+                    </Card>
+                  </Grid>
+                  <Grid item>
+                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>                        
                         <Typography sx={{ fontSize: 14 }} color="#ffffff">
                           Brightness
                         </Typography>
@@ -118,6 +124,7 @@ class Kitchen extends React.Component {
                       </CardContent>
                     </Card>
                   </Grid>
+                  
                 </Grid>
               </CardContent>
             </Card>

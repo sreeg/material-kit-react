@@ -240,7 +240,7 @@ class Living extends React.Component {
 
                 <Grid container spacing={2}>
                   <Grid item>
-                    <Button style={{ height: 100 }} variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
+                    <Button className='scene-switch' variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
                       <div className="content">
                         <GiCandleFlame size={48} />
                         <div>Cozy mode</div>
