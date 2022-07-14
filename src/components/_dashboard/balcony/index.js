@@ -3,7 +3,7 @@ import Switch from '../common/Switch';
 import SwitchCustomIcon from '../common/SwitchCustomIcon';
 import Zone from '../common/Zone';
 import Curtain from '../common/Curtain';
-import { mdiMovieOpen, mdiLedStripVariant, mdiLightbulbVariantOutline, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiChandelier, mdiCircle } from '@mdi/js';
+import { mdiMovieOpen, mdiLedStripVariant, mdiLightbulbVariantOutline, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiChandelier, mdiOm } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
@@ -28,6 +28,7 @@ class BalconyArea extends React.Component {
       loading: true,
       bchandlier: 'OFF',
       poojaroompanel: 'OFF',
+      poojaomlight: 'OFF',
       dlight1: 'OFF',
       dlight2: 'OFF',
       dinningcenterzone: 'OFF',
@@ -215,6 +216,9 @@ class BalconyArea extends React.Component {
                   <Grid item>
                     <Switch sVal={this.state.poojaroomunderlight} sID="poojaroomunderlight" sIcon={mdiChandelier} sName="Pooja room under light" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
+                  <Grid item>
+                    <Switch sVal={this.state.poojaomlight} sID="poojaomlight" sIcon={mdiOm} sName="Om light" stateHandler={stateHandler.bind(this)}></Switch>
+                  </Grid>                  
                   <Grid item>
                     <SwitchCustomIcon sVal={this.state.bsocket} sID="bsocket" sIcon={GiElectricalSocket} sName="Balcony socket" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>
