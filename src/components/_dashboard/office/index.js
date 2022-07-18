@@ -246,8 +246,11 @@ class OfficeRoom extends React.Component {
                     <Switch sVal={this.state.olight6} sID="olight6" sIcon={mdiVanityLight} sName="Curtain light" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
-                    <Switch sVal={this.state.olight7} sID="olight7" sIcon={mdiLightbulbVariantOutline} sName="Wardrobe light" stateHandler={stateHandler.bind(this)}></Switch>
+                    <Switch sVal={this.state.olight7} sID="olight7" sIcon={mdiLightbulbVariantOutline} sName="WD warm" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
+                  <Grid item>
+                    <Switch sVal={this.state.olight8} sID="olight8" sIcon={mdiLightbulbVariantOutline} sName="WD color" stateHandler={stateHandler.bind(this)}></Switch>
+                  </Grid>                 
                   <Grid item>
                     <Switch sVal={this.state.ogyser} sID="ogyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
