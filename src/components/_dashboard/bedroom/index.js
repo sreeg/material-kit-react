@@ -111,7 +111,7 @@ class BedRoom extends React.Component {
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
         this.setState({ mtv: data['2'].power });
-        this.setState({ mwtvunderlight: data['4'].power });
+        this.setState({ mwtvunderlight: data['3'].power });
         this.setState({ loading: false });
       });
     fetch(gateway + '/mboardtwostatus')
