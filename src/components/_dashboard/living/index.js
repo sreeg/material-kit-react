@@ -41,7 +41,8 @@ class Living extends React.Component {
       lfan: 'OFF',
       livingtvsocket: 'OFF',
       lfloorikea: 'OFF',
-      lAC: 'OFF'
+      lAC: 'OFF',
+      updateTimer: 0
     };
   }
 
@@ -87,8 +88,11 @@ class Living extends React.Component {
   handlelAcOFF = (e) => {
     fetch(gateway + '/lAC/off').then((response) => response.json());
   };
-
+  componentWillUnmount(){
+    clearInterval(this.updateTimer);
+  }
   componentDidMount() {
+    this.updateTimer = setInterval(() => window.location.reload(), 300000);
     var that = this;
     fetch(gateway + '/lsheercurtainstatus')
       .then((response) => response.text())

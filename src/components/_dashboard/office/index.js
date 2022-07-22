@@ -64,7 +64,8 @@ class OfficeRoom extends React.Component {
       curtaincolor: '#FFFFFF',
       effects: [],
       selectedEffect: '',
-      selectedCurtainEffect: 'off'
+      selectedCurtainEffect: 'off',
+      updateTimer: 0
     };
     this.handleInputThrottled = _.throttle(this.handleLinesColor, 1000);
     this.handleCurtainInputThrottled = _.throttle(this.handleCurtainColor, 1000);
@@ -143,8 +144,11 @@ class OfficeRoom extends React.Component {
   handleCurtainBrightness = (e, v) => {
     fetch(gateway + '/curtainbrightness/' + v * 20).then((response) => response.json());
   };
-
+  componentWillUnmount(){
+    clearInterval(this.updateTimer);
+  }
   componentDidMount() {
+    this.updateTimer = setInterval(() => window.location.reload(), 300000);
     var that = this;
     fetch(gateway + '/osheercurtainstatus')
       .then((response) => response.text())

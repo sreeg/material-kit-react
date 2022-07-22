@@ -35,7 +35,8 @@ class OfficeRoom extends React.Component {
       dcolor: 5,
       dbrightness: 5,
       dsheer: 'CLOSE',
-      dblackout: 'CLOSE'
+      dblackout: 'CLOSE',
+      updateTimer: 0
     };
   }
 
@@ -73,8 +74,11 @@ class OfficeRoom extends React.Component {
   handleMovieMode = (e) => {
     fetch(gateway + '/movietime/').then((response) => response.json());
   };
-
+  componentWillUnmount(){
+    clearInterval(this.updateTimer);
+  }
   componentDidMount() {
+    this.updateTimer = setInterval(() => window.location.reload(), 300000);
     var that = this;
     fetch(gateway + '/dsheercurtainstatus')
       .then((response) => response.text())

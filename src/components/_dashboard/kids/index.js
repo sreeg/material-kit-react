@@ -25,11 +25,14 @@ class Kids extends React.Component {
       kaczone: 'OFF',
       kwardrobe: 'OFF',
       kwalllamp: 'OFF',
+      klight2 : 'OFF',
+      klight4 : 'OFF',
       kfanspeed: 5,
       kcolor: 5,
       kbrightness: 5,
       kblackout: 'CLOSE',
-      kgyser: 'OFF'
+      kgyser: 'OFF',
+      updateTimer: 0
     };
   }
 
@@ -63,8 +66,11 @@ class Kids extends React.Component {
   handleBrightness = (e, v) => {
     fetch(gateway + '/kbrightness/' + v * 20).then((response) => response.json());
   };
-
+  componentWillUnmount(){
+    clearInterval(this.updateTimer);
+  }
   componentDidMount() {
+    this.updateTimer = setInterval(() => window.location.reload(), 300000);
     var that = this;
     fetch(gateway + '/kgyserstatus')
       .then((response) => response.text())
@@ -97,8 +103,8 @@ class Kids extends React.Component {
         this.setState({ mfan: data['1'].power });
         var speed = data['1'].speed;
         this.setState({ kfanspeed: Math.round(speed / 20) });
-        this.setState({ kwalllamp: data['2'].power });
-        this.setState({ klight3: data['3'].power });
+        this.setState({ klight2: data['2'].power });
+        this.setState({ kwalllamp: data['3'].power });
         this.setState({ klight4: data['4'].power });
         this.setState({ loading: false });
       });

@@ -34,7 +34,8 @@ class BedRoom extends React.Component {
       mcolor: 5,
       mbrightness: 5,
       mblackout: 'CLOSE',
-      mgyser: 'OFF'
+      mgyser: 'OFF',
+      updateTimer: 0
     };
   }
 
@@ -68,8 +69,11 @@ class BedRoom extends React.Component {
   handleBrightness = (e, v) => {
     fetch(gateway + '/mbrightness/' + v * 20).then((response) => response.json());
   };
-
+  componentWillUnmount(){
+    clearInterval(this.updateTimer);
+  }
   componentDidMount() {
+    this.updateTimer = setInterval(() => window.location.reload(), 300000);
     var that = this;
     fetch(gateway + '/mgyserstatus')
       .then((response) => response.text())
