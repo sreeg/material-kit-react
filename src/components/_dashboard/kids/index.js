@@ -97,9 +97,9 @@ class Kids extends React.Component {
         this.setState({ mfan: data['1'].power });
         var speed = data['1'].speed;
         this.setState({ kfanspeed: Math.round(speed / 20) });
-        this.setState({ mlight2: data['2'].power });
-        this.setState({ mlight3: data['3'].power });
-        this.setState({ mlight4: data['4'].power });
+        this.setState({ kwalllamp: data['2'].power });
+        this.setState({ klight3: data['3'].power });
+        this.setState({ klight4: data['4'].power });
         this.setState({ loading: false });
       });
   }

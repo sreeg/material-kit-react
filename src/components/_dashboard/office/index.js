@@ -25,6 +25,8 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import FormHelperText from '@mui/material/FormHelperText';
 import Temperature from '../temperature';
+import addNotification from 'react-push-notification';
+
 const gateway = 'http://192.168.88.122:1880';
 const MenuProps = {
   PaperProps: {
@@ -77,6 +79,19 @@ class OfficeRoom extends React.Component {
   handleEffect = (e) => {
     console.log(e.target.value);
     this.setState({ selectedEffect: e.target.value });
+    addNotification({
+      title: 'Nano leaf',
+      subtitle: 'New theme applied : ',
+      message: e.target.value,
+      theme: 'Blue',
+      duration: 30000,
+      backgroundTop: 'Blue', //optional, background color of top container.
+      backgroundBottom: 'darkblue', //optional, background color of bottom container.
+      colorTop: 'white', //optional, font color of top container.
+      colorBottom: 'white', //optional, font color of bottom container.
+      closeButton: 'X', //optional, text or html/jsx element for close text. Default: Close,
+      native: false // when using native, your OS will handle theming.
+    });
     fetch(gateway + '/lineseffect/' + e.target.value).then((response) => response.json());
   };
 
@@ -246,8 +261,10 @@ class OfficeRoom extends React.Component {
                     <>
                       <Grid item>
                         <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
-                          <InputLabel id="demo-simple-select-helper-label" style={{color: "white"}}>Scene name</InputLabel>
-                          <Select style={{color: "white"}} label="Scene name" labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={this.state.selectedEffect} onChange={this.handleEffect}>
+                          <InputLabel id="demo-simple-select-helper-label" style={{ color: 'white' }}>
+                            Scene name
+                          </InputLabel>
+                          <Select style={{ color: 'white' }} label="Scene name" labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={this.state.selectedEffect} onChange={this.handleEffect}>
                             {this.state.effects.map((name) => (
                               <MenuItem key={name} value={name}>
                                 {name}
@@ -257,15 +274,15 @@ class OfficeRoom extends React.Component {
                         </FormControl>
                       </Grid>
                       <Grid item>
-                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.white">
-                          Brightness
-                        </Typography>
-                        <Slider defaultValue={this.state.linesbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleLBrightness} />
-                      </CardContent>
-                    </Card>
-                  </Grid>                      
+                        <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
+                          <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
+                            <Typography sx={{ fontSize: 14 }} color="text.white">
+                              Brightness
+                            </Typography>
+                            <Slider defaultValue={this.state.linesbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleLBrightness} />
+                          </CardContent>
+                        </Card>
+                      </Grid>
                       <Grid item>
                         <HexColorPicker color={this.state.color} onChange={this.handleInputThrottled} />
                       </Grid>
@@ -283,47 +300,63 @@ class OfficeRoom extends React.Component {
                     <>
                       <Grid item>
                         <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
-                          <InputLabel id="demo-simple-select-helper-label" style={{color: "white"}}>Scene name</InputLabel>
-                          <Select style={{color: "white"}} label="Scene name" labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={this.state.selectedCurtainEffect} onChange={this.handleCurtainEffect}>
-                              <MenuItem key="off" value="off">None</MenuItem>
-                              <MenuItem key="cool" value="153">Coolest</MenuItem>
-                              <MenuItem key="cool" value="250">Cool</MenuItem>
-                              <MenuItem key="cool" value="370">Neutral</MenuItem>
-                              <MenuItem key="cool" value="454">Warm</MenuItem>
-                              <MenuItem key="warm" value="500">Warmest</MenuItem>
-                              <MenuItem key="color" value="Color">Color</MenuItem>
+                          <InputLabel id="demo-simple-select-helper-label" style={{ color: 'white' }}>
+                            Scene name
+                          </InputLabel>
+                          <Select style={{ color: 'white' }} label="Scene name" labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={this.state.selectedCurtainEffect} onChange={this.handleCurtainEffect}>
+                            <MenuItem key="off" value="off">
+                              None
+                            </MenuItem>
+                            <MenuItem key="cool" value="153">
+                              Coolest
+                            </MenuItem>
+                            <MenuItem key="cool" value="250">
+                              Cool
+                            </MenuItem>
+                            <MenuItem key="cool" value="370">
+                              Neutral
+                            </MenuItem>
+                            <MenuItem key="cool" value="454">
+                              Warm
+                            </MenuItem>
+                            <MenuItem key="warm" value="500">
+                              Warmest
+                            </MenuItem>
+                            <MenuItem key="color" value="Color">
+                              Color
+                            </MenuItem>
                           </Select>
                         </FormControl>
                       </Grid>
                       <Grid item>
-                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.white">
-                          Brightness
-                        </Typography>
-                        <Slider defaultValue={this.state.curtainbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleCurtainBrightness} />
-                      </CardContent>
-                    </Card>
-                  </Grid>     
-                  {this.state.selectedCurtainEffect === 'Color' ? (
-                    <>                 
-                      <Grid item>
-                        <HexColorPicker color={this.state.curtaincolor} onChange={this.handleCurtainInputThrottled} />
+                        <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
+                          <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
+                            <Typography sx={{ fontSize: 14 }} color="text.white">
+                              Brightness
+                            </Typography>
+                            <Slider defaultValue={this.state.curtainbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleCurtainBrightness} />
+                          </CardContent>
+                        </Card>
                       </Grid>
-                      </>
+                      {this.state.selectedCurtainEffect === 'Color' ? (
+                        <>
+                          <Grid item>
+                            <HexColorPicker color={this.state.curtaincolor} onChange={this.handleCurtainInputThrottled} />
+                          </Grid>
+                        </>
                       ) : (
                         ''
-                      )} 
+                      )}
                     </>
                   ) : (
                     ''
-                  )}                  
+                  )}
                   <Grid item>
                     <Switch sVal={this.state.olight7} sID="olight7" sIcon={mdiLightbulbVariantOutline} sName="WD warm" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
                     <Switch sVal={this.state.olight8} sID="olight8" sIcon={mdiLightbulbVariantOutline} sName="WD color" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>                 
+                  </Grid>
                   <Grid item>
                     <Switch sVal={this.state.ogyser} sID="ogyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
