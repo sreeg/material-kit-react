@@ -29,7 +29,7 @@ class BedRoom extends React.Component {
       mwardrobe: 'OFF',
       mwalllamp: 'OFF',
       mtv: 'OFF',
-      mwtvunderlight: 'OFF',
+      mtvunderlight: 'OFF',
       mfanspeed: 5,
       mcolor: 5,
       mbrightness: 5,
@@ -111,7 +111,7 @@ class BedRoom extends React.Component {
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
         this.setState({ mtv: data['2'].power });
-        this.setState({ mwtvunderlight: data['3'].power });
+        this.setState({ mtvunderlight: data['3'].power });
         this.setState({ loading: false });
       });
     fetch(gateway + '/mboardtwostatus')
@@ -193,7 +193,7 @@ class BedRoom extends React.Component {
                     <Switch sVal={this.state.mwalllamp} sID="mwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
-                    <Switch sVal={this.state.mwtvunderlight} sID="mwtvunderlight" sIcon={mdiLedStripVariant} sName="TV under light" stateHandler={stateHandler.bind(this)}></Switch>
+                    <Switch sVal={this.state.mtvunderlight} sID="mtvunderlight" sIcon={mdiLedStripVariant} sName="TV under light" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
                     <Switch sVal={this.state.mtv} sID="mtv" sIcon={mdiTelevision} sName="TV" stateHandler={stateHandler.bind(this)}></Switch>
