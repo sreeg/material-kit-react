@@ -1,10 +1,11 @@
 import React from 'react';
 import * as _ from 'underscore';
 import Switch from '../common/Switch';
+import SwitchCustomIcon from '../common/SwitchCustomIcon';
 import Curtain from '../common/Curtain';
 import Zone from '../common/Zone';
 import Fan from '../common/Fan';
-import { mdiLightbulbVariantOutline, mdiWaterBoiler, mdiStringLights, mdiVanityLight } from '@mdi/js';
+import { mdiLightbulbVariantOutline, mdiWaterBoiler, mdiStringLights, mdiVanityLight, mdiCellphoneDock } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
@@ -15,7 +16,6 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import IconButton from '@mui/material/IconButton';
 import { decodeHtml } from './../../../utils/commons';
 import { FaPagelines } from 'react-icons/fa';
-import SwitchCustomIcon from '../common/SwitchCustomIcon';
 import { HexColorPicker } from 'react-colorful';
 import './../common/common.css';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -364,6 +364,9 @@ class OfficeRoom extends React.Component {
                   <Grid item>
                     <Switch sVal={this.state.ogyser} sID="ogyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
+                  <Grid item>
+                    <Switch sVal={this.state.serotv} sID="serotv" sIcon={mdiCellphoneDock} sName="Sero TV" stateHandler={stateHandler.bind(this)}></Switch>
+                  </Grid>                  
                   {/* <Grid item>
                     <SwitchCustomIcon sVal={this.state.lines} sID="lines" sIcon={FaPagelines} sName="Nano Lines" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>                   */}
