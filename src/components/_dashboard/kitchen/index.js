@@ -91,16 +91,8 @@ class Kitchen extends React.Component {
         ) : (
           <>
             <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title="Zones"
-              />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid container spacing={2}>
+              <CardContent >
+                <Grid pb={3} container spacing={2}>
                   <Grid item>
                     <Zone sVal={this.state.kicenterzone} zoneClass="zone23 zone23center" sID="kicenterzone" sIcon={mdiStringLights} sName="Center" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
@@ -126,18 +118,6 @@ class Kitchen extends React.Component {
                   </Grid>
                   
                 </Grid>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title="Switches"
-              />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
                 <Grid container spacing={2}>
                   <Grid item>
                     <Switch sVal={this.state.kiwalllamp} sID="kiwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>

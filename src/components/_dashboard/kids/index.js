@@ -118,16 +118,8 @@ class Kids extends React.Component {
         ) : (
           <>
             <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title="Zones"
-              />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid container spacing={2}>
+              <CardContent >
+                <Grid pb={3} container spacing={2}>
                   <Grid item>
                     <Zone sVal={this.state.kaczone} zoneClass="zone23 zone23top" sID="kaczone" sIcon={mdiStringLights} sName="AC" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
@@ -158,19 +150,8 @@ class Kids extends React.Component {
                     </Card>
                   </Grid>
                 </Grid>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title="Switches"
-              />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid container spacing={2}>
+
+                <Grid pb={3} container spacing={2}>
                   <Grid item>
                     <Switch sVal={this.state.kwalllamp} sID="kwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
@@ -178,11 +159,6 @@ class Kids extends React.Component {
                     <Switch sVal={this.state.kgyser} sID="kgyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                 </Grid>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader title="Curtains & fan" />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
                 <Grid container spacing={2}>
                   <Grid item>
                     <Curtain sVal={this.state.kblackout} sID="kblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>

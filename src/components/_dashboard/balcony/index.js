@@ -151,16 +151,8 @@ class BalconyArea extends React.Component {
         ) : (
           <>
             <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title="Zones"
-              />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid container spacing={2}>
+              <CardContent>
+                <Grid pb={3} container spacing={2}>
                   <Grid item>
                     <Zone sVal={this.state.dinningaczone} zoneClass="zone33 zone33left" sID="dinningaczone" sIcon={mdiStringLights} sName="AC" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
@@ -194,19 +186,8 @@ class BalconyArea extends React.Component {
                     </Card>
                   </Grid>
                 </Grid>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title="Switches"
-              />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid container spacing={2}>
+
+                <Grid pb={3} container spacing={2}>
                   <Grid item>
                     <Switch sVal={this.state.bchandlier} sID="bchandlier" sIcon={mdiChandelier} sName="Chandlier" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
@@ -235,12 +216,8 @@ class BalconyArea extends React.Component {
                     <Switch sVal={this.state.dlight3} sID="dlight3" sIcon={mdiLightbulbVariantOutline} sName="Dinning light 3" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                 </Grid>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader title="Curtains" />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
-                <Grid container spacing={2}>
+
+                <Grid pb={3} container spacing={2}>
                   <Grid item>
                     <Curtain sVal={this.state.bsheer} sID="bsheer" sName="Sheer curtain" stateHandler={stateHandler.bind(this)}></Curtain>
                   </Grid>
@@ -248,11 +225,7 @@ class BalconyArea extends React.Component {
                     <Curtain sVal={this.state.bblackout} sID="bblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
                   </Grid>
                 </Grid>
-              </CardContent>
-            </Card>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardHeader title="Scenes" />
-              <CardContent style={{ display: 'flex', alignItems: 'center' }}>
+
                 <Grid item xs={6}>
                   <Button className='scene-switch' variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
                     <div className="content">
