@@ -8,8 +8,8 @@ import DashboardSidebar from './DashboardSidebar';
 import './app.css';
 // ----------------------------------------------------------------------
 
-const APP_BAR_MOBILE = 64;
-const APP_BAR_DESKTOP = 92;
+const APP_BAR_MOBILE = 0;
+const APP_BAR_DESKTOP = 0;
 
 const RootStyle = styled('div')({
   display: 'flex',

@@ -50,3 +50,9 @@ header {
   background-color: #354057 !important;
   color: #ffffff;
 }
+@media (min-width: 1200px) {
+.MuiAppBar-root,
+.MuiTabs-root.nav-tabs {
+  display: none;
+}
+}

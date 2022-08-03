@@ -198,7 +198,7 @@ class BedRoom extends React.Component {
                   <Grid item>
                     <Switch sVal={this.state.mtv} sID="mtv" sIcon={mdiTelevision} sName="TV" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>                  
-                  <Grid item>
+                  {/* <Grid item>
                     <Switch sVal={this.state.mlight2} sID="mlight2" sIcon={mdiLightbulbVariantOutline} sName="Light 2" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
@@ -206,7 +206,7 @@ class BedRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Switch sVal={this.state.mlight4} sID="mlight4" sIcon={mdiLightbulbVariantOutline} sName="Light 4" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
+                  </Grid> */}
                   <Grid item>
                     <Switch sVal={this.state.mgyser} sID="mgyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
