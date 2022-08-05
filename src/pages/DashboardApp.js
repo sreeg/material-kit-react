@@ -35,7 +35,7 @@ class DashboardApp extends React.Component {
               </Card>
             </Grid>
             <Grid sm={12} md={9} item lg={9}>
-              <Card style={{ margin: 8 }}>
+              <Card>
                 <CardContent>
                   <Scenes />
                 </CardContent>
