@@ -100,7 +100,7 @@ class Kids extends React.Component {
       .then((response) => response.text())
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
-        this.setState({ mfan: data['1'].power });
+        this.setState({ kfan: data['1'].power });
         var speed = data['1'].speed;
         this.setState({ kfanspeed: Math.round(speed / 20) });
         this.setState({ klight2: data['2'].power });
