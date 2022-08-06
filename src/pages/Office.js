@@ -19,7 +19,7 @@ export default function Office() {
   return (
     <Page title="Office room">
       <Container maxWidth="xl">
-        <Box style={{ display: 'flex', alignItems: 'center' }} sx={{ pb: 3 }}>
+        <Box style={{ display: 'flex', alignItems: 'center' }} sx={{ pb: 1 }}>
           <InlineIcon width={'24'} icon={monitorFill} />
           <Typography style={{ display: 'inline', marginLeft: '8px' }} variant="h4">
             Office Room
