@@ -76,7 +76,7 @@ class Kids extends React.Component {
       .then((response) => response.text())
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
-        this.setState({ kgyser: data['2'].power });
+        this.setState({ kgyser: data['8'].power });
       });
     fetch(gateway + '/kblackoutcurtainstatus')
       .then((response) => response.text())
