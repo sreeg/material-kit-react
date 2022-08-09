@@ -206,7 +206,7 @@ class BalconyArea extends React.Component {
                   <Grid item>
                     <SwitchCustomIcon sVal={this.state.bexhaust} sID="bexhaust" sIcon={FaFan} sName="Balcony exhaust" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>
-                  <Grid item>
+                  {/* <Grid item>
                     <Switch sVal={this.state.dlight1} sID="dlight1" sIcon={mdiLightbulbVariantOutline} sName="Dinning light 1" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
@@ -214,7 +214,7 @@ class BalconyArea extends React.Component {
                   </Grid>
                   <Grid item>
                     <Switch sVal={this.state.dlight3} sID="dlight3" sIcon={mdiLightbulbVariantOutline} sName="Dinning light 3" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
 
                 <Grid pb={3} container spacing={2}>

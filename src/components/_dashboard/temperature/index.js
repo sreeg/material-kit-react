@@ -16,7 +16,8 @@ import 'react-circular-progressbar/dist/styles.css';
 
 const gateway = 'http://192.168.88.122:1880';
 const CIRCLE_WIDTH = "100%";
-const CIRCLE_HEIGHT = 140;
+const CIRCLE_HEIGHT = 100;
+const MIN_WIDTH= 200;
 class Temperature extends React.Component {
   constructor(props) {
     super(props);
@@ -52,12 +53,10 @@ class Temperature extends React.Component {
         ) : (
           <>
             <Grid container spacing={2}>
-              <Grid item>
-                <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT }} className="content-temparature">
+              <Grid style={{display: 'flex', flexDirection: 'row'}} item>
+                <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT, minWidth: MIN_WIDTH }} className="content-temparature">
                   <p>Room temparature</p>
                   <h1>{this.state.temperature}°C</h1>
-                  <p>Humidity</p>
-                  <h1>{this.state.humidity}%</h1>
                   {/* <CircularProgressbar value={this.state.temperature} maxValue={50} text={this.state.temperature + '°C'} styles={buildStyles({
                         strokeLinecap: 'butt',
                         textSize: '18px',
@@ -66,6 +65,10 @@ class Temperature extends React.Component {
                         trailColor: '#d597e0',
                         backgroundColor: '#ffffff',
                       })} /> */}
+                </div>
+                <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT , minWidth: MIN_WIDTH}} className="content-temparature">
+                  <p>Humidity</p>
+                  <h1>{this.state.humidity}%</h1>
                 </div>
               </Grid>
             </Grid>

@@ -15,6 +15,10 @@ Button.switch-off,
   white-space: nowrap;
 }
 
+.scene-switch {
+  border: 1px solid #00AB55;
+    color: #00AB55;
+}
 Button.switch-on label>div,
 Button.switch-off label>div {
   width: 80px;

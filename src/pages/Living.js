@@ -12,7 +12,7 @@ export default function Living() {
   return (
     <Page title="Living">
       <Container maxWidth="xl">
-        <Box style={{ display: 'flex', alignItems: 'center' }} sx={{ pb: 3 }}>
+        <Box style={{ display: 'flex', alignItems: 'center' }} sx={{ pb: 1 }}>
         <Iconm path={mdiSofa} width={22} height={22} />
           <Typography style={{ display: 'inline', marginLeft: '8px' }} variant="h4">Living</Typography>
         </Box>

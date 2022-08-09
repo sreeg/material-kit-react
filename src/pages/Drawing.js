@@ -13,7 +13,7 @@ export default function Drawing() {
   return (
     <Page title="Drawing room">
       <Container maxWidth="xl">
-        <Box style={{ display: 'flex', alignItems: 'center' }} sx={{ pb: 3 }}>
+        <Box style={{ display: 'flex', alignItems: 'center' }} sx={{ pb: 1 }}>
           <InlineIcon width={'24'} icon={tvFill} />
           <Typography style={{ display: 'inline', marginLeft: '8px' }} variant="h4">
             Drawing Room

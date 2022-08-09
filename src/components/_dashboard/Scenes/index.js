@@ -3,14 +3,11 @@ import { mdiMovieOpen, mdiWallSconceFlat, mdiTelevision, mdiCoachLamp, mdiVanity
 import { GiExitDoor, GiEntryDoor, GiCandleFlame } from 'react-icons/gi';
 import { MdBedtime } from 'react-icons/md';
 import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Icon from '@mdi/react';
 
 const gateway = 'http://192.168.88.122:1880';
-const ICON_HEIGHT= 42;
+const ICON_HEIGHT = 42;
 
 class Scenes extends React.Component {
   constructor(props) {
@@ -53,7 +50,7 @@ class Scenes extends React.Component {
                 <div>Home entry</div>
               </div>
             </Button>
-          </Grid>             
+          </Grid>
           <Grid item>
             <Button className='scene-switch' variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
               <div className="content">
@@ -61,7 +58,7 @@ class Scenes extends React.Component {
                 <div>Home exit</div>
               </div>
             </Button>
-          </Grid>    
+          </Grid>
           <Grid item>
             <Button className='scene-switch' variant="outlined" onClick={this.handleBedtime} size="large" color="secondary" disableFocusRipple={true}>
               <div className="content">
@@ -69,7 +66,7 @@ class Scenes extends React.Component {
                 <div>Bedtime</div>
               </div>
             </Button>
-          </Grid>       
+          </Grid>
         </Grid>
       </>
     );

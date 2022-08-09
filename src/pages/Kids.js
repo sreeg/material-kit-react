@@ -14,7 +14,7 @@ export default function Office() {
   return (
     <Page title="Kids room">
       <Container maxWidth="xl">
-        <Box style={{ display: 'flex', alignItems: 'center' }} sx={{ pb: 3 }}>
+        <Box style={{ display: 'flex', alignItems: 'center' }} sx={{ pb: 1 }}>
           <InlineIcon width={'24'} icon={mdiBed} />
           <Typography style={{ display: 'inline', marginLeft: '8px' }} variant="h4">
             Kids Room
