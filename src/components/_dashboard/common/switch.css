@@ -16,8 +16,9 @@ Button.switch-off,
 }
 
 .scene-switch {
-  border: 1px solid #00AB55;
-    color: #00AB55;
+  border: 1px solid #554c33;
+    color: #fde293;
+    background-color: #554c33;
 }
 Button.switch-on label>div,
 Button.switch-off label>div {
@@ -29,8 +30,9 @@ Button.switch-off label>div {
 
 Button.switch-off {
   color: #ffffff;
-  opacity: 0.6;
-  border-color: #ffffff;
+  /* opacity: 0.6; */
+  border-color: #303134;
+  background-color: #303134;
 }
 
 Button.switch-on .content,

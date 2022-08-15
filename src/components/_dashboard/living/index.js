@@ -170,7 +170,7 @@ class Living extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px', background: "#303134" }}>
                         <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
                           Color
                         </Typography>
@@ -180,7 +180,7 @@ class Living extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px', background: "#303134" }}>
                         <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
                           Brightness
                         </Typography>
@@ -214,7 +214,7 @@ class Living extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card sx={{ minWidth: 100, mb: 2 }}>
-                      <CardContent style={{ display: 'flex', alignItems: 'center' }}>
+                      <CardContent style={{ display: 'flex', alignItems: 'center', background: "#303134" }}>
                         <Button style={{ height: 50 }} variant="outlined" onClick={this.handlelAcON} size="large" color="secondary" disableFocusRipple={true}>
                           <div className="content">
                             <div>ON</div>

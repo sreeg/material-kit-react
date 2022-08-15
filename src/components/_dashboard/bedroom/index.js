@@ -149,7 +149,7 @@ class BedRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px', background: "#303134" }}>
                         <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
                           Color
                         </Typography>
@@ -159,7 +159,7 @@ class BedRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px', background: "#303134" }}>
                         <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
                           Brightness
                         </Typography>

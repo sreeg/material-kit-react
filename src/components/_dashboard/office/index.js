@@ -212,8 +212,8 @@ class OfficeRoom extends React.Component {
           <div>Loading</div>
         ) : (
           <>
-            <Card style={{ marginBottom: 24 }}>
-              <CardContent>
+            <Card style={{ marginBottom: 24, padding: "0px 24px" }}>
+              <CardContent style={{ background: "#303134", borderRadius: "16px"  }}>
                 <Temperature room="office" />
               </CardContent>
             </Card>
@@ -237,7 +237,7 @@ class OfficeRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px', background: "#303134" }}>
                         <Typography sx={{ fontSize: 14 }} color="text.white">
                           Color
                         </Typography>
@@ -247,7 +247,7 @@ class OfficeRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
+                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px', background: "#303134" }}>
                         <Typography sx={{ fontSize: 14 }} color="text.white">
                           Brightness
                         </Typography>

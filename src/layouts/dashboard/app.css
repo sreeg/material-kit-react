@@ -3,11 +3,11 @@
 }
 .simplebar-content a.MuiListItemButton-root.active {
     color: rgb(255, 255, 255, 1);
-    background-color: #555580;
+    /* background-color: #2249e1; */
 }
 .simplebar-wrapper,
 .MuiDrawer-paper {
-    background: #2a2c40 !important;
+    background: #303134 !important;
     color: white !important;
 }
 
@@ -23,7 +23,7 @@
   color: #ffffff;
 }
 .nav-tabs .MuiTabs-flexContainer .MuiButtonBase-root.MuiListItemButton-root.active {
-  background-color: #555580;
+  /* background-color: #2249e1; */
 }
 
   @media (max-width: 599.95px) {
@@ -43,7 +43,7 @@
   }
 }
 body {
-  background-color: #354057;
+  background-color: #202124;
   color: #ffffff;
 }
 header {
