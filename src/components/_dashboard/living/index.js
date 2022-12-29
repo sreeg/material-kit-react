@@ -213,6 +213,18 @@ class Living extends React.Component {
                     <SwitchCustomIcon sVal={this.state.lfloorikea} sID="lfloorikea" sIcon={GiDoubleStreetLights} sName="Ikea Floor light" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>
                   <Grid item>
+                    <Fan sVal={this.state.lfan} sFval={this.state.lfanspeed} sID="lfan" sIDFS="lfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+                  </Grid>
+                </Grid>
+                <Grid container pb={1} spacing={2}>
+                  <Grid item>
+                    <Curtain sVal={this.state.lsheer} sID="lsheer" sName="Sheer curtain" stateHandler={stateHandler.bind(this)}></Curtain>
+                  </Grid>
+                  <Grid item>
+                    <Curtain sVal={this.state.lblackout} sID="lblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
+                  </Grid>
+
+                  <Grid item>
                     <Card sx={{ minWidth: 100, mb: 2 }}>
                       <CardContent style={{ display: 'flex', alignItems: 'center', background: "#303134" }}>
                         <Button style={{ height: 50 }} variant="outlined" onClick={this.handlelAcON} size="large" color="secondary" disableFocusRipple={true}>
@@ -228,29 +240,7 @@ class Living extends React.Component {
                         </Button>
                       </CardContent>
                     </Card>
-                  </Grid>
-                </Grid>
-                <Grid container pb={1} spacing={2}>
-                  <Grid item>
-                    <Curtain sVal={this.state.lsheer} sID="lsheer" sName="Sheer curtain" stateHandler={stateHandler.bind(this)}></Curtain>
-                  </Grid>
-                  <Grid item>
-                    <Curtain sVal={this.state.lblackout} sID="lblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
-                  </Grid>
-                  <Grid item>
-                    <Fan sVal={this.state.lfan} sFval={this.state.lfanspeed} sID="lfan" sIDFS="lfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
-                  </Grid>
-                </Grid>
-
-                <Grid container spacing={2}>
-                  <Grid item>
-                    <Button className='scene-switch' variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
-                      <div className="content">
-                        <GiCandleFlame size={48} />
-                        <div>Cozy mode</div>
-                      </div>
-                    </Button>
-                  </Grid>
+                  </Grid>                  
                 </Grid>
               </CardContent>
             </Card>
