@@ -5,7 +5,7 @@ import SwitchCustomIcon from '../common/SwitchCustomIcon';
 import Curtain from '../common/Curtain';
 import Zone from '../common/Zone';
 import Fan from '../common/Fan';
-import { mdiLightbulbVariantOutline, mdiWaterBoiler, mdiStringLights, mdiVanityLight, mdiCellphoneDock } from '@mdi/js';
+import { mdiLightbulbVariantOutline, mdiWaterBoiler, mdiStringLights, mdiLedStripVariant, mdiAirConditioner, mdiVanityLight, mdiCellphoneDock } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
@@ -52,6 +52,8 @@ class OfficeRoom extends React.Component {
       ocenterzone: 'OFF',
       oaczone: 'OFF',
       owindowside: 'OFF',
+      oac: 'OFF',
+      oled: 'OFF',
       ofanspeed: 5,
       ocolor: 5,
       obrightness: 5,
@@ -366,7 +368,13 @@ class OfficeRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Switch sVal={this.state.serotv} sID="serotv" sIcon={mdiCellphoneDock} sName="Sero TV" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>                  
+                  </Grid>
+                  <Grid item>
+                    <Switch sVal={this.state.oled} sID="oled" sIcon={mdiLedStripVariant} sName="LED" stateHandler={stateHandler.bind(this)}></Switch>
+                  </Grid>
+                  <Grid item>
+                    <Switch sVal={this.state.oac} sID="oac" sIcon={mdiAirConditioner} sName="AC" stateHandler={stateHandler.bind(this)}></Switch>
+                  </Grid>                       
                   {/* <Grid item>
                     <SwitchCustomIcon sVal={this.state.lines} sID="lines" sIcon={FaPagelines} sName="Nano Lines" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>                   */}
