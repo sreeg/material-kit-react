@@ -6,6 +6,7 @@ import Page from '../components/Page';
 import React from 'react';
 import Scenes from '../components/_dashboard/Scenes';
 import Temperature from '../components/_dashboard/temperature';
+import DoorSensor from '../components/_dashboard/doorsensors';
 import NTabs from './../components/NavSectionTab';
 import sidebarConfig from './../layouts/dashboard/SidebarConfig';
 
@@ -33,6 +34,20 @@ class DashboardApp extends React.Component {
                   <Temperature room="living" />
                 </CardContent>
               </Card>
+              </Grid>
+            <Grid item>              
+              <Card >
+                <CardContent style={{ background: "#303134" }}>
+                  <DoorSensor room="Balcony" />
+                </CardContent>
+              </Card>              
+            </Grid>
+            <Grid item>              
+              <Card >
+                <CardContent style={{ background: "#303134" }}>
+                  <DoorSensor room="Service balcony" />
+                </CardContent>
+              </Card>              
             </Grid>
             <Grid sm={12}>
               <Card>
