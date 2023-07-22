@@ -13,6 +13,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import { mdiDoorSlidingOpen, mdiDoorSliding } from '@mdi/js';
+
 
 const gateway = 'http://192.168.88.122:1880';
 const CIRCLE_WIDTH = "100%";
@@ -56,8 +58,18 @@ class DoorSensors extends React.Component {
             <Grid container spacing={2}>
               <Grid style={{display: 'flex', flexDirection: 'row'}} item>
                 <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT, minWidth: MIN_WIDTH }} className="content-temparature">
-                  <p>{this.state.roomName} door closed?</p>
-                  <h1>{this.state.contact}</h1>
+                  
+                  <>
+                  {this.state.contact === 'false' ?(
+                    <>
+                    <p>{this.state.roomName} door open</p>
+                  <Icon color='red' path={mdiDoorSlidingOpen} size={3} /></>) : (
+                    <>
+                     <p>{this.state.roomName} door closed</p>
+                    <Icon color='green' path={mdiDoorSliding} size={3} />
+                    </>
+                  )}
+                  </>
                 </div>
               </Grid>
             </Grid>
