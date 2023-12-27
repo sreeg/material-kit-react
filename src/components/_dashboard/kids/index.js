@@ -3,15 +3,12 @@ import Switch from '../common/Switch';
 import Curtain from '../common/Curtain';
 import Zone from '../common/Zone';
 import Fan from '../common/Fan';
-import { mdiLightbulbVariantOutline, mdiLedStripVariant, mdiCoachLamp, mdiWaterBoiler, mdiStringLights } from '@mdi/js';
+import { mdiLamp, mdiCoachLamp, mdiWaterBoiler, mdiStringLights } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import IconButton from '@mui/material/IconButton';
 import { decodeHtml } from '../../../utils/commons';
 
 const gateway = 'http://192.168.88.122:1880';
@@ -32,6 +29,7 @@ class Kids extends React.Component {
       kbrightness: 5,
       kblackout: 'CLOSE',
       kgyser: 'OFF',
+      ktablelamp: 'OFF',
       updateTimer: 0
     };
   }
@@ -157,6 +155,9 @@ class Kids extends React.Component {
                   </Grid>
                   <Grid item>
                     <Switch sVal={this.state.kgyser} sID="kgyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
+                  </Grid>
+                  <Grid item>
+                    <Switch sVal={this.state.ktablelamp} sID="ktablelamp" sIcon={mdiLamp} sName="Table Lamp" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                 </Grid>
                 <Grid container spacing={2}>

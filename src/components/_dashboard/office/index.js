@@ -331,6 +331,9 @@ class OfficeRoom extends React.Component {
                             <MenuItem key="color" value="Color">
                               Color
                             </MenuItem>
+                            <MenuItem key="mix" value="mix">
+                              Mix
+                            </MenuItem>                            
                           </Select>
                         </FormControl>
                       </Grid>
