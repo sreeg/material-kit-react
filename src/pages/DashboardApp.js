@@ -20,6 +20,8 @@ class DashboardApp extends React.Component {
       loading: true,
       mfan: 'OFF',
       mfanspeed: 5,
+      kfan: 'OFF',
+      kfanspeed: 5,      
       lfan: 'OFF',
       lfanspeed: 5,
       dfan: 'OFF',
@@ -86,6 +88,9 @@ class DashboardApp extends React.Component {
                     <Grid item>
                       <Fan sVal={this.state.lfan} sFval={this.state.lfanspeed} sID="lfan" sIDFS="ofanspeed" sName="Living" stateHandler={stateHandler.bind(this)} />
                     </Grid>
+                    <Grid item>
+                      <Fan sVal={this.state.kfan} sFval={this.state.kfanspeed} sID="ofan" sIDFS="ofanspeed" sName="Kids" stateHandler={stateHandler.bind(this)} />
+                    </Grid>                    
                     <Grid item>
                       <Fan sVal={this.state.ofan} sFval={this.state.mfanspeed} sID="ofan" sIDFS="ofanspeed" sName="Office" stateHandler={stateHandler.bind(this)} />
                     </Grid>
