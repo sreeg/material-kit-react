@@ -12,6 +12,9 @@ import sidebarConfig from './../layouts/dashboard/SidebarConfig';
 import Fan from '../components/_dashboard/common/Fan';
 import Switch from '../components/_dashboard/common/Switch';
 import { mdiWaterBoiler } from '@mdi/js';
+import { decodeHtml } from './../utils/commons';
+
+const gateway = 'http://192.168.88.122:1880';
 
 class DashboardApp extends React.Component {
   constructor(props) {
@@ -21,7 +24,7 @@ class DashboardApp extends React.Component {
       mfan: 'OFF',
       mfanspeed: 5,
       kfan: 'OFF',
-      kfanspeed: 5,      
+      kfanspeed: 5,
       lfan: 'OFF',
       lfanspeed: 5,
       dfan: 'OFF',
@@ -30,7 +33,8 @@ class DashboardApp extends React.Component {
       ofanspeed: 5,
       mgyser: 'OFF',
       kgyser: 'OFF',
-      ogyser: 'OFF'
+      ogyser: 'OFF',
+      updateTimer: 0
     };
   }
 
@@ -42,6 +46,57 @@ class DashboardApp extends React.Component {
 
   routeChange(e) {
     window.location.href = '/dashboard/' + e;
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.updateTimer);
+  }
+  componentDidMount() {
+    this.updateTimer = setInterval(() => window.location.reload(), 300000);
+    var that = this;
+    fetch(gateway + '/oboardtwostatus')
+      .then((response) => response.text())
+      .then((data) => {
+        data = JSON.parse(decodeHtml(data));
+        this.setState({ ofan: data['1'].power });
+        var speed = data['1'].speed;
+        this.setState({ ofanspeed: Math.round(speed / 20) });
+      });
+    fetch(gateway + '/lacboardstatus')
+      .then((response) => response.text())
+      .then((data) => {
+        data = decodeHtml(data);
+        data = JSON.parse(data);
+        var speed = data['1'].speed;
+        this.setState({ lfanspeed: Math.round(speed / 20) });
+        this.setState({ lfan: data['1'].power });
+      });
+    fetch(gateway + '/dboardstatus')
+      .then((response) => response.text())
+      .then((data) => {
+        data = decodeHtml(data);
+        data = JSON.parse(data);
+        this.setState({ dfan: data['1'].power });
+        var speed = data['1'].speed;
+        this.setState({ dfanspeed: Math.round(speed / 20) });
+      });
+    fetch(gateway + '/kboardtwostatus')
+      .then((response) => response.text())
+      .then((data) => {
+        data = JSON.parse(decodeHtml(data));
+        this.setState({ kfan: data['1'].power });
+        var speed = data['1'].speed;
+        this.setState({ kfanspeed: Math.round(speed / 20) });
+      });
+    fetch(gateway + '/mboardtwostatus')
+      .then((response) => response.text())
+      .then((data) => {
+        data = JSON.parse(decodeHtml(data));
+        this.setState({ mfan: data['1'].power });
+        var speed = data['1'].speed;
+        this.setState({ mfanspeed: Math.round(speed / 20) });
+        this.setState({ loading: false });
+      });
   }
 
   render() {
@@ -75,46 +130,54 @@ class DashboardApp extends React.Component {
                 </CardContent>
               </Card>
             </Grid>
-            <Grid sm={12}>
-              <Card>
-                <CardContent>
-                  <Grid container spacing={2}>
-                    <Grid item>
-                      <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="ofan" sIDFS="dfanspeed" sName="Drawing" stateHandler={stateHandler.bind(this)} />
-                    </Grid>
-                    <Grid item>
-                      <Fan sVal={this.state.mfan} sFval={this.state.mfanspeed} sID="mfan" sIDFS="mfanspeed" sName="Bedroom" stateHandler={stateHandler.bind(this)} />
-                    </Grid>
-                    <Grid item>
-                      <Fan sVal={this.state.lfan} sFval={this.state.lfanspeed} sID="lfan" sIDFS="ofanspeed" sName="Living" stateHandler={stateHandler.bind(this)} />
-                    </Grid>
-                    <Grid item>
-                      <Fan sVal={this.state.kfan} sFval={this.state.kfanspeed} sID="kfan" sIDFS="kfanspeed" sName="Kids" stateHandler={stateHandler.bind(this)} />
-                    </Grid>                    
-                    <Grid item>
-                      <Fan sVal={this.state.ofan} sFval={this.state.ofanspeed} sID="ofan" sIDFS="ofanspeed" sName="Office" stateHandler={stateHandler.bind(this)} />
-                    </Grid>
+            <>
+              {this.state.loading ? (
+                <div>Loading</div>
+              ) : (
+                <>
+                  <Grid sm={12}>
+                    <Card>
+                      <CardContent>
+                        <Grid container spacing={2}>
+                          <Grid item>
+                            <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="ofan" sIDFS="dfanspeed" sName="Drawing" stateHandler={stateHandler.bind(this)} />
+                          </Grid>
+                          <Grid item>
+                            <Fan sVal={this.state.mfan} sFval={this.state.mfanspeed} sID="mfan" sIDFS="mfanspeed" sName="Bedroom" stateHandler={stateHandler.bind(this)} />
+                          </Grid>
+                          <Grid item>
+                            <Fan sVal={this.state.lfan} sFval={this.state.lfanspeed} sID="lfan" sIDFS="lfanspeed" sName="Living" stateHandler={stateHandler.bind(this)} />
+                          </Grid>
+                          <Grid item>
+                            <Fan sVal={this.state.kfan} sFval={this.state.kfanspeed} sID="kfan" sIDFS="kfanspeed" sName="Kids" stateHandler={stateHandler.bind(this)} />
+                          </Grid>
+                          <Grid item>
+                            <Fan sVal={this.state.ofan} sFval={this.state.ofanspeed} sID="ofan" sIDFS="ofanspeed" sName="Office" stateHandler={stateHandler.bind(this)} />
+                          </Grid>
+                        </Grid>
+                      </CardContent>
+                    </Card>
                   </Grid>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid sm={12}>
-              <Card>
-                <CardContent>
-                  <Grid container spacing={2}>
-                    <Grid item>
-                      <Switch sVal={this.state.mgyser} sID="mgyser" sIcon={mdiWaterBoiler} sName="Bedroom" stateHandler={stateHandler.bind(this)}></Switch>
-                    </Grid>
-                    <Grid item>
-                      <Switch sVal={this.state.kgyser} sID="kgyser" sIcon={mdiWaterBoiler} sName="Kids" stateHandler={stateHandler.bind(this)}></Switch>
-                    </Grid>
-                    <Grid item>
-                      <Switch sVal={this.state.ogyser} sID="ogyser" sIcon={mdiWaterBoiler} sName="Office" stateHandler={stateHandler.bind(this)}></Switch>
-                    </Grid>
+                  <Grid sm={12}>
+                    <Card>
+                      <CardContent>
+                        <Grid container spacing={2}>
+                          <Grid item>
+                            <Switch sVal={this.state.mgyser} sID="mgyser" sIcon={mdiWaterBoiler} sName="Bedroom" stateHandler={stateHandler.bind(this)}></Switch>
+                          </Grid>
+                          <Grid item>
+                            <Switch sVal={this.state.kgyser} sID="kgyser" sIcon={mdiWaterBoiler} sName="Kids" stateHandler={stateHandler.bind(this)}></Switch>
+                          </Grid>
+                          <Grid item>
+                            <Switch sVal={this.state.ogyser} sID="ogyser" sIcon={mdiWaterBoiler} sName="Office" stateHandler={stateHandler.bind(this)}></Switch>
+                          </Grid>
+                        </Grid>
+                      </CardContent>
+                    </Card>
                   </Grid>
-                </CardContent>
-              </Card>
-            </Grid>
+                </>
+              )}
+            </>
             <Grid sm={12}>
               <Card>
                 <CardContent>
