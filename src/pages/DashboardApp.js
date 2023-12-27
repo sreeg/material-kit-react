@@ -92,7 +92,7 @@ class DashboardApp extends React.Component {
                       <Fan sVal={this.state.kfan} sFval={this.state.kfanspeed} sID="kfan" sIDFS="kfanspeed" sName="Kids" stateHandler={stateHandler.bind(this)} />
                     </Grid>                    
                     <Grid item>
-                      <Fan sVal={this.state.ofan} sFval={this.state.mfanspeed} sID="ofan" sIDFS="ofanspeed" sName="Office" stateHandler={stateHandler.bind(this)} />
+                      <Fan sVal={this.state.ofan} sFval={this.state.ofanspeed} sID="ofan" sIDFS="ofanspeed" sName="Office" stateHandler={stateHandler.bind(this)} />
                     </Grid>
                   </Grid>
                 </CardContent>
