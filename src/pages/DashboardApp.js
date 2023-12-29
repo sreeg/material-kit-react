@@ -54,6 +54,24 @@ class DashboardApp extends React.Component {
   componentDidMount() {
     this.updateTimer = setInterval(() => window.location.reload(), 300000);
     var that = this;
+    fetch(gateway + '/ogyserstatus')
+      .then((response) => response.text())
+      .then((data) => {
+        data = JSON.parse(decodeHtml(data));
+        this.setState({ ogyser: data['2'].power });
+      });
+    fetch(gateway + '/mgyserstatus')
+      .then((response) => response.text())
+      .then((data) => {
+        data = JSON.parse(decodeHtml(data));
+        this.setState({ mgyser: data['2'].power });
+      });
+    fetch(gateway + '/kgyserstatus')
+      .then((response) => response.text())
+      .then((data) => {
+        data = JSON.parse(decodeHtml(data));
+        this.setState({ kgyser: data['8'].power });
+      });
     fetch(gateway + '/oboardtwostatus')
       .then((response) => response.text())
       .then((data) => {
