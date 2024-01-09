@@ -1,9 +1,5 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import Typography from '@mui/material/Typography';
-import CardContent from '@mui/material/CardContent';
 import Icon from '@mdi/react';
 import { decodeHtml } from '../../../utils/commons';
 import { mdiWater, mdiThermometer } from '@mdi/js';
@@ -19,7 +15,7 @@ import { mdiDoorSlidingOpen, mdiDoorSliding } from '@mdi/js';
 const gateway = 'http://192.168.88.122:1880';
 const CIRCLE_WIDTH = "100%";
 const CIRCLE_HEIGHT = 100;
-const MIN_WIDTH= 200;
+const MIN_WIDTH = 125;
 class DoorSensors extends React.Component {
   constructor(props) {
     super(props);
@@ -42,7 +38,7 @@ class DoorSensors extends React.Component {
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
         console.log(data.contact);
-        this.setState({ contact: data.contact+'' });
+        this.setState({ contact: data.contact + '' });
         this.setState({ roomName: that.props.room });
         this.setState({ loading: false });
       });
@@ -56,19 +52,19 @@ class DoorSensors extends React.Component {
         ) : (
           <>
             <Grid container spacing={2}>
-              <Grid style={{display: 'flex', flexDirection: 'row'}} item>
+              <Grid style={{ display: 'flex', flexDirection: 'row' }} item>
                 <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT, minWidth: MIN_WIDTH }} className="content-temparature">
-                  
+
                   <>
-                  {this.state.contact === 'false' ?(
-                    <>
-                    <p>{this.state.roomName} door open</p>
-                  <Icon color='red' path={mdiDoorSlidingOpen} size={3} /></>) : (
-                    <>
-                     <p>{this.state.roomName} door closed</p>
-                    <Icon color='green' path={mdiDoorSliding} size={3} />
-                    </>
-                  )}
+                    {this.state.contact === 'false' ? (
+                      <>
+                        <p>{this.state.roomName}</p>
+                        <Icon color='red' path={mdiDoorSlidingOpen} size={3} /></>) : (
+                      <>
+                        <p>{this.state.roomName}</p>
+                        <Icon color='green' path={mdiDoorSliding} size={3} />
+                      </>
+                    )}
                   </>
                 </div>
               </Grid>
