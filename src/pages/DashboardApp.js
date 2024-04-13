@@ -47,7 +47,7 @@ class DashboardApp extends React.Component {
   routeChange(e) {
     window.location.href = '/dashboard/' + e;
   }
-
+     
   componentWillUnmount() {
     clearInterval(this.updateTimer);
   }
@@ -122,7 +122,7 @@ class DashboardApp extends React.Component {
     return (
       <Page title="Myhome E302">
         <Container maxWidth="xl">
-          <Box sx={{ pb: 1 }}>
+          <Box sx={{ pb: 0 }}>
             <Typography variant="h4">Welcome, E302!</Typography>
           </Box>
           <NTabs navConfig={sidebarConfig} style={{ marginBottom: 24 }} />

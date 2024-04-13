@@ -56,7 +56,7 @@ class Temperature extends React.Component {
               <Grid style={{display: 'flex', flexDirection: 'row'}} item>
                 <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT, minWidth: MIN_WIDTH }} className="content-temparature">
                   <p>Room temparature</p>
-                  <h1>{this.state.temperature}°C</h1>
+                  <h1 style={{fontSize: "24px"}}>{this.state.temperature}°C</h1>
                   {/* <CircularProgressbar value={this.state.temperature} maxValue={50} text={this.state.temperature + '°C'} styles={buildStyles({
                         strokeLinecap: 'butt',
                         textSize: '18px',
@@ -65,10 +65,10 @@ class Temperature extends React.Component {
                         trailColor: '#d597e0',
                         backgroundColor: '#ffffff',
                       })} /> */}
-                </div>
-                <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT , minWidth: MIN_WIDTH}} className="content-temparature">
+                {/* </div>
+                <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT , minWidth: MIN_WIDTH}} className="content-temparature"> */}
                   <p>Humidity</p>
-                  <h1>{this.state.humidity}%</h1>
+                  <h1 style={{fontSize: "24px"}}>{this.state.humidity}%</h1>
                 </div>
               </Grid>
             </Grid>

@@ -3,15 +3,12 @@ import Switch from './../common/Switch';
 import Zone from './../common/Zone';
 import Fan from './../common/Fan';
 import Curtain from './../common/Curtain';
-import { mdiMovieOpen, mdiLedStripVariant, mdiWallSconceFlat, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiCheckboxBlankCircleOutline, mdiCircle } from '@mdi/js';
+import { mdiMovieOpen, mdiLedStripVariant, mdiWallSconceFlat, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiAirConditioner } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import Icon from '@mdi/react';
 import { decodeHtml } from './../../../utils/commons';
@@ -74,7 +71,14 @@ class OfficeRoom extends React.Component {
   handleMovieMode = (e) => {
     fetch(gateway + '/movietime/').then((response) => response.json());
   };
-  componentWillUnmount(){
+  handlelAcON = (e) => {
+    fetch(gateway + '/DAC/on').then((response) => response.json());
+  };
+
+  handlelAcOFF = (e) => {
+    fetch(gateway + '/DAC/off').then((response) => response.json());
+  };
+  componentWillUnmount() {
     clearInterval(this.updateTimer);
   }
   componentDidMount() {
@@ -195,7 +199,25 @@ class OfficeRoom extends React.Component {
                     <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="dfan" sIDFS="dfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
                   </Grid>
                 </Grid>
+
                 <Grid container spacing={2}>
+                  <Grid item>
+                    <Card sx={{ minWidth: 100, mb: 2 }}>
+                      <CardContent style={{ display: 'flex', alignItems: 'center', background: "#303134" }}>
+                        <Button style={{ height: 50 }} variant="outlined" onClick={this.handlelAcON} size="large" color="secondary" disableFocusRipple={true}>
+                          <div className="content">
+                            <div>ON</div>
+                          </div>
+                        </Button>
+                        <Icon style={{ marginLeft: 16, marginRight: 16 }} path={mdiAirConditioner} size={2} />
+                        <Button style={{ height: 50 }} variant="outlined" onClick={this.handlelAcOFF} size="large" color="secondary" disableFocusRipple={true}>
+                          <div className="content">
+                            <div>OFF</div>
+                          </div>
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </Grid>
                   <Grid item>
                     <Button className='scene-switch' variant="outlined" onClick={this.handleMovieMode} size="large" color="secondary" disableFocusRipple={true}>
                       <div className="content">

@@ -4,21 +4,17 @@ import SwitchCustomIcon from '../common/SwitchCustomIcon';
 import Zone from '../common/Zone';
 import Curtain from '../common/Curtain';
 import Fan from '../common/Fan';
-import { mdiMovieOpen, mdiLedStripVariant, mdiAirConditioner, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiChandelier, mdiEiffelTower } from '@mdi/js';
+import { mdiAirConditioner, mdiTelevision, mdiEiffelTower } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import IconButton from '@mui/material/IconButton';
 import Button from '@mui/material/Button';
 import Icon from '@mdi/react';
 import { decodeHtml } from '../../../utils/commons';
 import { GiDoubleStreetLights, GiCeilingLight, GiCandleFlame, GiTheaterCurtains, GiScallop, GiDjedPillar } from 'react-icons/gi';
-import { FaFan } from 'react-icons/fa';
-//E8:DB:84:9B:64:A0
+
 const gateway = 'http://192.168.88.122:1880';
 class Living extends React.Component {
   constructor(props) {
