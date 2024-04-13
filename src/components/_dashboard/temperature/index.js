@@ -1,12 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import Typography from '@mui/material/Typography';
-import CardContent from '@mui/material/CardContent';
-import Icon from '@mdi/react';
 import { decodeHtml } from '../../../utils/commons';
-import { mdiWater, mdiThermometer } from '@mdi/js';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';

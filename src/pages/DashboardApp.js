@@ -137,7 +137,7 @@ class DashboardApp extends React.Component {
             <Grid item>
               <Card >
                 <CardContent style={{ background: "#303134" }}>
-                  <DoorSensor room="Balcony" />
+                  <DoorSensor room="Main balcony" />
                 </CardContent>
               </Card>
             </Grid>
