@@ -4,16 +4,15 @@ import SwitchCustomIcon from '../common/SwitchCustomIcon';
 import Zone from '../common/Zone';
 import Curtain from '../common/Curtain';
 import Fan from '../common/Fan';
-import { mdiAirConditioner, mdiTelevision, mdiEiffelTower } from '@mdi/js';
+import { mdiTelevision, mdiEiffelTower } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Icon from '@mdi/react';
 import { decodeHtml } from '../../../utils/commons';
-import { GiDoubleStreetLights, GiCeilingLight, GiCandleFlame, GiTheaterCurtains, GiScallop, GiDjedPillar } from 'react-icons/gi';
+import { GiDoubleStreetLights, GiCeilingLight, GiTheaterCurtains, GiScallop, GiDjedPillar } from 'react-icons/gi';
+import AC from '../common/AC';
 
 const gateway = 'http://192.168.88.122:1880';
 class Living extends React.Component {
@@ -38,6 +37,7 @@ class Living extends React.Component {
       livingtvsocket: 'OFF',
       lfloorikea: 'OFF',
       lAC: 'OFF',
+      temp: 24,
       updateTimer: 0
     };
   }
@@ -77,14 +77,7 @@ class Living extends React.Component {
     fetch(gateway + '/dinningcozy/').then((response) => response.json());
   };
 
-  handlelAcON = (e) => {
-    fetch(gateway + '/lAC/on').then((response) => response.json());
-  };
-
-  handlelAcOFF = (e) => {
-    fetch(gateway + '/lAC/off').then((response) => response.json());
-  };
-  componentWillUnmount(){
+  componentWillUnmount() {
     clearInterval(this.updateTimer);
   }
   componentDidMount() {
@@ -186,7 +179,7 @@ class Living extends React.Component {
                   </Grid>
                 </Grid>
 
-                <Grid container pb={1} spacing={2}>
+                <Grid container pb={3} spacing={2}>
                   <Grid item>
                     <SwitchCustomIcon sVal={this.state.lscallop} sID="lscallop" sIcon={GiScallop} sName="Scallop" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>
@@ -208,35 +201,22 @@ class Living extends React.Component {
                   <Grid item>
                     <SwitchCustomIcon sVal={this.state.lfloorikea} sID="lfloorikea" sIcon={GiDoubleStreetLights} sName="Ikea Floor light" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>
+                </Grid>
+
+                <Grid container pb={1} spacing={2}>
                   <Grid item>
                     <Fan sVal={this.state.lfan} sFval={this.state.lfanspeed} sID="lfan" sIDFS="lfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
                   </Grid>
-                </Grid>
-                <Grid container pb={1} spacing={2}>
                   <Grid item>
                     <Curtain sVal={this.state.lsheer} sID="lsheer" sName="Sheer curtain" stateHandler={stateHandler.bind(this)}></Curtain>
                   </Grid>
                   <Grid item>
                     <Curtain sVal={this.state.lblackout} sID="lblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
                   </Grid>
+                </Grid>
 
-                  <Grid item>
-                    <Card sx={{ minWidth: 100, mb: 2 }}>
-                      <CardContent style={{ display: 'flex', alignItems: 'center', background: "#303134" }}>
-                        <Button style={{ height: 50 }} variant="outlined" onClick={this.handlelAcON} size="large" color="secondary" disableFocusRipple={true}>
-                          <div className="content">
-                            <div>ON</div>
-                          </div>
-                        </Button>
-                        <Icon style={{ marginLeft: 16, marginRight: 16 }} path={mdiAirConditioner} size={2} />
-                        <Button style={{ height: 50 }} variant="outlined" onClick={this.handlelAcOFF} size="large" color="secondary" disableFocusRipple={true}>
-                          <div className="content">
-                            <div>OFF</div>
-                          </div>
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </Grid>                  
+                <Grid container pb={1} >
+                  <AC sVal={this.state.temp} sID="lAC" sName="lAC" stateHandler={stateHandler.bind(this)} />
                 </Grid>
               </CardContent>
             </Card>

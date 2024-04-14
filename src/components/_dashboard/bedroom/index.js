@@ -3,15 +3,14 @@ import Switch from '../common/Switch';
 import Curtain from '../common/Curtain';
 import Zone from '../common/Zone';
 import Fan from '../common/Fan';
-import { mdiAirConditioner, mdiLedStripVariant, mdiCoachLamp, mdiWaterBoiler, mdiStringLights, mdiTelevision } from '@mdi/js';
+import { mdiLedStripVariant, mdiCoachLamp, mdiWaterBoiler, mdiStringLights, mdiTelevision } from '@mdi/js';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Icon from '@mdi/react';
 import { decodeHtml } from '../../../utils/commons';
+import AC from '../common/AC';
 
 const gateway = 'http://192.168.88.122:1880';
 class BedRoom extends React.Component {
@@ -68,13 +67,7 @@ class BedRoom extends React.Component {
   handleBrightness = (e, v) => {
     fetch(gateway + '/mbrightness/' + v * 20).then((response) => response.json());
   };
-  handlelAcON = (e) => {
-    fetch(gateway + '/BAC/on').then((response) => response.json());
-  };
 
-  handlelAcOFF = (e) => {
-    fetch(gateway + '/BAC/off').then((response) => response.json());
-  };
   componentWillUnmount() {
     clearInterval(this.updateTimer);
   }
@@ -143,7 +136,7 @@ class BedRoom extends React.Component {
           <>
             <Card sx={{ minWidth: 100, mb: 2 }}>
               <CardContent >
-                <Grid pb={3} container spacing={2}>
+                <Grid pb={2} container spacing={2}>
                   <Grid item>
                     <Zone sVal={this.state.maczone} zoneClass="zone23 zone23top" sID="maczone" sIcon={mdiStringLights} sName="AC" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
@@ -175,7 +168,7 @@ class BedRoom extends React.Component {
                   </Grid>
                 </Grid>
 
-                <Grid pb={3} container spacing={2}>
+                <Grid pb={2} container spacing={2}>
                   <Grid item>
                     <Switch sVal={this.state.mwalllamp} sID="mwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
@@ -205,22 +198,10 @@ class BedRoom extends React.Component {
                   <Grid item>
                     <Fan sVal={this.state.mfan} sFval={this.state.mfanspeed} sID="mfan" sIDFS="mfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
                   </Grid>
+                </Grid>
+                <Grid container spacing={2}>
                   <Grid item>
-                    <Card sx={{ minWidth: 100, mb: 2 }}>
-                      <CardContent style={{ display: 'flex', alignItems: 'center', background: "#303134" }}>
-                        <Button style={{ height: 50 }} variant="outlined" onClick={this.handlelAcON} size="large" color="secondary" disableFocusRipple={true}>
-                          <div className="content">
-                            <div>ON</div>
-                          </div>
-                        </Button>
-                        <Icon style={{ marginLeft: 16, marginRight: 16 }} path={mdiAirConditioner} size={2} />
-                        <Button style={{ height: 50 }} variant="outlined" onClick={this.handlelAcOFF} size="large" color="secondary" disableFocusRipple={true}>
-                          <div className="content">
-                            <div>OFF</div>
-                          </div>
-                        </Button>
-                      </CardContent>
-                    </Card>
+                    <AC sVal={this.state.temp} sID="BAC" sName="BAC" stateHandler={stateHandler.bind(this)} />
                   </Grid>
                 </Grid>
               </CardContent>

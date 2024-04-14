@@ -12,6 +12,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Icon from '@mdi/react';
 import { decodeHtml } from './../../../utils/commons';
+import AC from './../common/AC';
 
 const gateway = 'http://192.168.88.122:1880';
 class OfficeRoom extends React.Component {
@@ -32,6 +33,7 @@ class OfficeRoom extends React.Component {
       dcolor: 5,
       dbrightness: 5,
       dsheer: 'CLOSE',
+      temp: 24,
       dblackout: 'CLOSE',
       updateTimer: 0
     };
@@ -71,13 +73,7 @@ class OfficeRoom extends React.Component {
   handleMovieMode = (e) => {
     fetch(gateway + '/movietime/').then((response) => response.json());
   };
-  handlelAcON = (e) => {
-    fetch(gateway + '/DAC/on').then((response) => response.json());
-  };
 
-  handlelAcOFF = (e) => {
-    fetch(gateway + '/DAC/off').then((response) => response.json());
-  };
   componentWillUnmount() {
     clearInterval(this.updateTimer);
   }
@@ -115,7 +111,6 @@ class OfficeRoom extends React.Component {
     fetch(gateway + '/dboardstatus')
       .then((response) => response.text())
       .then((data) => {
-        //console.log(decodeHtml(data));
         data = decodeHtml(data);
         data = JSON.parse(data);
         this.setState({ dfan: data['1'].power });
@@ -200,24 +195,8 @@ class OfficeRoom extends React.Component {
                   </Grid>
                 </Grid>
 
-                <Grid container spacing={2}>
-                  <Grid item>
-                    <Card sx={{ minWidth: 100, mb: 2 }}>
-                      <CardContent style={{ display: 'flex', alignItems: 'center', background: "#303134" }}>
-                        <Button style={{ height: 50 }} variant="outlined" onClick={this.handlelAcON} size="large" color="secondary" disableFocusRipple={true}>
-                          <div className="content">
-                            <div>ON</div>
-                          </div>
-                        </Button>
-                        <Icon style={{ marginLeft: 16, marginRight: 16 }} path={mdiAirConditioner} size={2} />
-                        <Button style={{ height: 50 }} variant="outlined" onClick={this.handlelAcOFF} size="large" color="secondary" disableFocusRipple={true}>
-                          <div className="content">
-                            <div>OFF</div>
-                          </div>
-                        </Button>
-                      </CardContent>
-                    </Card>
-                  </Grid>
+                <Grid container >
+                  <AC sVal={this.state.temp} sID="DAC" sName="DAC" stateHandler={stateHandler.bind(this)} />
                   <Grid item>
                     <Button className='scene-switch' variant="outlined" onClick={this.handleMovieMode} size="large" color="secondary" disableFocusRipple={true}>
                       <div className="content">
