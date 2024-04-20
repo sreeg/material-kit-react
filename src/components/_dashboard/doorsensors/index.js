@@ -51,9 +51,9 @@ class DoorSensors extends React.Component {
           <div>Loading</div>
         ) : (
           <>
-            <Grid container spacing={2}>
+            <Grid container>
               <Grid style={{ display: 'flex', flexDirection: 'row' }} item>
-                <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT, minWidth: MIN_WIDTH }} className="content-temparature">
+                <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT, minWidth: MIN_WIDTH }} className="content-sensors">
 
                   <>
                     {this.state.contact === 'false' ? (

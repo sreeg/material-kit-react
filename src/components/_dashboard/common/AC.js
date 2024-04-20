@@ -35,10 +35,10 @@ class AC extends React.Component {
     let { sVal, sID, sName, stateHandler } = this.props;
 
     return (
-      <Grid container pb={1} spacing={2}>
+      <Grid container pb={1} spacing={2} className='card-ac'>
         <Grid item>
           <Card sx={{ minWidth: 100, mb: 2 }}>
-            <CardContent style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', background: "#303134" }}>
+            <CardContent style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: "16px 8px", background: "#303134" }}>
               <Icon style={{ marginLeft: 16, marginRight: 16 }} path={mdiAirConditioner} size={2} />
               <div tyle={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>

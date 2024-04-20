@@ -160,12 +160,6 @@ class BalconyArea extends React.Component {
                     <Zone sVal={this.state.dinningcenterzone} zoneClass="zone33 zone33center" sID="dinningcenterzone" sIcon={mdiStringLights} sName="Center" stateHandler={stateHandler.bind(this)}></Zone>
                   </Grid>
                   <Grid item>
-                    <Switch sVal={this.state.poojaroom} sID="poojaroom" sIcon={mdiHandsPray} sName="Pooja" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
-                  <Grid item>
-                    <SwitchCustomIcon sVal={this.state.balconyzone} sID="balconyzone" sIcon={MdBalcony} sName="Balcony" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
-                  </Grid>
-                  <Grid item>
                     <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
                       <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px', background: "#303134" }}>
                         <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
@@ -189,6 +183,12 @@ class BalconyArea extends React.Component {
 
                 <Grid pb={3} container spacing={2}>
                   <Grid item>
+                    <Switch sVal={this.state.poojaroom} sID="poojaroom" sIcon={mdiHandsPray} sName="Pooja" stateHandler={stateHandler.bind(this)}></Switch>
+                  </Grid>
+                  <Grid item>
+                    <SwitchCustomIcon sVal={this.state.balconyzone} sID="balconyzone" sIcon={MdBalcony} sName="Balcony" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
+                  </Grid>
+                  <Grid item>
                     <Switch sVal={this.state.bchandlier} sID="bchandlier" sIcon={mdiChandelier} sName="Chandlier" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
                   <Grid item>
@@ -199,7 +199,7 @@ class BalconyArea extends React.Component {
                   </Grid>
                   <Grid item>
                     <Switch sVal={this.state.poojaomlight} sID="poojaomlight" sIcon={mdiOm} sName="Om light" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>                  
+                  </Grid>
                   <Grid item>
                     <SwitchCustomIcon sVal={this.state.bsocket} sID="bsocket" sIcon={GiElectricalSocket} sName="Balcony socket" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>
