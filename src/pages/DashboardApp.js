@@ -126,8 +126,8 @@ class DashboardApp extends React.Component {
             <Typography variant="h4">Welcome, E302!</Typography>
           </Box>
           <NTabs navConfig={sidebarConfig} style={{ marginBottom: 24 }} />
-          <Grid container spacing={2}>
-            <Grid item>
+          <Grid container  spacing={2}>
+            <Grid item xs={12}>
               <Card >
                 <CardContent style={{ background: "#303134" }}>
                   <Temperature room="living" />

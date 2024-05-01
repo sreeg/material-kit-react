@@ -59,9 +59,9 @@ Button.switch-off .content,
 }
 
 .MuiSlider-thumb {
-  border-radius: 12px;
-  width: 14px;
-  height: 14px;
+  border-radius: 8px;
+  width: 10px;
+  height: 10px;
 }
 
 .MuiSlider-markActive {
@@ -70,7 +70,7 @@ Button.switch-off .content,
 
 .MuiSlider-markActive~.MuiSlider-mark {
   color: transparent;
-  border: 2px solid #ffffff;
+  border: 1px solid #ffffff;
 }
 
 .MuiSlider-mark {
@@ -100,8 +100,10 @@ Button.switch-off .content,
     display: flex;
     align-items: center;
   }
-
-  .content-temparature svg,
+  .MuiSlider-colorSecondary {
+    padding: 12px 0;
+  }
+  /* .content-temparature svg, */
   Button svg,
   Button svg,
   .card-ac svg {
@@ -117,4 +119,8 @@ Button.switch-off .content,
   .MuiCardContent-root {
     padding: 8px !important;
   }
+  .MuiButtonBase-root.MuiToggleButtonGroup-groupedHorizontal {
+    padding: 8px;
+}
+
 }

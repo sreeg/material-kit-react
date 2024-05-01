@@ -182,6 +182,9 @@ class OfficeRoom extends React.Component {
                   <Grid item>
                     <Switch sVal={this.state.dwallwasher} sID="dwallwasher" sIcon={mdiWallSconceFlat} sName="Wall washer" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
+                  <Grid item>
+                    <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="dfan" sIDFS="dfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+                  </Grid>
                 </Grid>
                 <Grid container pb={1} spacing={2}>
                   <Grid item>
@@ -190,13 +193,13 @@ class OfficeRoom extends React.Component {
                   <Grid item>
                     <Curtain sVal={this.state.dblackout} sID="dblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
                   </Grid>
-                  <Grid item>
-                    <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="dfan" sIDFS="dfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
-                  </Grid>
+
                 </Grid>
 
                 <Grid container >
-                  <AC sVal={this.state.temp} sID="DAC" sName="DAC" stateHandler={stateHandler.bind(this)} />
+                  <AC className="ac-container" sVal={this.state.temp} sID="DAC" sName="DAC" stateHandler={stateHandler.bind(this)} />
+                  </Grid>
+                <Grid container pb={1} spacing={2}>
                   <Grid item>
                     <Button className='scene-switch' variant="outlined" onClick={this.handleMovieMode} size="large" color="secondary" disableFocusRipple={true}>
                       <div className="content">

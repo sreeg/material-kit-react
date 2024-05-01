@@ -27,10 +27,10 @@
 }
 
   @media (max-width: 599.95px) {
-  .content-temparature{
+  /* .content-temparature{
     width: 100px !important;
     height: 100px !important;
-  }
+  } */
   .header-temparature {
       padding-left : 12px !important;
   }
@@ -41,6 +41,13 @@
     width: 2rem !important;
     height: 2rem !important;
   }
+  .curtain-content {
+    zoom: 0.95;
+  }
+  /* .MuiContainer-root {
+    padding-left: 8px;
+    padding-right: 8px;
+  } */
 }
 body {
   background-color: #202124;
