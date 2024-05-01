@@ -1,14 +1,13 @@
 import React from 'react';
 import Switch from '../common/Switch';
+import ColorAndBrightness from '../common/ColorAndBrightness';
 import SwitchCustomIcon from '../common/SwitchCustomIcon';
 import Zone from '../common/Zone';
 import Curtain from '../common/Curtain';
 import Fan from '../common/Fan';
 import { mdiTelevision, mdiEiffelTower } from '@mdi/js';
 import Grid from '@mui/material/Grid';
-import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';
-import Typography from '@mui/material/Typography';
 import CardContent from '@mui/material/CardContent';
 import { decodeHtml } from '../../../utils/commons';
 import { GiDoubleStreetLights, GiCeilingLight, GiTheaterCurtains, GiScallop, GiDjedPillar } from 'react-icons/gi';
@@ -47,32 +46,6 @@ class Living extends React.Component {
       [obj]: val
     });
   }
-
-  handleColor = (e, v) => {
-    switch (v) {
-      case 1:
-        v = 0;
-        break;
-      case 2:
-        v = 25;
-        break;
-      case 3:
-        v = 50;
-        break;
-      case 4:
-        v = 75;
-        break;
-      case 5:
-        v = 100;
-        break;
-    }
-    fetch(gateway + '/lcolor/' + v).then((response) => response.json());
-  };
-
-  handleBrightness = (e, v) => {
-    fetch(gateway + '/lbrightness/' + v * 20).then((response) => response.json());
-  };
-
   handleCozyMode = (e) => {
     fetch(gateway + '/dinningcozy/').then((response) => response.json());
   };
@@ -146,7 +119,12 @@ class Living extends React.Component {
         ) : (
           <>
             <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardContent>
+              <CardContent style={{ flex: "1" }}>
+                <Grid container pb={3}>
+                  <Grid item>
+                    <ColorAndBrightness cDefaultValue={this.state.lcolor} bDefaultValue={this.state.lbrightness} sColor="lcolor" sBrightness="lbrightness" stateHandler={stateHandler.bind(this)} />
+                  </Grid>
+                </Grid>
                 <Grid container pb={3} spacing={2}>
                   <Grid item>
                     <Zone sVal={this.state.laczone} zoneClass="zone33 zone33ac" sID="laczone" sName="AC" stateHandler={stateHandler.bind(this)}></Zone>
@@ -156,26 +134,6 @@ class Living extends React.Component {
                   </Grid>
                   <Grid item>
                     <Zone sVal={this.state.lhallway} zoneClass="zone33 zone33left" sID="lhallway" sName="Hallway" stateHandler={stateHandler.bind(this)}></Zone>
-                  </Grid>
-                  <Grid item>
-                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px', background: "#303134" }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
-                          Color
-                        </Typography>
-                        <Slider defaultValue={this.state.lcolor} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleColor} />
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                  <Grid item>
-                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px', background: "#303134" }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
-                          Brightness
-                        </Typography>
-                        <Slider defaultValue={this.state.lbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleBrightness} />
-                      </CardContent>
-                    </Card>
                   </Grid>
                 </Grid>
 

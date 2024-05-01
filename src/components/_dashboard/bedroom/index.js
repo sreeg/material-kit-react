@@ -190,13 +190,13 @@ class BedRoom extends React.Component {
                   <Grid item>
                     <Switch sVal={this.state.mgyser} sID="mgyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
+                  <Grid item>
+                    <Fan sVal={this.state.mfan} sFval={this.state.mfanspeed} sID="mfan" sIDFS="mfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+                  </Grid>
                 </Grid>
                 <Grid container spacing={2}>
                   <Grid item>
                     <Curtain sVal={this.state.mblackout} sID="mblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
-                  </Grid>
-                  <Grid item>
-                    <Fan sVal={this.state.mfan} sFval={this.state.mfanspeed} sID="mfan" sIDFS="mfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
                   </Grid>
                 </Grid>
                 <Grid container spacing={2}>

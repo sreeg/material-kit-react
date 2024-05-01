@@ -22,8 +22,8 @@ class Kids extends React.Component {
       kaczone: 'OFF',
       kwardrobe: 'OFF',
       kwalllamp: 'OFF',
-      klight2 : 'OFF',
-      klight4 : 'OFF',
+      klight2: 'OFF',
+      klight4: 'OFF',
       kfanspeed: 5,
       kcolor: 5,
       kbrightness: 5,
@@ -64,7 +64,7 @@ class Kids extends React.Component {
   handleBrightness = (e, v) => {
     fetch(gateway + '/kbrightness/' + v * 20).then((response) => response.json());
   };
-  componentWillUnmount(){
+  componentWillUnmount() {
     clearInterval(this.updateTimer);
   }
   componentDidMount() {
@@ -159,13 +159,13 @@ class Kids extends React.Component {
                   <Grid item>
                     <Switch sVal={this.state.ktablelamp} sID="ktablelamp" sIcon={mdiLamp} sName="Table Lamp" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
+                  <Grid item>
+                    <Fan sVal={this.state.kfan} sFval={this.state.kfanspeed} sID="kfan" sIDFS="kfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+                  </Grid>
                 </Grid>
                 <Grid container spacing={2}>
                   <Grid item>
                     <Curtain sVal={this.state.kblackout} sID="kblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
-                  </Grid>
-                  <Grid item>
-                    <Fan sVal={this.state.kfan} sFval={this.state.kfanspeed} sID="kfan" sIDFS="kfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
                   </Grid>
                 </Grid>
               </CardContent>

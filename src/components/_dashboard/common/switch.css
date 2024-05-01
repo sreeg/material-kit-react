@@ -45,9 +45,15 @@ Button.switch-off .content,
   align-items: center;
 }
 
+.fan-paper Button.switch-on,
+.fan-paper Button.switch-off {
+  zoom: 0.8;
+  margin-bottom: 8px;
+}
+
 .MuiSlider-vertical {
-  margin-left: 24px;
-  height: 100px;
+  margin-left: 12px;
+  height: 75px;
 }
 
 .MuiSlider-rail {

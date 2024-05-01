@@ -146,7 +146,7 @@ class OfficeRoom extends React.Component {
   handleCurtainBrightness = (e, v) => {
     fetch(gateway + '/curtainbrightness/' + v * 20).then((response) => response.json());
   };
-  componentWillUnmount(){
+  componentWillUnmount() {
     clearInterval(this.updateTimer);
   }
   componentDidMount() {
@@ -215,7 +215,7 @@ class OfficeRoom extends React.Component {
         ) : (
           <>
             <Card style={{ marginBottom: 24, padding: "0px 24px" }}>
-              <CardContent style={{ background: "#303134", borderRadius: "16px"  }}>
+              <CardContent style={{ background: "#303134", borderRadius: "16px" }}>
                 <Temperature room="office" />
               </CardContent>
             </Card>
@@ -333,7 +333,7 @@ class OfficeRoom extends React.Component {
                             </MenuItem>
                             <MenuItem key="mix" value="mix">
                               Mix
-                            </MenuItem>                            
+                            </MenuItem>
                           </Select>
                         </FormControl>
                       </Grid>
@@ -377,10 +377,13 @@ class OfficeRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Switch sVal={this.state.oac} sID="oac" sIcon={mdiAirConditioner} sName="AC" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>                       
+                  </Grid>
                   {/* <Grid item>
                     <SwitchCustomIcon sVal={this.state.lines} sID="lines" sIcon={FaPagelines} sName="Nano Lines" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
                   </Grid>                   */}
+                  <Grid item>
+                    <Fan sVal={this.state.ofan} sFval={this.state.ofanspeed} sID="ofan" sIDFS="ofanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+                  </Grid>
                 </Grid>
 
                 <Grid container spacing={2}>
@@ -389,9 +392,6 @@ class OfficeRoom extends React.Component {
                   </Grid>
                   <Grid item>
                     <Curtain sVal={this.state.oblackout} sID="oblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
-                  </Grid>
-                  <Grid item>
-                    <Fan sVal={this.state.ofan} sFval={this.state.ofanspeed} sID="ofan" sIDFS="ofanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
                   </Grid>
                 </Grid>
               </CardContent>
