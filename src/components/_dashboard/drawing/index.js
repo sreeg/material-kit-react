@@ -5,14 +5,11 @@ import Fan from './../common/Fan';
 import Curtain from './../common/Curtain';
 import { mdiMovieOpen, mdiLedStripVariant, mdiWallSconceFlat, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiAirConditioner } from '@mdi/js';
 import Grid from '@mui/material/Grid';
-import Slider from '@mui/material/Slider';
-import Card from '@mui/material/Card';
-import Typography from '@mui/material/Typography';
-import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Icon from '@mdi/react';
 import { decodeHtml } from './../../../utils/commons';
 import AC from './../common/AC';
+import ColorAndBrightness from '../common/ColorAndBrightness';
 
 const gateway = 'http://192.168.88.122:1880';
 class OfficeRoom extends React.Component {
@@ -44,31 +41,6 @@ class OfficeRoom extends React.Component {
       [obj]: val
     });
   }
-
-  handleColor = (e, v) => {
-    switch (v) {
-      case 1:
-        v = 0;
-        break;
-      case 2:
-        v = 25;
-        break;
-      case 3:
-        v = 50;
-        break;
-      case 4:
-        v = 75;
-        break;
-      case 5:
-        v = 100;
-        break;
-    }
-    fetch(gateway + '/dcolor/' + v).then((response) => response.json());
-  };
-
-  handleBrightness = (e, v) => {
-    fetch(gateway + '/dbrightness/' + v * 20).then((response) => response.json());
-  };
 
   handleMovieMode = (e) => {
     fetch(gateway + '/movietime/').then((response) => response.json());
@@ -132,85 +104,64 @@ class OfficeRoom extends React.Component {
           <div>Loading</div>
         ) : (
           <>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardContent>
-                <Grid container pb={3} spacing={2}>
-                  <Grid item>
-                    <Zone sVal={this.state.dhallway} zoneClass="zone33 zone33left" sID="dhallway" sIcon={mdiStringLights} sName="Hallway" stateHandler={stateHandler.bind(this)}></Zone>
-                  </Grid>
-                  <Grid item>
-                    <Zone sVal={this.state.dtvzone} zoneClass="zone33 zone33ac" sID="dtvzone" sIcon={mdiStringLights} sName="TV" stateHandler={stateHandler.bind(this)}></Zone>
-                  </Grid>
-                  <Grid item>
-                    <Zone sVal={this.state.dcenterzone} zoneClass="zone33 zone33center" sID="dcenterzone" sIcon={mdiStringLights} sName="Center" stateHandler={stateHandler.bind(this)}></Zone>
-                  </Grid>
-                  <Grid item>
-                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px', background: "#303134" }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
-                          Color
-                        </Typography>
-                        <Slider defaultValue={this.state.dcolor} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleColor} />
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                  <Grid item>
-                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px', background: "#303134" }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
-                          Brightness
-                        </Typography>
-                        <Slider defaultValue={this.state.dbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleBrightness} />
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                </Grid>
+            <Grid container pb={3} spacing={2}>
+              <Grid item>
+                <ColorAndBrightness cDefaultValue={this.state.dcolor} bDefaultValue={this.state.dbrightness} sColor="dcolor" sBrightness="dbrightness" stateHandler={stateHandler.bind(this)} />
+              </Grid>
+              <Grid item>
+                <Zone sVal={this.state.dhallway} zoneClass="zone33 zone33left" sID="dhallway" sIcon={mdiStringLights} sName="Hallway" stateHandler={stateHandler.bind(this)}></Zone>
+              </Grid>
+              <Grid item>
+                <Zone sVal={this.state.dtvzone} zoneClass="zone33 zone33ac" sID="dtvzone" sIcon={mdiStringLights} sName="TV" stateHandler={stateHandler.bind(this)}></Zone>
+              </Grid>
+              <Grid item>
+                <Zone sVal={this.state.dcenterzone} zoneClass="zone33 zone33center" sID="dcenterzone" sIcon={mdiStringLights} sName="Center" stateHandler={stateHandler.bind(this)}></Zone>
+              </Grid>
+            </Grid>
 
-                <Grid container pb={3} spacing={2}>
-                  <Grid item>
-                    <Switch sVal={this.state.dwalllamp} sID="dwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
-                  <Grid item>
-                    <Switch sVal={this.state.dtv} sID="dtv" sIcon={mdiTelevision} sName="TV" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
-                  <Grid item>
-                    <Switch sVal={this.state.dgovee} sID="dgovee" sIcon={mdiLedStripVariant} sName="Govee" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
-                  <Grid item>
-                    <Switch sVal={this.state.dcurtainlight} sID="dcurtainlight" sIcon={mdiVanityLight} sName="Curtain light" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
-                  <Grid item>
-                    <Switch sVal={this.state.dwallwasher} sID="dwallwasher" sIcon={mdiWallSconceFlat} sName="Wall washer" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
-                  <Grid item>
-                    <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="dfan" sIDFS="dfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
-                  </Grid>
-                </Grid>
-                <Grid container pb={1} spacing={2}>
-                  <Grid item>
-                    <Curtain sVal={this.state.dsheer} sID="dsheer" sName="Sheer curtain" stateHandler={stateHandler.bind(this)}></Curtain>
-                  </Grid>
-                  <Grid item>
-                    <Curtain sVal={this.state.dblackout} sID="dblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
-                  </Grid>
+            <Grid container pb={3} spacing={2}>
+              <Grid item>
+                <Switch sVal={this.state.dwalllamp} sID="dwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>
+              </Grid>
+              <Grid item>
+                <Switch sVal={this.state.dtv} sID="dtv" sIcon={mdiTelevision} sName="TV" stateHandler={stateHandler.bind(this)}></Switch>
+              </Grid>
+              <Grid item>
+                <Switch sVal={this.state.dgovee} sID="dgovee" sIcon={mdiLedStripVariant} sName="Govee" stateHandler={stateHandler.bind(this)}></Switch>
+              </Grid>
+              <Grid item>
+                <Switch sVal={this.state.dcurtainlight} sID="dcurtainlight" sIcon={mdiVanityLight} sName="Curtain light" stateHandler={stateHandler.bind(this)}></Switch>
+              </Grid>
+              <Grid item>
+                <Switch sVal={this.state.dwallwasher} sID="dwallwasher" sIcon={mdiWallSconceFlat} sName="Wall washer" stateHandler={stateHandler.bind(this)}></Switch>
+              </Grid>
+              <Grid item>
+                <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="dfan" sIDFS="dfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+              </Grid>
+            </Grid>
+            <Grid container pb={1} spacing={2}>
+              <Grid item>
+                <Curtain sVal={this.state.dsheer} sID="dsheer" sName="Sheer curtain" stateHandler={stateHandler.bind(this)}></Curtain>
+              </Grid>
+              <Grid item>
+                <Curtain sVal={this.state.dblackout} sID="dblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
+              </Grid>
 
-                </Grid>
+            </Grid>
 
-                <Grid container >
-                  <AC className="ac-container" sVal={this.state.temp} sID="DAC" sName="DAC" stateHandler={stateHandler.bind(this)} />
-                  </Grid>
-                <Grid container pb={1} spacing={2}>
-                  <Grid item>
-                    <Button className='scene-switch' variant="outlined" onClick={this.handleMovieMode} size="large" color="secondary" disableFocusRipple={true}>
-                      <div className="content">
-                        <Icon path={mdiMovieOpen} size={2} />
-                        <div>Movie mode</div>
-                      </div>
-                    </Button>
-                  </Grid>
-                </Grid>
-              </CardContent>
-            </Card>
+            <Grid container >
+              <AC className="ac-container" sVal={this.state.temp} sID="DAC" sName="DAC" stateHandler={stateHandler.bind(this)} />
+            </Grid>
+            <Grid container pb={1} spacing={2}>
+              <Grid item>
+                <Button className='scene-switch' variant="outlined" onClick={this.handleMovieMode} size="large" color="secondary" disableFocusRipple={true}>
+                  <div className="content">
+                    <Icon path={mdiMovieOpen} size={2} />
+                    <div>Movie mode</div>
+                  </div>
+                </Button>
+              </Grid>
+            </Grid>
           </>
         )}
       </>

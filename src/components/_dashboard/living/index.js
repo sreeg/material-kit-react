@@ -7,8 +7,6 @@ import Curtain from '../common/Curtain';
 import Fan from '../common/Fan';
 import { mdiTelevision, mdiEiffelTower } from '@mdi/js';
 import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import { decodeHtml } from '../../../utils/commons';
 import { GiDoubleStreetLights, GiCeilingLight, GiTheaterCurtains, GiScallop, GiDjedPillar } from 'react-icons/gi';
 import AC from '../common/AC';
@@ -118,64 +116,58 @@ class Living extends React.Component {
           <div>Loading</div>
         ) : (
           <>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardContent style={{ flex: "1" }}>
-                <Grid container pb={3}>
-                  <Grid item>
-                    <ColorAndBrightness cDefaultValue={this.state.lcolor} bDefaultValue={this.state.lbrightness} sColor="lcolor" sBrightness="lbrightness" stateHandler={stateHandler.bind(this)} />
-                  </Grid>
-                </Grid>
-                <Grid container pb={3} spacing={2}>
-                  <Grid item>
-                    <Zone sVal={this.state.laczone} zoneClass="zone33 zone33ac" sID="laczone" sName="AC" stateHandler={stateHandler.bind(this)}></Zone>
-                  </Grid>
-                  <Grid item>
-                    <Zone sVal={this.state.lcenterzone} zoneClass="zone33 zone33center" sID="lcenterzone" sName="Center" stateHandler={stateHandler.bind(this)}></Zone>
-                  </Grid>
-                  <Grid item>
-                    <Zone sVal={this.state.lhallway} zoneClass="zone33 zone33left" sID="lhallway" sName="Hallway" stateHandler={stateHandler.bind(this)}></Zone>
-                  </Grid>
-                </Grid>
+            <Grid container spacing={2} pb={3}>
+              <Grid item>
+                <ColorAndBrightness cDefaultValue={this.state.lcolor} bDefaultValue={this.state.lbrightness} sColor="lcolor" sBrightness="lbrightness" stateHandler={stateHandler.bind(this)} />
+              </Grid>
+              <Grid item>
+                <Zone sVal={this.state.laczone} zoneClass="zone33 zone33ac" sID="laczone" sName="AC" stateHandler={stateHandler.bind(this)}></Zone>
+              </Grid>
+              <Grid item>
+                <Zone sVal={this.state.lcenterzone} zoneClass="zone33 zone33center" sID="lcenterzone" sName="Center" stateHandler={stateHandler.bind(this)}></Zone>
+              </Grid>
+              <Grid item>
+                <Zone sVal={this.state.lhallway} zoneClass="zone33 zone33left" sID="lhallway" sName="Hallway" stateHandler={stateHandler.bind(this)}></Zone>
+              </Grid>
+            </Grid>
 
-                <Grid container pb={3} spacing={2}>
-                  <Grid item>
-                    <SwitchCustomIcon sVal={this.state.lscallop} sID="lscallop" sIcon={GiScallop} sName="Scallop" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
-                  </Grid>
-                  <Grid item>
-                    <SwitchCustomIcon sVal={this.state.lcurtainlight} sID="lcurtainlight" sIcon={GiTheaterCurtains} sName="Curtain light" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
-                  </Grid>
-                  <Grid item>
-                    <Switch sVal={this.state.ldigitalclock} sID="ldigitalclock" sIcon={mdiEiffelTower} sName="Eiffel Tower" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
-                  <Grid item>
-                    <Switch sVal={this.state.ltv} sID="ltv" sIcon={mdiTelevision} sName="Frame TV" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
-                  <Grid item>
-                    <SwitchCustomIcon sVal={this.state.lfloorlamp} sID="lfloorlamp" sIcon={GiDjedPillar} sName="Floor lamp" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
-                  </Grid>
-                  <Grid item>
-                    <SwitchCustomIcon sVal={this.state.livingtvsocket} sID="livingtvsocket" sIcon={GiCeilingLight} sName="Cabnet light" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
-                  </Grid>
-                  <Grid item>
-                    <SwitchCustomIcon sVal={this.state.lfloorikea} sID="lfloorikea" sIcon={GiDoubleStreetLights} sName="Ikea Floor light" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
-                  </Grid>
-                  <Grid item>
-                    <Fan sVal={this.state.lfan} sFval={this.state.lfanspeed} sID="lfan" sIDFS="lfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
-                  </Grid>
-                </Grid>
+            <Grid container pb={3} spacing={2}>
+              <Grid item>
+                <SwitchCustomIcon sVal={this.state.lscallop} sID="lscallop" sIcon={GiScallop} sName="Scallop" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
+              </Grid>
+              <Grid item>
+                <SwitchCustomIcon sVal={this.state.lcurtainlight} sID="lcurtainlight" sIcon={GiTheaterCurtains} sName="Curtain light" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
+              </Grid>
+              <Grid item>
+                <Switch sVal={this.state.ldigitalclock} sID="ldigitalclock" sIcon={mdiEiffelTower} sName="Eiffel Tower" stateHandler={stateHandler.bind(this)}></Switch>
+              </Grid>
+              <Grid item>
+                <Switch sVal={this.state.ltv} sID="ltv" sIcon={mdiTelevision} sName="Frame TV" stateHandler={stateHandler.bind(this)}></Switch>
+              </Grid>
+              <Grid item>
+                <SwitchCustomIcon sVal={this.state.lfloorlamp} sID="lfloorlamp" sIcon={GiDjedPillar} sName="Floor lamp" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
+              </Grid>
+              <Grid item>
+                <SwitchCustomIcon sVal={this.state.livingtvsocket} sID="livingtvsocket" sIcon={GiCeilingLight} sName="Cabnet light" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
+              </Grid>
+              <Grid item>
+                <SwitchCustomIcon sVal={this.state.lfloorikea} sID="lfloorikea" sIcon={GiDoubleStreetLights} sName="Ikea Floor light" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
+              </Grid>
+              <Grid item>
+                <Fan sVal={this.state.lfan} sFval={this.state.lfanspeed} sID="lfan" sIDFS="lfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+              </Grid>
+            </Grid>
 
-                <Grid container pb={1} spacing={2}>
-                  <Grid item>
-                    <Curtain sVal={this.state.lsheer} sID="lsheer" sName="Sheer curtain" stateHandler={stateHandler.bind(this)}></Curtain>
-                  </Grid>
-                  <Grid item>
-                    <Curtain sVal={this.state.lblackout} sID="lblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
-                  </Grid>
-                </Grid>
+            <Grid container pb={1} spacing={2}>
+              <Grid item>
+                <Curtain sVal={this.state.lsheer} sID="lsheer" sName="Sheer curtain" stateHandler={stateHandler.bind(this)}></Curtain>
+              </Grid>
+              <Grid item>
+                <Curtain sVal={this.state.lblackout} sID="lblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
+              </Grid>
+            </Grid>
 
-                <AC sVal={this.state.temp} sID="lAC" sName="lAC" stateHandler={stateHandler.bind(this)} />
-              </CardContent>
-            </Card>
+            <AC sVal={this.state.temp} sID="lAC" sName="lAC" stateHandler={stateHandler.bind(this)} />
           </>
         )}
       </>

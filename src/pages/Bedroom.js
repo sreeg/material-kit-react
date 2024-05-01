@@ -4,10 +4,9 @@ import { Box, Grid, Container, Typography, Button } from '@mui/material';
 import Page from '../components/Page';
 import BedRoom from '../components/_dashboard/bedroom';
 import { InlineIcon } from '@iconify/react';
-import {mdiBed } from '@mdi/js';
+import {mdiBed} from '@mdi/js';
 import NTabs from './../components/NavSectionTab';
 import sidebarConfig from './../layouts/dashboard/SidebarConfig';
-
 // ----------------------------------------------------------------------
 
 export default function Office() {

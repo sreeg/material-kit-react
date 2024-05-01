@@ -33,11 +33,11 @@ class ColorAndBrightness extends React.Component {
         v = 100;
         break;
     }
-    fetch(gateway + '/lcolor/' + v).then((response) => response.json());
+    fetch(gateway + '/' + e.target.firstChild.name + '/' + v).then((response) => response.json());
   };
 
   handleBrightness = (e, v) => {
-    fetch(gateway + '/lbrightness/' + v * 20).then((response) => response.json());
+    fetch(gateway + '/' + e.target.firstChild.name + '/' + v * 20).then((response) => response.json());
   };
 
   render() {
@@ -53,7 +53,7 @@ class ColorAndBrightness extends React.Component {
               </Typography>
               <Slider defaultValue={cDefaultValue} name={sColor} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleColor} />
             </div>
-            <Divider  orientation="vertical" flexItem />
+            <Divider orientation="vertical" flexItem />
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: 100, marginLeft: 18, flex: 1 }}>
               <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
                 Brightness

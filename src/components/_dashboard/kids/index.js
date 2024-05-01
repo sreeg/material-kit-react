@@ -5,11 +5,8 @@ import Zone from '../common/Zone';
 import Fan from '../common/Fan';
 import { mdiLamp, mdiCoachLamp, mdiWaterBoiler, mdiStringLights } from '@mdi/js';
 import Grid from '@mui/material/Grid';
-import Slider from '@mui/material/Slider';
-import Card from '@mui/material/Card';
-import Typography from '@mui/material/Typography';
-import CardContent from '@mui/material/CardContent';
 import { decodeHtml } from '../../../utils/commons';
+import ColorAndBrightness from '../common/ColorAndBrightness';
 
 const gateway = 'http://192.168.88.122:1880';
 class Kids extends React.Component {
@@ -40,30 +37,6 @@ class Kids extends React.Component {
     });
   }
 
-  handleColor = (e, v) => {
-    switch (v) {
-      case 1:
-        v = 0;
-        break;
-      case 2:
-        v = 25;
-        break;
-      case 3:
-        v = 50;
-        break;
-      case 4:
-        v = 75;
-        break;
-      case 5:
-        v = 100;
-        break;
-    }
-    fetch(gateway + '/kcolor/' + v).then((response) => response.json());
-  };
-
-  handleBrightness = (e, v) => {
-    fetch(gateway + '/kbrightness/' + v * 20).then((response) => response.json());
-  };
   componentWillUnmount() {
     clearInterval(this.updateTimer);
   }
@@ -115,61 +88,40 @@ class Kids extends React.Component {
           <div>Loading</div>
         ) : (
           <>
-            <Card sx={{ minWidth: 100, mb: 2 }}>
-              <CardContent >
-                <Grid pb={3} container spacing={2}>
-                  <Grid item>
-                    <Zone sVal={this.state.kaczone} zoneClass="zone23 zone23top" sID="kaczone" sIcon={mdiStringLights} sName="AC" stateHandler={stateHandler.bind(this)}></Zone>
-                  </Grid>
-                  <Grid item>
-                    <Zone sVal={this.state.kcenterzone} zoneClass="zone23 zone23center" sID="kcenterzone" sIcon={mdiStringLights} sName="Center" stateHandler={stateHandler.bind(this)}></Zone>
-                  </Grid>
-                  <Grid item>
-                    <Zone sVal={this.state.kwardrobe} zoneClass="zone23 zone23center" sID="kwardrobe" sIcon={mdiStringLights} sName="Wardrobe" stateHandler={stateHandler.bind(this)}></Zone>
-                  </Grid>
-                  <Grid item>
-                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px', background: "#303134" }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
-                          Color
-                        </Typography>
-                        <Slider defaultValue={this.state.kcolor} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleColor} />
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                  <Grid item>
-                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px', background: "#303134" }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
-                          Brightness
-                        </Typography>
-                        <Slider defaultValue={this.state.kbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleBrightness} />
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                </Grid>
+            <Grid pb={3} container spacing={2}>
+              <Grid item>
+                <ColorAndBrightness cDefaultValue={this.state.kcolor} bDefaultValue={this.state.kbrightness} sColor="kcolor" sBrightness="kbrightness" stateHandler={stateHandler.bind(this)} />
+              </Grid>
+              <Grid item>
+                <Zone sVal={this.state.kaczone} zoneClass="zone23 zone23top" sID="kaczone" sIcon={mdiStringLights} sName="AC" stateHandler={stateHandler.bind(this)}></Zone>
+              </Grid>
+              <Grid item>
+                <Zone sVal={this.state.kcenterzone} zoneClass="zone23 zone23center" sID="kcenterzone" sIcon={mdiStringLights} sName="Center" stateHandler={stateHandler.bind(this)}></Zone>
+              </Grid>
+              <Grid item>
+                <Zone sVal={this.state.kwardrobe} zoneClass="zone23 zone23center" sID="kwardrobe" sIcon={mdiStringLights} sName="Wardrobe" stateHandler={stateHandler.bind(this)}></Zone>
+              </Grid>
+            </Grid>
 
-                <Grid pb={3} container spacing={2}>
-                  <Grid item>
-                    <Switch sVal={this.state.kwalllamp} sID="kwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
-                  <Grid item>
-                    <Switch sVal={this.state.kgyser} sID="kgyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
-                  <Grid item>
-                    <Switch sVal={this.state.ktablelamp} sID="ktablelamp" sIcon={mdiLamp} sName="Table Lamp" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
-                  <Grid item>
-                    <Fan sVal={this.state.kfan} sFval={this.state.kfanspeed} sID="kfan" sIDFS="kfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
-                  </Grid>
-                </Grid>
-                <Grid container spacing={2}>
-                  <Grid item>
-                    <Curtain sVal={this.state.kblackout} sID="kblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
-                  </Grid>
-                </Grid>
-              </CardContent>
-            </Card>
+            <Grid pb={3} container spacing={2}>
+              <Grid item>
+                <Switch sVal={this.state.kwalllamp} sID="kwalllamp" sIcon={mdiCoachLamp} sName="Wall lamp" stateHandler={stateHandler.bind(this)}></Switch>
+              </Grid>
+              <Grid item>
+                <Switch sVal={this.state.kgyser} sID="kgyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
+              </Grid>
+              <Grid item>
+                <Switch sVal={this.state.ktablelamp} sID="ktablelamp" sIcon={mdiLamp} sName="Table Lamp" stateHandler={stateHandler.bind(this)}></Switch>
+              </Grid>
+              <Grid item>
+                <Fan sVal={this.state.kfan} sFval={this.state.kfanspeed} sID="kfan" sIDFS="kfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+              </Grid>
+            </Grid>
+            <Grid container spacing={2}>
+              <Grid item>
+                <Curtain sVal={this.state.kblackout} sID="kblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
+              </Grid>
+            </Grid>
           </>
         )}
       </>
