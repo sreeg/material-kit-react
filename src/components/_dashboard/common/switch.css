@@ -4,7 +4,7 @@ input {
 
 Button.switch-on,
 Button.switch-off,
-.scene-switch {
+Button.scene-switch {
   height: 100px;
   width: 100px;
   display: flex;
@@ -22,7 +22,8 @@ Button.switch-off,
 }
 
 Button.switch-on label>div,
-Button.switch-off label>div {
+Button.switch-off label>div,
+Button.scene-switch label>div {
   width: 80px;
   white-space: nowrap;
   overflow: hidden;
@@ -96,13 +97,14 @@ Button.switch-off .content,
 
   Button.switch-on,
   Button.switch-off,
-  .scene-switch {
+  Button.scene-switch {
     height: auto;
     width: auto;
   }
 
   Button.switch-on label,
-  Button.switch-off label {
+  Button.switch-off label,
+  Button.scene-switch label {
     display: flex;
     align-items: center;
   }

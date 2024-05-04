@@ -101,6 +101,9 @@ class Kids extends React.Component {
               <Grid item>
                 <Zone sVal={this.state.kwardrobe} zoneClass="zone23 zone23center" sID="kwardrobe" sIcon={mdiStringLights} sName="Wardrobe" stateHandler={stateHandler.bind(this)}></Zone>
               </Grid>
+              <Grid item>
+                <Fan sVal={this.state.kfan} sFval={this.state.kfanspeed} sID="kfan" sIDFS="kfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+              </Grid>
             </Grid>
 
             <Grid pb={3} container spacing={2}>
@@ -112,9 +115,6 @@ class Kids extends React.Component {
               </Grid>
               <Grid item>
                 <Switch sVal={this.state.ktablelamp} sID="ktablelamp" sIcon={mdiLamp} sName="Table Lamp" stateHandler={stateHandler.bind(this)}></Switch>
-              </Grid>
-              <Grid item>
-                <Fan sVal={this.state.kfan} sFval={this.state.kfanspeed} sID="kfan" sIDFS="kfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
               </Grid>
             </Grid>
             <Grid container spacing={2}>

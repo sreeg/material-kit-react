@@ -214,6 +214,9 @@ class OfficeRoom extends React.Component {
               <Grid item>
                 <Zone sVal={this.state.olight4} zoneClass="zone23 zone23left" sID="olight4" sIcon={mdiLightbulbVariantOutline} sName="Left area" stateHandler={stateHandler.bind(this)}></Zone>
               </Grid>
+              <Grid item>
+                <Fan sVal={this.state.ofan} sFval={this.state.ofanspeed} sID="ofan" sIDFS="ofanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+              </Grid>
             </Grid>
 
             <Grid container pb={3} spacing={2}>
@@ -334,12 +337,6 @@ class OfficeRoom extends React.Component {
               </Grid>
               <Grid item>
                 <Switch sVal={this.state.oac} sID="oac" sIcon={mdiAirConditioner} sName="AC" stateHandler={stateHandler.bind(this)}></Switch>
-              </Grid>
-              {/* <Grid item>
-                    <SwitchCustomIcon sVal={this.state.lines} sID="lines" sIcon={FaPagelines} sName="Nano Lines" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
-                  </Grid>                   */}
-              <Grid item>
-                <Fan sVal={this.state.ofan} sFval={this.state.ofanspeed} sID="ofan" sIDFS="ofanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
               </Grid>
             </Grid>
 

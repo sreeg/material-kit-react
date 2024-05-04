@@ -117,6 +117,9 @@ class OfficeRoom extends React.Component {
               <Grid item>
                 <Zone sVal={this.state.dcenterzone} zoneClass="zone33 zone33center" sID="dcenterzone" sIcon={mdiStringLights} sName="Center" stateHandler={stateHandler.bind(this)}></Zone>
               </Grid>
+              <Grid item>
+                <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="dfan" sIDFS="dfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+              </Grid>
             </Grid>
 
             <Grid container pb={3} spacing={2}>
@@ -136,9 +139,17 @@ class OfficeRoom extends React.Component {
                 <Switch sVal={this.state.dwallwasher} sID="dwallwasher" sIcon={mdiWallSconceFlat} sName="Wall washer" stateHandler={stateHandler.bind(this)}></Switch>
               </Grid>
               <Grid item>
-                <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="dfan" sIDFS="dfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+                <Button className='scene-switch' variant="outlined" onClick={this.handleMovieMode} size="large" color="secondary" disableFocusRipple={true}>
+                  <div className="content">
+                    <label>
+                      <Icon path={mdiMovieOpen} size={2} />
+                      <div>Movie mode</div>
+                    </label>
+                  </div>
+                </Button>
               </Grid>
             </Grid>
+
             <Grid container pb={1} spacing={2}>
               <Grid item>
                 <Curtain sVal={this.state.dsheer} sID="dsheer" sName="Sheer curtain" stateHandler={stateHandler.bind(this)}></Curtain>
@@ -146,21 +157,10 @@ class OfficeRoom extends React.Component {
               <Grid item>
                 <Curtain sVal={this.state.dblackout} sID="dblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
               </Grid>
-
             </Grid>
 
             <Grid container >
               <AC className="ac-container" sVal={this.state.temp} sID="DAC" sName="DAC" stateHandler={stateHandler.bind(this)} />
-            </Grid>
-            <Grid container pb={1} spacing={2}>
-              <Grid item>
-                <Button className='scene-switch' variant="outlined" onClick={this.handleMovieMode} size="large" color="secondary" disableFocusRipple={true}>
-                  <div className="content">
-                    <Icon path={mdiMovieOpen} size={2} />
-                    <div>Movie mode</div>
-                  </div>
-                </Button>
-              </Grid>
             </Grid>
           </>
         )}

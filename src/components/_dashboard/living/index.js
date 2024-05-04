@@ -129,6 +129,9 @@ class Living extends React.Component {
               <Grid item>
                 <Zone sVal={this.state.lhallway} zoneClass="zone33 zone33left" sID="lhallway" sName="Hallway" stateHandler={stateHandler.bind(this)}></Zone>
               </Grid>
+              <Grid item>
+                <Fan sVal={this.state.lfan} sFval={this.state.lfanspeed} sID="lfan" sIDFS="lfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+              </Grid>
             </Grid>
 
             <Grid container pb={3} spacing={2}>
@@ -152,9 +155,6 @@ class Living extends React.Component {
               </Grid>
               <Grid item>
                 <SwitchCustomIcon sVal={this.state.lfloorikea} sID="lfloorikea" sIcon={GiDoubleStreetLights} sName="Ikea Floor light" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
-              </Grid>
-              <Grid item>
-                <Fan sVal={this.state.lfan} sFval={this.state.lfanspeed} sID="lfan" sIDFS="lfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
               </Grid>
             </Grid>
 

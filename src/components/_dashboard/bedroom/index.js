@@ -119,6 +119,9 @@ class BedRoom extends React.Component {
               <Grid item>
                 <Zone sVal={this.state.mwardrobe} zoneClass="zone23 zone23center" sID="mwardrobe" sIcon={mdiStringLights} sName="Wardrobe" stateHandler={stateHandler.bind(this)}></Zone>
               </Grid>
+              <Grid item>
+                <Fan sVal={this.state.mfan} sFval={this.state.mfanspeed} sID="mfan" sIDFS="mfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
+              </Grid>
             </Grid>
 
             <Grid pb={2} container spacing={2}>
@@ -131,27 +134,17 @@ class BedRoom extends React.Component {
               <Grid item>
                 <Switch sVal={this.state.mtv} sID="mtv" sIcon={mdiTelevision} sName="TV" stateHandler={stateHandler.bind(this)}></Switch>
               </Grid>
-              {/* <Grid item>
-                    <Switch sVal={this.state.mlight2} sID="mlight2" sIcon={mdiLightbulbVariantOutline} sName="Light 2" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
-                  <Grid item>
-                    <Switch sVal={this.state.mlight3} sID="mlight3" sIcon={mdiLightbulbVariantOutline} sName="Light 3" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid>
-                  <Grid item>
-                    <Switch sVal={this.state.mlight4} sID="mlight4" sIcon={mdiLightbulbVariantOutline} sName="Light 4" stateHandler={stateHandler.bind(this)}></Switch>
-                  </Grid> */}
               <Grid item>
                 <Switch sVal={this.state.mgyser} sID="mgyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
               </Grid>
-              <Grid item>
-                <Fan sVal={this.state.mfan} sFval={this.state.mfanspeed} sID="mfan" sIDFS="mfanspeed" sName="Fan" stateHandler={stateHandler.bind(this)} />
-              </Grid>
             </Grid>
+
             <Grid container spacing={2}>
               <Grid item>
                 <Curtain sVal={this.state.mblackout} sID="mblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
               </Grid>
             </Grid>
+            
             <Grid container spacing={2}>
               <Grid item>
                 <AC sVal={this.state.temp} sID="BAC" sName="BAC" stateHandler={stateHandler.bind(this)} />

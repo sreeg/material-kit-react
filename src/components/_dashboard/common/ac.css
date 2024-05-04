@@ -1,3 +1,9 @@
 div#temparature-ac {
   color: #ffffff;
+  height: 18px;
+}
+
+.card-ac .MuiButtonBase-root.MuiToggleButtonGroup-groupedHorizontal.Mui-selected {
+  background-color: #2249e1;
+  color: #ffffff;
 }
