@@ -18,7 +18,7 @@ const sidebarConfig = [
     icon: getIcon(pieChart2Fill)
   },
   {
-    title: 'drawing room',
+    title: 'drawing',
     path: '/dashboard/drawing',
     icon: getIcon(tvFill)
   },
@@ -33,7 +33,7 @@ const sidebarConfig = [
     icon: getIconM(mdiBed)
   },
   {
-    title: 'office room',
+    title: 'office',
     path: '/dashboard/office',
     icon: getIcon(monitorFill)
   },

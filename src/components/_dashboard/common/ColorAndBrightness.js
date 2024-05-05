@@ -1,7 +1,5 @@
 import './switch.css';
 import React from 'react';
-import Icon from '@mdi/react';
-import Button from '@mui/material/Button';
 import Grid from '@mui/material/Grid';
 import Slider from '@mui/material/Slider';
 import Card from '@mui/material/Card';

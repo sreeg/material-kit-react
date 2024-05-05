@@ -1,6 +1,5 @@
 import { Box, Grid, Container, Typography } from '@mui/material';
 import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 import Page from '../components/Page';
 import React from 'react';
@@ -125,36 +124,27 @@ class DashboardApp extends React.Component {
           <Box sx={{ pb: 0 }}>
             <Typography variant="h4">Welcome, E302!</Typography>
           </Box>
+
           <NTabs navConfig={sidebarConfig} style={{ marginBottom: 24 }} />
-          <Grid container pb={2} spacing={2}>
-            <Grid item xs={12}>
-              <Card >
-                <CardContent style={{ background: "#303134" }}>
+
+          <Card>
+            <CardContent style={{ background: "#303134" }}>
+              <Grid container spacing={2} style={{ display: 'flex' }} item xs={12}>
+                <Grid item>
                   <Temperature room="living" />
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item>
-              <Card >
-                <CardContent style={{ background: "#303134" }}>
-                  <DoorSensor room="Main balcony" />
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item>
-              <Card >
-                <CardContent style={{ background: "#303134" }}>
-                  <DoorSensor room="Service balcony" />
-                </CardContent>
-              </Card>
-            </Grid>
-          </Grid>
+                </Grid>
+                <Grid item><DoorSensor room="Main balcony" /></Grid>
+                <Grid item><DoorSensor room="Service balcony" /></Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+
           <>
             {this.state.loading ? (
               <div>Loading</div>
             ) : (
               <>
-                <Grid pb={2} sm={12}>
+                <Grid pt={2} pb={2} sm={12}>
                   <Grid container spacing={2}>
                     <Grid item>
                       <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="ofan" sIDFS="dfanspeed" sName="Drawing" stateHandler={stateHandler.bind(this)} />
@@ -192,7 +182,7 @@ class DashboardApp extends React.Component {
           <Grid sm={12}>
             <Scenes />
           </Grid>
-      </Container>
+        </Container>
       </Page >
     );
   }

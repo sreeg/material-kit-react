@@ -1,20 +1,14 @@
 import React from 'react';
-import Grid from '@mui/material/Grid';
 import Icon from '@mdi/react';
 import { decodeHtml } from '../../../utils/commons';
-import { mdiWater, mdiThermometer } from '@mdi/js';
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { mdiDoorSlidingOpen, mdiDoorSliding } from '@mdi/js';
 
-
 const gateway = 'http://192.168.88.122:1880';
-const CIRCLE_WIDTH = "100%";
-const CIRCLE_HEIGHT = 100;
 const MIN_WIDTH = 125;
 class DoorSensors extends React.Component {
   constructor(props) {
@@ -44,31 +38,21 @@ class DoorSensors extends React.Component {
       });
   }
   render() {
-    var stateHandler = this.stateHandler;
     return (
       <>
         {this.state.loading ? (
           <div>Loading</div>
         ) : (
           <>
-            <Grid container>
-              <Grid style={{ display: 'flex', flexDirection: 'row' }} item>
-                <div style={{ width: CIRCLE_WIDTH, height: CIRCLE_HEIGHT, minWidth: MIN_WIDTH }} className="content-sensors">
-
-                  <>
-                    {this.state.contact === 'false' ? (
-                      <>
-                        <p>{this.state.roomName}</p>
-                        <Icon color='red' path={mdiDoorSlidingOpen} size={3} /></>) : (
-                      <>
-                        <p>{this.state.roomName}</p>
-                        <Icon color='green' path={mdiDoorSliding} size={3} />
-                      </>
-                    )}
-                  </>
-                </div>
-              </Grid>
-            </Grid>
+            <div style={{ display: 'flex', flexDirection: 'row', minWidth: MIN_WIDTH }} className="content-sensors">
+              <p style={{ margin: "0 8px" }}>{this.state.roomName}</p>
+              <>
+                {this.state.contact === 'false' ? (
+                  <Icon color='red' path={mdiDoorSlidingOpen} size={1} />) : (
+                  <Icon color='green' path={mdiDoorSliding} size={1} />
+                )}
+              </>
+            </div>
           </>
         )}
       </>
