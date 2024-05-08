@@ -41,6 +41,7 @@
     "@iconify/icons-ant-design": "^1.1.0",
     "@iconify/icons-eva": "^1.1.0",
     "@iconify/icons-ic": "^1.1.10",
+    "@iconify/icons-mdi": "^1.1.10",
     "@iconify/react": "^3.0.1",
     "@mdi/js": "^6.5.95",
     "@mdi/react": "^1.5.0",
