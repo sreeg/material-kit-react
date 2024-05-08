@@ -1,65 +1,90 @@
 .simplebar-content a.MuiListItemButton-root {
-    color: rgb(255, 255, 255, 0.6);
+  color: rgb(255, 255, 255, 0.6);
 }
+
 .simplebar-content a.MuiListItemButton-root.active {
-    color: rgb(255, 255, 255, 1);
-    /* background-color: #2249e1; */
+  color: rgb(255, 255, 255, 1);
+  /* background-color: #2249e1; */
 }
+
 .simplebar-wrapper,
 .MuiDrawer-paper {
-    background: #303134 !important;
-    color: white !important;
+  background: #303134 !important;
+  color: white !important;
 }
 
 .rw-main {
-    background-image: linear-gradient(to bottom, #1336a6, #284cb8, #3a61ca, #4c77db, #5f8deb) !important;
-  }
+  background-image: linear-gradient(to bottom, #1336a6, #284cb8, #3a61ca, #4c77db, #5f8deb) !important;
+}
 
 .nav-tabs .MuiTabs-flexContainer .MuiButtonBase-root.MuiListItemButton-root:before {
   background-color: transparent !important;
 }
+
 .nav-tabs .MuiTabs-flexContainer .MuiButtonBase-root.MuiListItemButton-root {
   padding: 8px !important;
   color: #ffffff;
 }
+
 .nav-tabs .MuiTabs-flexContainer .MuiButtonBase-root.MuiListItemButton-root.active {
   /* background-color: #2249e1; */
 }
 
-  @media (max-width: 599.95px) {
+.MuiAccordion-root {
+  background-color: rgb(48, 49, 52);
+  margin-top: 16px;
+  color: #ffffff;
+  border-radius: 12px;
+  border: none;
+}
+
+.MuiAccordion-root:before {
+  background: none;
+}
+
+@media (max-width: 599.95px) {
+
   /* .content-temparature{
     width: 100px !important;
     height: 100px !important;
   } */
   .header-temparature {
-      padding-left : 12px !important;
+    padding-left: 12px !important;
   }
+
   .header-temparature .MuiTypography-h5 {
     font-size: 16px !important;
-}
+  }
+
   .MuiCardHeader-action svg {
     width: 2rem !important;
     height: 2rem !important;
   }
+
   .curtain-content {
     zoom: 0.95;
   }
+
   /* .MuiContainer-root {
     padding-left: 8px;
     padding-right: 8px;
   } */
 }
+
 body {
   background-color: #202124;
   color: #ffffff;
 }
+
 header {
   background-color: #354057 !important;
   color: #ffffff;
 }
+
 @media (min-width: 1200px) {
-.MuiAppBar-root,
-.MuiTabs-root.nav-tabs {
-  display: none;
-}
+
+  .MuiAppBar-root,
+  .MuiTabs-root.nav-tabs {
+    display: none;
+  }
 }

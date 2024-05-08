@@ -10,8 +10,15 @@ import NTabs from './../components/NavSectionTab';
 import sidebarConfig from './../layouts/dashboard/SidebarConfig';
 import Fan from '../components/_dashboard/common/Fan';
 import Switch from '../components/_dashboard/common/Switch';
-import { mdiWaterBoiler } from '@mdi/js';
+import { mdiWaterBoiler, mdiAirConditioner } from '@mdi/js';
 import { decodeHtml } from './../utils/commons';
+import ColorAndBrightness from '../components/_dashboard/common/ColorAndBrightness';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import Button from '@mui/material/Button';
+import Icon from '@mdi/react';
 
 const gateway = 'http://192.168.88.122:1880';
 
@@ -46,7 +53,9 @@ class DashboardApp extends React.Component {
   routeChange(e) {
     window.location.href = '/dashboard/' + e;
   }
-
+  handleAllACOff = (e) => {
+    fetch(gateway + '/allacoff/').then((response) => response.json());
+  };
   componentWillUnmount() {
     clearInterval(this.updateTimer);
   }
@@ -138,6 +147,32 @@ class DashboardApp extends React.Component {
               </Grid>
             </CardContent>
           </Card>
+          <Accordion pt={2}>
+            <AccordionSummary
+              expandIcon={<ArrowDownwardIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header"
+            >
+              <Typography>Home settings</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Grid container spacing={2}>
+                <Grid item>
+                  <ColorAndBrightness cDefaultValue={this.state.commoncolor} bDefaultValue={this.state.commonbright} sColor="commoncolor" sBrightness="commonbright" stateHandler={stateHandler.bind(this)} />
+                </Grid>
+                <Grid item>
+                  <Button className='scene-switch' variant="outlined" onClick={this.handleAllACOff} size="large" color="secondary" disableFocusRipple={true}>
+                    <div className="content">
+                      <label>
+                        <Icon path={mdiAirConditioner} size={1.5} />
+                        <div>All AC off</div>
+                      </label>
+                    </div>
+                  </Button>
+                </Grid>
+              </Grid>
+            </AccordionDetails>
+          </Accordion>
 
           <>
             {this.state.loading ? (
@@ -169,10 +204,10 @@ class DashboardApp extends React.Component {
                       <Switch sVal={this.state.mgyser} sID="mgyser" sIcon={mdiWaterBoiler} sName="Bedroom" stateHandler={stateHandler.bind(this)}></Switch>
                     </Grid>
                     <Grid item>
-                      <Switch sVal={this.state.kgyser} sID="kgyser" sIcon={mdiWaterBoiler} sName="Kids" stateHandler={stateHandler.bind(this)}></Switch>
+                      <Switch sVal={this.state.ogyser} sID="ogyser" sIcon={mdiWaterBoiler} sName="Office" stateHandler={stateHandler.bind(this)}></Switch>
                     </Grid>
                     <Grid item>
-                      <Switch sVal={this.state.ogyser} sID="ogyser" sIcon={mdiWaterBoiler} sName="Office" stateHandler={stateHandler.bind(this)}></Switch>
+                      <Switch sVal={this.state.kgyser} sID="kgyser" sIcon={mdiWaterBoiler} sName="Kids" stateHandler={stateHandler.bind(this)}></Switch>
                     </Grid>
                   </Grid>
                 </Grid>

@@ -8,8 +8,11 @@ import Grid from '@mui/material/Grid';
 import { decodeHtml } from '../../../utils/commons';
 import AC from '../common/AC';
 import ColorAndBrightness from '../common/ColorAndBrightness';
+import Button from '@mui/material/Button';
+import { MdBedtime } from 'react-icons/md';
 
 const gateway = 'http://192.168.88.122:1880';
+const ICON_HEIGHT = 42;
 class BedRoom extends React.Component {
   constructor(props) {
     super(props);
@@ -39,7 +42,9 @@ class BedRoom extends React.Component {
       [obj]: val
     });
   }
-
+  handleBedtime = (e) => {
+    fetch(gateway + '/bedtime/').then((response) => response.json());
+  };
   componentWillUnmount() {
     clearInterval(this.updateTimer);
   }
@@ -137,6 +142,16 @@ class BedRoom extends React.Component {
               <Grid item>
                 <Switch sVal={this.state.mgyser} sID="mgyser" sIcon={mdiWaterBoiler} sName="Gyser" stateHandler={stateHandler.bind(this)}></Switch>
               </Grid>
+              <Grid item>
+                <Button className='scene-switch' variant="outlined" onClick={this.handleBedtime} size="large" color="secondary" disableFocusRipple={true}>
+                  <div className="content">
+                    <label>
+                      <MdBedtime size={ICON_HEIGHT} />
+                      <div>Bedtime</div>
+                    </label>
+                  </div>
+                </Button>
+              </Grid>
             </Grid>
 
             <Grid container spacing={2}>
@@ -144,7 +159,7 @@ class BedRoom extends React.Component {
                 <Curtain sVal={this.state.mblackout} sID="mblackout" sName="Blackout curtain" stateHandler={stateHandler.bind(this)}></Curtain>
               </Grid>
             </Grid>
-            
+
             <Grid container spacing={2}>
               <Grid item>
                 <AC sVal={this.state.temp} sID="BAC" sName="BAC" stateHandler={stateHandler.bind(this)} />
