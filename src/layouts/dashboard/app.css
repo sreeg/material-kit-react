@@ -42,6 +42,21 @@
   background: none;
 }
 
+.switch-with-settings {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid rgba(145, 158, 171, 0.24);
+  border-radius: 8px;
+}
+.switch-with-settings button.switch-on,
+.switch-with-settings button.switch-off {
+  zoom: 0.85;
+  margin: 8px;
+}
+.dark-dialog .MuiDialog-container .MuiPaper-root  {
+  background: #303134;
+  color: #ffffff;
+}
 @media (max-width: 599.95px) {
 
   /* .content-temparature{

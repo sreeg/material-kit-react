@@ -12,7 +12,6 @@ class SwitchCustomIcon extends React.Component {
   }
   handleSwitch = (e) => {
     var onOff = e.target.checked ? 'on' : 'off';
-    //console.log(e.target.name + ' is ' + onOff);
     this.props.stateHandler(e.target.name, onOff.toUpperCase());
     fetch(gateway + '/' + e.target.name + '/' + onOff).then((response) => response.json());
   };

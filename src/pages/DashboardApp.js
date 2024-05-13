@@ -1,6 +1,8 @@
 import { Box, Grid, Container, Typography } from '@mui/material';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import CardActions from '@mui/material/CardActions';
 import Page from '../components/Page';
 import React from 'react';
 import Scenes from '../components/_dashboard/Scenes';
@@ -13,12 +15,16 @@ import Switch from '../components/_dashboard/common/Switch';
 import { mdiWaterBoiler, mdiAirConditioner } from '@mdi/js';
 import { decodeHtml } from './../utils/commons';
 import ColorAndBrightness from '../components/_dashboard/common/ColorAndBrightness';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import Button from '@mui/material/Button';
 import Icon from '@mdi/react';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import IconButton from '@mui/material/IconButton';
+import SettingsIcon from '@mui/icons-material/Settings';
+import { Fullscreen } from '@mui/icons-material';
 
 const gateway = 'http://192.168.88.122:1880';
 
@@ -40,7 +46,9 @@ class DashboardApp extends React.Component {
       mgyser: 'OFF',
       kgyser: 'OFF',
       ogyser: 'OFF',
-      updateTimer: 0
+      updateTimer: 0,
+      open: false,
+      fullscreen: false
     };
   }
 
@@ -49,7 +57,12 @@ class DashboardApp extends React.Component {
       [obj]: val
     });
   }
-
+  handleClose = (e) => {
+    this.setState({ open: false });
+  }
+  handleSettings = (e) => {
+    this.setState({ open: true });
+  }
   routeChange(e) {
     window.location.href = '/dashboard/' + e;
   }
@@ -136,26 +149,35 @@ class DashboardApp extends React.Component {
 
           <NTabs navConfig={sidebarConfig} style={{ marginBottom: 24 }} />
 
-          <Card>
-            <CardContent style={{ background: "#303134" }}>
-              <Grid container spacing={2} style={{ display: 'flex' }} item xs={12}>
-                <Grid item>
-                  <Temperature room="living" />
+          <Card style={{ background: "#303134" }} >
+            <CardHeader style={{ paddingBottom: "16px" }}
+              action={
+                <IconButton aria-label="fingerprint" color="success" onClick={this.handleSettings} >
+                  <SettingsIcon />
+                </IconButton>
+              }
+              title={
+                <Grid container spacing={2} style={{ display: 'flex' }} item xs={12}>
+                  <Grid item>
+                    <Temperature room="living" />
+                  </Grid>
+                  <Grid item><DoorSensor room="Main balcony" /></Grid>
+                  <Grid item><DoorSensor room="Service balcony" /></Grid>
                 </Grid>
-                <Grid item><DoorSensor room="Main balcony" /></Grid>
-                <Grid item><DoorSensor room="Service balcony" /></Grid>
-              </Grid>
-            </CardContent>
+              }
+            />
           </Card>
-          <Accordion pt={2}>
-            <AccordionSummary
-              expandIcon={<ArrowDownwardIcon />}
-              aria-controls="panel1-content"
-              id="panel1-header"
-            >
-              <Typography>Home settings</Typography>
-            </AccordionSummary>
-            <AccordionDetails>
+          <Dialog
+            className='dark-dialog'
+            fullScreen={this.state.fullscreen}
+            open={this.state.open}
+            onClose={this.handleClose}
+            aria-labelledby="responsive-dialog-title"
+          >
+            <DialogTitle id="responsive-dialog-title">
+              {"Home Settings"}
+            </DialogTitle>
+            <DialogContent>
               <Grid container spacing={2}>
                 <Grid item>
                   <ColorAndBrightness cDefaultValue={this.state.commoncolor} bDefaultValue={this.state.commonbright} sColor="commoncolor" sBrightness="commonbright" stateHandler={stateHandler.bind(this)} />
@@ -171,9 +193,13 @@ class DashboardApp extends React.Component {
                   </Button>
                 </Grid>
               </Grid>
-            </AccordionDetails>
-          </Accordion>
-
+            </DialogContent>
+            <DialogActions>
+              <Button autoFocus onClick={this.handleClose}>
+                Close
+              </Button>
+            </DialogActions>
+          </Dialog>
           <>
             {this.state.loading ? (
               <div>Loading</div>

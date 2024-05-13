@@ -22,6 +22,13 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import Temperature from '../temperature';
 import addNotification from 'react-push-notification';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 const gateway = 'http://192.168.88.122:1880';
 const MenuProps = {
@@ -63,7 +70,9 @@ class OfficeRoom extends React.Component {
       effects: [],
       selectedEffect: '',
       selectedCurtainEffect: 'off',
-      updateTimer: 0
+      updateTimer: 0,
+      open: false,
+      opencurtain: false
     };
     this.handleInputThrottled = _.throttle(this.handleLinesColor, 1000);
     this.handleCurtainInputThrottled = _.throttle(this.handleCurtainColor, 1000);
@@ -74,7 +83,16 @@ class OfficeRoom extends React.Component {
       [obj]: val
     });
   }
-
+  handleClose = (e) => {
+    this.setState({ open: false });
+    this.setState({ opencurtain: false });
+  }
+  handleSettings = (e) => {
+    this.setState({ open: true });
+  }
+  handleCurtainSettings = (e) => {
+    this.setState({ opencurtain: true });
+  }
   handleEffect = (e) => {
     console.log(e.target.value);
     this.setState({ selectedEffect: e.target.value });
@@ -221,105 +239,143 @@ class OfficeRoom extends React.Component {
 
             <Grid container pb={3} spacing={2}>
               <Grid item>
-                <SwitchCustomIcon sVal={this.state.lines} sID="lines" sIcon={FaPagelines} sName="Nano lines" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
+                <div className='switch-with-settings'>
+                  <SwitchCustomIcon sVal={this.state.lines} sID="lines" sIcon={FaPagelines} sName="Nano lines" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
+                  <IconButton aria-label="settings" color="success" onClick={this.handleSettings} >
+                    <SettingsIcon />
+                  </IconButton>
+                </div>
               </Grid>
-              {this.state.lines === 'ON' ? (
-                <>
-                  <Grid item>
-                    <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
-                      <InputLabel id="demo-simple-select-helper-label" style={{ color: 'white' }}>
-                        Scene name
-                      </InputLabel>
-                      <Select style={{ color: 'white' }} label="Scene name" labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={this.state.selectedEffect} onChange={this.handleEffect}>
-                        {this.state.effects.map((name) => (
-                          <MenuItem key={name} value={name}>
-                            {name}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
+              <Dialog
+                className='dark-dialog'
+                fullScreen={this.state.fullscreen}
+                open={this.state.open}
+                onClose={this.handleClose}
+                aria-labelledby="responsive-dialog-title"
+              >
+                <DialogTitle id="responsive-dialog-title">
+                  {"Nano line Settings"}
+                </DialogTitle>
+                <DialogContent>
+                  <Grid container pb={3} spacing={2}>
+                    <Grid item>
+                      <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
+                        <InputLabel id="demo-simple-select-helper-label" style={{ color: 'white' }}>
+                          Scene name
+                        </InputLabel>
+                        <Select style={{ color: 'white' }} label="Scene name" labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={this.state.selectedEffect} onChange={this.handleEffect}>
+                          {this.state.effects.map((name) => (
+                            <MenuItem key={name} value={name}>
+                              {name}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                    <Grid item>
+                      <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
+                        <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
+                          <Typography sx={{ fontSize: 14 }} color="text.white">
+                            Brightness
+                          </Typography>
+                          <Slider defaultValue={this.state.linesbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleLBrightness} />
+                        </CardContent>
+                      </Card>
+                    </Grid>
+                    <Grid item>
+                      <HexColorPicker color={this.state.color} onChange={this.handleInputThrottled} />
+                    </Grid>
                   </Grid>
-                  <Grid item>
-                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.white">
-                          Brightness
-                        </Typography>
-                        <Slider defaultValue={this.state.linesbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleLBrightness} />
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                  <Grid item>
-                    <HexColorPicker color={this.state.color} onChange={this.handleInputThrottled} />
-                  </Grid>
-                </>
-              ) : (
-                ''
-              )}
-              <Grid item>
+                </DialogContent>
+                <DialogActions>
+                  <Button autoFocus onClick={this.handleClose}>
+                    Close
+                  </Button>
+                </DialogActions>
+              </Dialog>
+              {/* <Grid item>
                 <Switch sVal={this.state.olight5} sID="olight5" sIcon={mdiLightbulbVariantOutline} sName="Light 5" stateHandler={stateHandler.bind(this)}></Switch>
-              </Grid>
+              </Grid> */}
               <Grid item>
-                <Switch sVal={this.state.olight6} sID="olight6" sIcon={mdiVanityLight} sName="Curtain light" stateHandler={stateHandler.bind(this)}></Switch>
+                <div className='switch-with-settings'>
+                  <Switch sVal={this.state.olight6} sID="olight6" sIcon={mdiVanityLight} sName="Curtain light" stateHandler={stateHandler.bind(this)}></Switch>
+                  <IconButton aria-label="settings" color="success" onClick={this.handleCurtainSettings} >
+                    <SettingsIcon />
+                  </IconButton>
+                </div>
               </Grid>
-              {this.state.olight6 === 'ON' ? (
-                <>
-                  <Grid item>
-                    <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
-                      <InputLabel id="demo-simple-select-helper-label" style={{ color: 'white' }}>
-                        Scene name
-                      </InputLabel>
-                      <Select style={{ color: 'white' }} label="Scene name" labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={this.state.selectedCurtainEffect} onChange={this.handleCurtainEffect}>
-                        <MenuItem key="off" value="off">
-                          None
-                        </MenuItem>
-                        <MenuItem key="cool" value="153">
-                          Coolest
-                        </MenuItem>
-                        <MenuItem key="cool" value="250">
-                          Cool
-                        </MenuItem>
-                        <MenuItem key="cool" value="370">
-                          Neutral
-                        </MenuItem>
-                        <MenuItem key="cool" value="454">
-                          Warm
-                        </MenuItem>
-                        <MenuItem key="warm" value="500">
-                          Warmest
-                        </MenuItem>
-                        <MenuItem key="color" value="Color">
-                          Color
-                        </MenuItem>
-                        <MenuItem key="mix" value="mix">
-                          Mix
-                        </MenuItem>
-                      </Select>
-                    </FormControl>
+              <Dialog
+                className='dark-dialog'
+                fullScreen={this.state.fullscreen}
+                open={this.state.opencurtain}
+                onClose={this.handleClose}
+                aria-labelledby="responsive-dialog-title"
+              >
+                <DialogTitle id="responsive-dialog-title">
+                  {"Curtain light Settings"}
+                </DialogTitle>
+                <DialogContent>
+                  <Grid container pb={3} spacing={2}>
+                    <Grid item>
+                      <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
+                        <InputLabel id="demo-simple-select-helper-label" style={{ color: 'white' }}>
+                          Scene name
+                        </InputLabel>
+                        <Select style={{ color: 'white' }} label="Scene name" labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={this.state.selectedCurtainEffect} onChange={this.handleCurtainEffect}>
+                          <MenuItem key="off" value="off">
+                            None
+                          </MenuItem>
+                          <MenuItem key="cool" value="153">
+                            Coolest
+                          </MenuItem>
+                          <MenuItem key="cool" value="250">
+                            Cool
+                          </MenuItem>
+                          <MenuItem key="cool" value="370">
+                            Neutral
+                          </MenuItem>
+                          <MenuItem key="cool" value="454">
+                            Warm
+                          </MenuItem>
+                          <MenuItem key="warm" value="500">
+                            Warmest
+                          </MenuItem>
+                          <MenuItem key="color" value="Color">
+                            Color
+                          </MenuItem>
+                          <MenuItem key="mix" value="mix">
+                            Mix
+                          </MenuItem>
+                        </Select>
+                      </FormControl>
+                    </Grid>
+                    <Grid item>
+                      <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
+                        <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
+                          <Typography sx={{ fontSize: 14 }} color="text.white">
+                            Brightness
+                          </Typography>
+                          <Slider defaultValue={this.state.curtainbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleCurtainBrightness} />
+                        </CardContent>
+                      </Card>
+                    </Grid>
+                    {this.state.selectedCurtainEffect === 'Color' ? (
+                      <>
+                        <Grid item>
+                          <HexColorPicker color={this.state.curtaincolor} onChange={this.handleCurtainInputThrottled} />
+                        </Grid>
+                      </>
+                    ) : (
+                      ''
+                    )}
                   </Grid>
-                  <Grid item>
-                    <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                      <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-                        <Typography sx={{ fontSize: 14 }} color="text.white">
-                          Brightness
-                        </Typography>
-                        <Slider defaultValue={this.state.curtainbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleCurtainBrightness} />
-                      </CardContent>
-                    </Card>
-                  </Grid>
-                  {this.state.selectedCurtainEffect === 'Color' ? (
-                    <>
-                      <Grid item>
-                        <HexColorPicker color={this.state.curtaincolor} onChange={this.handleCurtainInputThrottled} />
-                      </Grid>
-                    </>
-                  ) : (
-                    ''
-                  )}
-                </>
-              ) : (
-                ''
-              )}
+                </DialogContent>
+                <DialogActions>
+                  <Button autoFocus onClick={this.handleClose}>
+                    Close
+                  </Button>
+                </DialogActions>
+              </Dialog>
               <Grid item>
                 <Switch sVal={this.state.olight7} sID="olight7" sIcon={mdiLightbulbVariantOutline} sName="WD warm" stateHandler={stateHandler.bind(this)}></Switch>
               </Grid>
@@ -336,7 +392,7 @@ class OfficeRoom extends React.Component {
                 <Switch sVal={this.state.oled} sID="oled" sIcon={mdiLedStripVariant} sName="LED" stateHandler={stateHandler.bind(this)}></Switch>
               </Grid>
               <Grid item>
-                <Switch sVal={this.state.oac} sID="oac" sIcon={mdiAirConditioner} sName="AC" stateHandler={stateHandler.bind(this)}></Switch>
+                <Switch sVal={this.state.oac} sID="oac" sIcon={mdiAirConditioner} sName="" stateHandler={stateHandler.bind(this)}></Switch>
               </Grid>
             </Grid>
 
