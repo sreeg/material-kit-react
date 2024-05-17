@@ -26,7 +26,6 @@ class AC extends React.Component {
   };
 
   handleChange = (e, val) => {
-    //console.log(this.props.sName + ' is now ' + val);
     this.setState({ onoff: val });
     this.props.stateHandler(e.target.name, val);
     fetch(gateway + '/' + this.props.sName + '/' + val).then((response) => response.json());
@@ -50,8 +49,8 @@ class AC extends React.Component {
                   onChange={this.handleChange}
                   aria-label="Platform"
                 >
-                  <ToggleButton value="on">On</ToggleButton>
-                  <ToggleButton value="off">Off</ToggleButton>
+                  <ToggleButton value="on">ON</ToggleButton>
+                  <ToggleButton value="off">OFF</ToggleButton>
                 </ToggleButtonGroup>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                   <FormControl sx={{ m: 1, minWidth: 90 }}>

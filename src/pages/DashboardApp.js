@@ -208,7 +208,7 @@ class DashboardApp extends React.Component {
                 <Grid pt={2} pb={2} sm={12}>
                   <Grid container spacing={2}>
                     <Grid item>
-                      <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="ofan" sIDFS="dfanspeed" sName="Drawing" stateHandler={stateHandler.bind(this)} />
+                      <Fan sVal={this.state.dfan} sFval={this.state.dfanspeed} sID="dfan" sIDFS="dfanspeed" sName="Drawing" stateHandler={stateHandler.bind(this)} />
                     </Grid>
                     <Grid item>
                       <Fan sVal={this.state.mfan} sFval={this.state.mfanspeed} sID="mfan" sIDFS="mfanspeed" sName="Bedroom" stateHandler={stateHandler.bind(this)} />
