@@ -1,5 +1,5 @@
 import React from 'react';
-import { mdiMovieOpen, mdiWallSconceFlat, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiCheckboxBlankCircleOutline, mdiCircle } from '@mdi/js';
+import { mdiMovieOpen } from '@mdi/js';
 import { GiExitDoor, GiEntryDoor, GiCandleFlame } from 'react-icons/gi';
 import { MdBedtime } from 'react-icons/md';
 import Grid from '@mui/material/Grid';

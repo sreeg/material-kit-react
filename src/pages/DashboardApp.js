@@ -1,8 +1,6 @@
 import { Box, Grid, Container, Typography } from '@mui/material';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
-import CardActions from '@mui/material/CardActions';
 import Page from '../components/Page';
 import React from 'react';
 import Scenes from '../components/_dashboard/Scenes';
@@ -20,11 +18,9 @@ import Icon from '@mdi/react';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import IconButton from '@mui/material/IconButton';
 import SettingsIcon from '@mui/icons-material/Settings';
-import { Fullscreen } from '@mui/icons-material';
 
 const gateway = 'http://192.168.88.122:1880';
 

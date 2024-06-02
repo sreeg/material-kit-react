@@ -1,9 +1,7 @@
 import './switch.css';
 import './zone.css';
 import React from 'react';
-import Icon from '@mdi/react';
 import Button from '@mui/material/Button';
-import { mdiCeilingFan, mdiLightbulbVariantOutline, mdiCurtains, mdiCurtainsClosed, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights } from '@mdi/js';
 
 const gateway = 'http://192.168.88.122:1880';
 class Switch extends React.Component {

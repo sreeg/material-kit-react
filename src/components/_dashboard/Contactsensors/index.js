@@ -1,12 +1,6 @@
 import React from 'react';
-import { mdiMovieOpen, mdiWallSconceFlat, mdiTelevision, mdiCoachLamp, mdiVanityLight, mdiStringLights, mdiCheckboxBlankCircleOutline, mdiCircle } from '@mdi/js';
-import { GiExitDoor, GiEntryDoor, GiCandleFlame } from 'react-icons/gi';
-import { MdBedtime } from 'react-icons/md';
+import { mdiMovieOpen } from '@mdi/js';
 import Grid from '@mui/material/Grid';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import Icon from '@mdi/react';
 
 const gateway = 'http://192.168.88.122:1880';
