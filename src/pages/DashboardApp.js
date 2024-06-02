@@ -69,6 +69,9 @@ class DashboardApp extends React.Component {
   handleAllACOff = (e) => {
     fetch(gateway + '/allacoff/').then((response) => response.json());
   };
+  handleAllACOn = (e) => {
+    fetch(gateway + '/allacon/').then((response) => response.json());
+  };
   componentWillUnmount() {
     clearInterval(this.updateTimer);
   }
@@ -181,6 +184,16 @@ class DashboardApp extends React.Component {
               <Grid container spacing={2}>
                 <Grid item>
                   <ColorAndBrightness cDefaultValue={this.state.commoncolor} bDefaultValue={this.state.commonbright} sColor="commoncolor" sBrightness="commonbright" stateHandler={stateHandler.bind(this)} />
+                </Grid>
+                <Grid item>
+                  <Button className='scene-switch' variant="outlined" onClick={this.handleAllACOn} size="large" color="secondary" disableFocusRipple={true}>
+                    <div className="content">
+                      <label>
+                        <Icon path={mdiAirConditioner} size={1.5} />
+                        <div>All AC on</div>
+                      </label>
+                    </div>
+                  </Button>
                 </Grid>
                 <Grid item>
                   <Button className='scene-switch' variant="outlined" onClick={this.handleAllACOff} size="large" color="secondary" disableFocusRipple={true}>

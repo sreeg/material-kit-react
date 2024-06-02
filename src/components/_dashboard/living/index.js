@@ -93,6 +93,12 @@ class Living extends React.Component {
         data = JSON.parse(data);
         this.setState({ lcurtainlight: data['1'].power });
       });
+      fetch(gateway + '/threelightstatus')
+      .then((response) => response.text())
+      .then((data) => {
+        data = JSON.parse(decodeHtml(data));
+        this.setState({ lfloorikea: data });
+      });
     fetch(gateway + '/lboardmainstatus')
       .then((response) => response.text())
       .then((data) => {
