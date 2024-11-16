@@ -146,7 +146,10 @@ class OfficeRoom extends React.Component {
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
         this.setState({ osheer: data['1'].curtain });
-      });
+      }).catch(error => {
+        // Do something on error 
+        console.log(error)
+    });
     fetch(gateway + '/ogyserstatus')
       .then((response) => response.text())
       .then((data) => {
@@ -158,7 +161,10 @@ class OfficeRoom extends React.Component {
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
         this.setState({ oblackout: data['1'].curtain });
-      });
+      }).catch(error => {
+        // Do something on error 
+        console.log(error)
+    });
     fetch(gateway + '/getlineseffects')
       .then((response) => response.text())
       .then((data) => {
