@@ -31,17 +31,19 @@ class DoorSensors extends React.Component {
       .then((response) => response.text())
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
-        console.log(data.contact);
         this.setState({ contact: data.contact + '' });
         this.setState({ roomName: that.props.room });
         this.setState({ loading: false });
-      });
+      })
+      .catch(error => {
+        console.log(error)
+    });
   }
   render() {
     return (
       <>
         {this.state.loading ? (
-          <div>Loading</div>
+          <div>Loading...</div>
         ) : (
           <>
             <div style={{ display: 'flex', flexDirection: 'row', minWidth: MIN_WIDTH }} className="content-sensors">
