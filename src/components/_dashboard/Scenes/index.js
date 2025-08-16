@@ -28,7 +28,7 @@ class Scenes extends React.Component {
       <>
         <Grid container spacing={2}>
           <Grid item>
-            <Button className='scene-switch' variant="outlined" onClick={this.handleMovieMode} size="large" color="secondary" disableFocusRipple={true}>
+            <Button className="scene-switch" variant="outlined" onClick={this.handleMovieMode} size="large" color="secondary" disableFocusRipple={true}>
               <div className="content">
                 <label>
                   <Icon path={mdiMovieOpen} size={1.5} />
@@ -38,7 +38,7 @@ class Scenes extends React.Component {
             </Button>
           </Grid>
           <Grid item>
-            <Button className='scene-switch' variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
+            <Button className="scene-switch" variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
               <div className="content">
                 <label>
                   <GiCandleFlame size={ICON_HEIGHT} />
@@ -48,7 +48,17 @@ class Scenes extends React.Component {
             </Button>
           </Grid>
           <Grid item>
-            <Button className='scene-switch' variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
+            <Button className="scene-switch" variant="outlined" onClick={this.handleBedtime} size="large" color="secondary" disableFocusRipple={true}>
+              <div className="content">
+                <label>
+                  <MdBedtime size={ICON_HEIGHT} />
+                  <div>Bedtime</div>
+                </label>
+              </div>
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button className="scene-switch" variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
               <div className="content">
                 <label>
                   <GiEntryDoor size={ICON_HEIGHT} />
@@ -58,21 +68,11 @@ class Scenes extends React.Component {
             </Button>
           </Grid>
           <Grid item>
-            <Button className='scene-switch' variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
+            <Button className="scene-switch" variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
               <div className="content">
                 <label>
                   <GiExitDoor size={ICON_HEIGHT} />
                   <div>Home exit</div>
-                </label>
-              </div>
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button className='scene-switch' variant="outlined" onClick={this.handleBedtime} size="large" color="secondary" disableFocusRipple={true}>
-              <div className="content">
-                <label>
-                  <MdBedtime size={ICON_HEIGHT} />
-                  <div>Bedtime</div>
                 </label>
               </div>
             </Button>
