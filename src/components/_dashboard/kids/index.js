@@ -1,9 +1,11 @@
 import React from 'react';
 import Switch from '../common/Switch';
+import SwitchCustomIcon from '../common/SwitchCustomIcon';
 import Curtain from '../common/Curtain';
 import Zone from '../common/Zone';
 import Fan from '../common/Fan';
 import { mdiLamp, mdiCoachLamp, mdiWaterBoiler, mdiStringLights } from '@mdi/js';
+import { GiElectricalSocket } from 'react-icons/gi';
 import Grid from '@mui/material/Grid';
 import { decodeHtml } from '../../../utils/commons';
 import ColorAndBrightness from '../common/ColorAndBrightness';
@@ -27,6 +29,8 @@ class Kids extends React.Component {
       kblackout: 'CLOSE',
       kgyser: 'OFF',
       ktablelamp: 'OFF',
+      ksocket1: 'OFF',
+      ksocketwardrobe: 'OFF',
       updateTimer: 0
     };
   }
@@ -47,6 +51,7 @@ class Kids extends React.Component {
       .then((response) => response.text())
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
+        this.setState({ ksocketwardrobe: data['7'].power });
         this.setState({ kgyser: data['8'].power });
       });
     fetch(gateway + '/kblackoutcurtainstatus')
@@ -54,6 +59,13 @@ class Kids extends React.Component {
       .then((data) => {
         data = JSON.parse(decodeHtml(data));
         this.setState({ kblackout: data['1'].curtain });
+      });
+    fetch(gateway + '/ksbstatus')
+      .then((response) => response.text())
+      .then((data) => {
+        data = JSON.parse(decodeHtml(data));
+        this.setState({ kwalllamp: data['1'].power });
+        this.setState({ ksocket1: data['2'].power });
       });
     fetch(gateway + '/kboardmainstatus')
       .then((response) => response.text())
@@ -115,6 +127,12 @@ class Kids extends React.Component {
               </Grid>
               <Grid item>
                 <Switch sVal={this.state.ktablelamp} sID="ktablelamp" sIcon={mdiLamp} sName="Table Lamp" stateHandler={stateHandler.bind(this)}></Switch>
+              </Grid>
+              <Grid item>
+                <SwitchCustomIcon sVal={this.state.ksocket1} sID="ksocket1" sIcon={GiElectricalSocket} sName="Socket 1" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
+              </Grid>
+              <Grid item>
+                <SwitchCustomIcon sVal={this.state.ksocketwardrobe} sID="ksocketwardrobe" sIcon={GiElectricalSocket} sName="Socket Wardrobe" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
               </Grid>
             </Grid>
             <Grid container spacing={2}>
