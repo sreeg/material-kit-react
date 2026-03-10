@@ -54,53 +54,79 @@ class BedRoom extends React.Component {
     fetch(gateway + '/mgyserstatus')
       .then((response) => response.text())
       .then((data) => {
-        data = JSON.parse(decodeHtml(data));
-        this.setState({ mgyser: data['2'].power });
+        try {
+          data = JSON.parse(decodeHtml(data));
+          this.setState({ mgyser: data['2'].power });
+        } catch (e) {
+          console.error("Failed to parse geyser status:", e);
+        }
       });
     fetch(gateway + '/mentrancestatus')
       .then((response) => response.text())
       .then((data) => {
-        data = JSON.parse(decodeHtml(data));
-        this.setState({ mwalllamp: data['1'].power });
-        this.setState({ mwtvunderlight: data['2'].power });
+        try {
+          data = JSON.parse(decodeHtml(data));
+          this.setState({ mwalllamp: data['1'].power });
+          this.setState({ mwtvunderlight: data['2'].power });
+        } catch (e) {
+          console.error("Failed to parse entrance status:", e);
+        }
       });
     fetch(gateway + '/mblackoutcurtainstatus')
       .then((response) => response.text())
       .then((data) => {
-        data = JSON.parse(decodeHtml(data));
-        this.setState({ mblackout: data['1'].curtain });
+        try {
+          data = JSON.parse(decodeHtml(data));
+          this.setState({ mblackout: data['1'].curtain });
+        } catch (e) {
+          console.error("Failed to parse blackout curtain status:", e);
+        }
       });
     fetch(gateway + '/mboardmainstatus')
       .then((response) => response.text())
       .then((data) => {
-        data = JSON.parse(decodeHtml(data));
-        var speed = data['1'].speed;
-        this.setState({ mbrightness: Math.round(speed / 20) });
-        speed = data['2'].speed;
-        this.setState({ mcolor: Math.round(speed / 20) });
-        this.setState({ maczone: data['5'].power });
-        this.setState({ mcenterzone: data['3'].power });
-        this.setState({ mwardrobe: data['7'].power });
+        try {
+          data = JSON.parse(decodeHtml(data));
+          var speed = data['1'].speed;
+          this.setState({ mbrightness: Math.round(speed / 20) });
+          speed = data['2'].speed;
+          this.setState({ mcolor: Math.round(speed / 20) });
+          this.setState({ maczone: data['5'].power });
+          this.setState({ mcenterzone: data['3'].power });
+          this.setState({ mwardrobe: data['7'].power });
+        } catch (e) {
+          console.error("Failed to parse main board status:", e);
+        }
       });
     fetch(gateway + '/mtvboardstatus')
       .then((response) => response.text())
       .then((data) => {
-        data = JSON.parse(decodeHtml(data));
-        this.setState({ mtv: data['2'].power });
-        this.setState({ mtvunderlight: data['3'].power });
-        this.setState({ loading: false });
+        try {
+          data = JSON.parse(decodeHtml(data));
+          this.setState({ mtv: data['2'].power });
+          this.setState({ mtvunderlight: data['3'].power });
+        } catch (e) {
+          console.error("Failed to parse TV board status:", e);
+        } finally {
+          this.setState({ loading: false });
+        }
       });
     fetch(gateway + '/mboardtwostatus')
       .then((response) => response.text())
       .then((data) => {
-        data = JSON.parse(decodeHtml(data));
-        this.setState({ mfan: data['1'].power });
-        var speed = data['1'].speed;
-        this.setState({ mfanspeed: Math.round(speed / 20) });
-        this.setState({ mlight2: data['2'].power });
-        this.setState({ mlight3: data['3'].power });
-        this.setState({ mlight4: data['4'].power });
-        this.setState({ loading: false });
+        try {
+          data = JSON.parse(decodeHtml(data));
+          this.setState({ mfan: data['1'].power });
+          var speed = data['1'].speed;
+          this.setState({ mfanspeed: Math.round(speed / 20) });
+          this.setState({ mlight2: data['2'].power });
+          this.setState({ mlight3: data['3'].power });
+          this.setState({ mlight4: data['4'].power });
+        } catch (e) {
+          console.error("Failed to parse board two status:", e);
+        } finally {
+          this.setState({ loading: false });
+        }
       });
   }
   render() {

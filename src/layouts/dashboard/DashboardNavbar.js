@@ -1,14 +1,17 @@
 import PropTypes from 'prop-types';
 import { Icon } from '@iconify/react';
 import menu2Fill from '@iconify/icons-eva/menu-2-fill';
+import sunFill from '@iconify/icons-eva/sun-fill';
+import moonFill from '@iconify/icons-eva/moon-fill';
 // material
-import { alpha, styled } from '@mui/material/styles';
-import { Box, Stack, AppBar, Toolbar, IconButton } from '@mui/material';
+import { alpha, styled, useTheme } from '@mui/material/styles';
+import { Box, Stack, AppBar, Toolbar, IconButton, Tooltip } from '@mui/material';
 // components
 import { MHidden } from '../../components/@material-extend';
 //
 import Searchbar from './Searchbar';
 import AccountPopover from './AccountPopover';
+import { useThemeMode } from '../../theme';
 
 // ----------------------------------------------------------------------
 
@@ -41,12 +44,15 @@ DashboardNavbar.propTypes = {
 };
 
 export default function DashboardNavbar({ onOpenSidebar }) {
+  const theme = useTheme();
+  const { mode, toggleThemeMode } = useThemeMode();
+
   return (
     <RootStyle>
       <ToolbarStyle>
         <MHidden width="lgUp">
           <IconButton onClick={onOpenSidebar} sx={{ mr: 1, color: 'text.primary' }}>
-            <Icon style={{color: '#ffffff'}} icon={menu2Fill} />
+            <Icon color={theme.palette.text.primary} icon={menu2Fill} />
           </IconButton>
         </MHidden>
 
@@ -54,6 +60,11 @@ export default function DashboardNavbar({ onOpenSidebar }) {
         <Box sx={{ flexGrow: 1 }} />
 
         <Stack direction="row" alignItems="center" spacing={{ xs: 0.5, sm: 1.5 }}>
+          <Tooltip title={mode === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}>
+            <IconButton onClick={toggleThemeMode} sx={{ color: 'text.primary' }}>
+              <Icon icon={mode === 'dark' ? sunFill : moonFill} />
+            </IconButton>
+          </Tooltip>
           <AccountPopover />
         </Stack>
       </ToolbarStyle>

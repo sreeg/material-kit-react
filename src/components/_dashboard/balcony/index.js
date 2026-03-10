@@ -11,6 +11,7 @@ import { mdiHandsPray } from '@mdi/js';
 import { GiByzantinTemple, GiElectricalSocket, GiCandleFlame } from 'react-icons/gi';
 import { FaFan } from 'react-icons/fa';
 import { MdBalcony } from 'react-icons/md';
+import { mdiPipeValve } from '@mdi/js';
 import ColorAndBrightness from '../common/ColorAndBrightness';
 
 const gateway = 'http://192.168.88.122:1880';
@@ -36,7 +37,8 @@ class BalconyArea extends React.Component {
       bsocket: 'OFF',
       balconyzone: 'OFF',
       bsocket: 'OFF',
-      bexhaust: 'OFF'
+      bexhaust: 'OFF',
+      bvalve: 'OFF'
     };
   }
 
@@ -109,6 +111,17 @@ class BalconyArea extends React.Component {
         this.setState({ dlight3: data['3'].power });
         this.setState({ loading: false });
       });
+    fetch(gateway + '/watervalvestatus')
+      .then((response) => response.text())
+      .then((data) => {
+        try {
+          data = JSON.parse(decodeHtml(data));
+          this.setState({ bvalve: data.state || 'OFF' });
+        } catch (e) {
+          console.error("Failed to parse water valve status:", data);
+        }
+      })
+      .catch((err) => console.error("Fetch error for water valve status:", err));
   }
   render() {
     var stateHandler = this.stateHandler;
@@ -155,6 +168,9 @@ class BalconyArea extends React.Component {
               <Grid item>
                 <SwitchCustomIcon sVal={this.state.bexhaust} sID="bexhaust" sIcon={FaFan} sName="Balcony exhaust" stateHandler={stateHandler.bind(this)}></SwitchCustomIcon>
               </Grid>
+              <Grid item>
+                <Switch sVal={this.state.bvalve} sID="bvalve" sIcon={mdiPipeValve} sName="Water valve" stateHandler={stateHandler.bind(this)}></Switch>
+              </Grid>
               {/* <Grid item>
                     <Switch sVal={this.state.dlight1} sID="dlight1" sIcon={mdiLightbulbVariantOutline} sName="Dinning light 1" stateHandler={stateHandler.bind(this)}></Switch>
                   </Grid>
@@ -176,7 +192,7 @@ class BalconyArea extends React.Component {
             </Grid>
 
             <Grid item xs={6}>
-              <Button className='scene-switch' variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
+              <Button className="scene-switch" variant="outlined" onClick={this.handleCozyMode} size="large" color="secondary" disableFocusRipple={true}>
                 <div className="content">
                   <GiCandleFlame size={48} />
                   <div>Cozy mode</div>

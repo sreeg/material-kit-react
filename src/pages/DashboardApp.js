@@ -148,7 +148,7 @@ class DashboardApp extends React.Component {
 
           <NTabs navConfig={sidebarConfig} style={{ marginBottom: 24 }} />
 
-          <Card style={{ background: "#303134" }} >
+          <Card sx={{ bgcolor: 'background.paper', color: 'text.primary' }} >
             <CardHeader style={{ paddingBottom: "16px" }}
               action={
                 <IconButton aria-label="fingerprint" color="success" onClick={this.handleSettings} >

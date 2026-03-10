@@ -39,8 +39,8 @@ class AC extends React.Component {
       <Grid container pb={1} spacing={2} className='card-ac'>
         <Grid item>
           <Card sx={{ minWidth: 100, mb: 2 }}>
-            <CardContent style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: "16px 8px", background: "#303134" }}>
-              <Icon style={{ marginLeft: 16, marginRight: 16 }} path={mdiAirConditioner} size={2} />
+            <CardContent style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', padding: "16px 8px" }} sx={{ bgcolor: 'background.paper', color: 'text.primary' }}>
+              <Icon style={{ marginLeft: 16, marginRight: 16 }} path={mdiAirConditioner} size={2} color="currentColor" />
               <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flex: 1 }}>
                 <ToggleButtonGroup
                   color="primary"
@@ -54,7 +54,7 @@ class AC extends React.Component {
                 </ToggleButtonGroup>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
                   <FormControl sx={{ m: 1, minWidth: 90 }}>
-                    <InputLabel id="demo-simple-select-autowidth-label">Temparature</InputLabel>
+                    <InputLabel id="demo-simple-select-autowidth-label" sx={{ color: 'text.primary' }}>Temparature</InputLabel>
                     <Select
                       labelId="temparature-ac"
                       id="temparature-ac"

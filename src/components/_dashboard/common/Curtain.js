@@ -27,8 +27,8 @@ class Switch extends React.Component {
     let { sVal, sID, sName, stateHandler } = this.props;
     return (
       <Card variant="outlined" elevation={0} sx={{ minWidth: 100, mb: 2, boxShadow: 0 }}>
-        <CardContent className='curtain-content' style={{ display: 'flex', flexDirection: 'column', padding: "8px 24px 16px 24px", background: "#303134" }}>
-          <Typography style={{marginBottom: "8px"}} variant="body2" component="h6">{sName}</Typography>
+        <CardContent className='curtain-content' sx={{ display: 'flex', flexDirection: 'column', padding: "8px 24px 16px 24px", bgcolor: 'background.paper' }}>
+          <Typography sx={{marginBottom: "8px", color: 'text.primary'}} variant="body2" component="h6">{sName}</Typography>
           <ToggleButtonGroup color="secondary" value={this.state.alignment} exclusive onChange={this.handleSwitch}>
             <ToggleButton value="OPEN">
               <Icon path={mdiCurtains} size={2} />

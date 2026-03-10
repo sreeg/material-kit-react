@@ -12,6 +12,7 @@ import { MHidden } from '../../components/@material-extend';
 //
 import sidebarConfig from './SidebarConfig';
 import account from '../../_mocks_/account';
+import { useThemeMode } from '../../theme';
 
 // ----------------------------------------------------------------------
 
@@ -41,6 +42,7 @@ DashboardSidebar.propTypes = {
 
 export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
   const { pathname } = useLocation();
+  const { mode, toggleThemeMode } = useThemeMode();
 
   useEffect(() => {
     if (isOpenSidebar) {
@@ -66,10 +68,10 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
           <AccountStyle>
             <Avatar src={account.photoURL} alt="photoURL" />
             <Box sx={{ ml: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: 'text.primary' }}>
+              <Typography variant="subtitle2" sx={{ color: mode === 'dark' ? '#000000' : 'text.primary' }}>
                 {account.displayName}
               </Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+              <Typography variant="body2" sx={{ color: mode === 'dark' ? '#333333' : 'text.secondary' }}>
                 {account.role}
               </Typography>
             </Box>
@@ -80,6 +82,12 @@ export default function DashboardSidebar({ isOpenSidebar, onCloseSidebar }) {
       <NavSection navConfig={sidebarConfig} />
 
       <Box sx={{ flexGrow: 1 }} />
+      
+      <Box sx={{ p: 2, textAlign: 'center' }}>
+        <Button variant="outlined" onClick={toggleThemeMode} fullWidth>
+          Theme: {mode.charAt(0).toUpperCase() + mode.slice(1)}
+        </Button>
+      </Box>
     </Scrollbar>
   );
 

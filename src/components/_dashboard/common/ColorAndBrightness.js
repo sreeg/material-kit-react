@@ -44,16 +44,16 @@ class ColorAndBrightness extends React.Component {
     return (
       <Grid>
         <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0, flex: 1 }}>
-          <CardContent style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flex: 1, padding: '13px', background: "#303134" }}>
+          <CardContent style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', flex: 1, padding: '13px' }} sx={{ bgcolor: 'background.paper' }}>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: 100, marginRight: 24, flex: 1 }}>
-              <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
+              <Typography sx={{ fontSize: 14, color: 'text.primary' }} gutterBottom>
                 Color
               </Typography>
               <Slider defaultValue={cDefaultValue} name={sColor} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleColor} />
             </div>
             <Divider orientation="vertical" flexItem />
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: 100, marginLeft: 18, flex: 1 }}>
-              <Typography sx={{ fontSize: 14 }} color="text.white" gutterBottom>
+              <Typography sx={{ fontSize: 14, color: 'text.primary' }} gutterBottom>
                 Brightness
               </Typography>
               <Slider defaultValue={bDefaultValue} name={sBrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleBrightness} />

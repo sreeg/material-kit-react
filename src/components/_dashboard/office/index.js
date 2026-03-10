@@ -213,7 +213,7 @@ class OfficeRoom extends React.Component {
             <Grid container pb={3}>
               <Grid xs={12} item>
                 <Card pb={3}>
-                  <CardContent style={{ background: "#303134", borderRadius: "16px" }}>
+                  <CardContent style={{ borderRadius: "16px" }} sx={{ bgcolor: 'background.paper', color: 'text.primary' }}>
                     <Temperature room="office" />
                   </CardContent>
                 </Card>
@@ -253,7 +253,6 @@ class OfficeRoom extends React.Component {
                 </div>
               </Grid>
               <Dialog
-                className='dark-dialog'
                 fullScreen={this.state.fullscreen}
                 open={this.state.open}
                 onClose={this.handleClose}
@@ -266,10 +265,10 @@ class OfficeRoom extends React.Component {
                   <Grid container pb={3} spacing={2}>
                     <Grid item>
                       <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
-                        <InputLabel id="demo-simple-select-helper-label" style={{ color: 'white' }}>
+                        <InputLabel id="demo-simple-select-helper-label" sx={{ color: 'text.primary' }}>
                           Scene name
                         </InputLabel>
-                        <Select style={{ color: 'white' }} label="Scene name" labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={this.state.selectedEffect} onChange={this.handleEffect}>
+                        <Select sx={{ color: 'text.primary' }} label="Scene name" labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={this.state.selectedEffect} onChange={this.handleEffect}>
                           {this.state.effects.map((name) => (
                             <MenuItem key={name} value={name}>
                               {name}
@@ -280,8 +279,8 @@ class OfficeRoom extends React.Component {
                     </Grid>
                     <Grid item>
                       <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                        <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-                          <Typography sx={{ fontSize: 14 }} color="text.white">
+                        <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }} sx={{ bgcolor: 'background.paper', color: 'text.primary' }}>
+                          <Typography sx={{ fontSize: 14 }} color="text.primary">
                             Brightness
                           </Typography>
                           <Slider defaultValue={this.state.linesbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleLBrightness} />
@@ -311,7 +310,6 @@ class OfficeRoom extends React.Component {
                 </div>
               </Grid>
               <Dialog
-                className='dark-dialog'
                 fullScreen={this.state.fullscreen}
                 open={this.state.opencurtain}
                 onClose={this.handleClose}
@@ -324,10 +322,10 @@ class OfficeRoom extends React.Component {
                   <Grid container pb={3} spacing={2}>
                     <Grid item>
                       <FormControl sx={{ m: 1, width: 300, mt: 3 }}>
-                        <InputLabel id="demo-simple-select-helper-label" style={{ color: 'white' }}>
+                        <InputLabel id="demo-simple-select-helper-label" sx={{ color: 'text.primary' }}>
                           Scene name
                         </InputLabel>
-                        <Select style={{ color: 'white' }} label="Scene name" labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={this.state.selectedCurtainEffect} onChange={this.handleCurtainEffect}>
+                        <Select sx={{ color: 'text.primary' }} label="Scene name" labelId="demo-simple-select-helper-label" id="demo-simple-select-helper" value={this.state.selectedCurtainEffect} onChange={this.handleCurtainEffect}>
                           <MenuItem key="off" value="off">
                             None
                           </MenuItem>
@@ -357,8 +355,8 @@ class OfficeRoom extends React.Component {
                     </Grid>
                     <Grid item>
                       <Card variant="outlined" sx={{ minWidth: 150, boxShadow: 0 }}>
-                        <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }}>
-                          <Typography sx={{ fontSize: 14 }} color="text.white">
+                        <CardContent style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '13px' }} sx={{ bgcolor: 'background.paper', color: 'text.primary' }}>
+                          <Typography sx={{ fontSize: 14 }} color="text.primary">
                             Brightness
                           </Typography>
                           <Slider defaultValue={this.state.curtainbrightness} step={1} marks min={1} max={5} track={false} color="secondary" valueLabelDisplay="auto" onChangeCommitted={this.handleCurtainBrightness} />

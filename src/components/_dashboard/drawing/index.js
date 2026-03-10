@@ -55,45 +55,59 @@ class OfficeRoom extends React.Component {
     fetch(gateway + '/dsheercurtainstatus')
       .then((response) => response.text())
       .then((data) => {
-        //console.log('dsheercurtainstatus : ' + decodeHtml(data));
-        data = JSON.parse(decodeHtml(data));
-        this.setState({ dsheer: data['1'].curtain });
+        try {
+          data = JSON.parse(decodeHtml(data));
+          this.setState({ dsheer: data['1'].curtain });
+        } catch (e) {
+          console.error("Failed to parse sheer curtain status:", e);
+        }
       });
     fetch(gateway + '/dblackoutcurtainstatus')
       .then((response) => response.text())
       .then((data) => {
-        //console.log('dblackoutcurtainstatus : ' + decodeHtml(data));
-        data = JSON.parse(decodeHtml(data));
-        this.setState({ dblackout: data['1'].curtain });
+        try {
+          data = JSON.parse(decodeHtml(data));
+          this.setState({ dblackout: data['1'].curtain });
+        } catch (e) {
+          console.error("Failed to parse blackout curtain status:", e);
+        }
       });
     fetch(gateway + '/dboardmainstatus')
       .then((response) => response.text())
       .then((data) => {
-        //console.log(decodeHtml(data));
-        data = decodeHtml(data);
-        data = JSON.parse(data);
-        var speed = data['1'].speed;
-        this.setState({ dbrightness: Math.round(speed / 20) });
-        speed = data['2'].speed;
-        this.setState({ dcolor: Math.round(speed / 20) });
-        this.setState({ dcenterzone: data['3'].power });
-        this.setState({ dtvzone: data['5'].power });
-        this.setState({ dhallway: data['7'].power });
+        try {
+          data = decodeHtml(data);
+          data = JSON.parse(data);
+          var speed = data['1'].speed;
+          this.setState({ dbrightness: Math.round(speed / 20) });
+          speed = data['2'].speed;
+          this.setState({ dcolor: Math.round(speed / 20) });
+          this.setState({ dcenterzone: data['3'].power });
+          this.setState({ dtvzone: data['5'].power });
+          this.setState({ dhallway: data['7'].power });
+        } catch (e) {
+          console.error("Failed to parse main board status:", e);
+        }
       });
     fetch(gateway + '/dboardstatus')
       .then((response) => response.text())
       .then((data) => {
-        data = decodeHtml(data);
-        data = JSON.parse(data);
-        this.setState({ dfan: data['1'].power });
-        var speed = data['1'].speed;
-        this.setState({ dfanspeed: Math.round(speed / 20) });
-        this.setState({ dgovee: data['2'].power });
-        this.setState({ dwalllamp: data['4'].power });
-        this.setState({ dcurtainlight: data['5'].power });
-        this.setState({ dwallwasher: data['6'].power });
-        this.setState({ dtv: data['8'].power });
-        this.setState({ loading: false });
+        try {
+          data = decodeHtml(data);
+          data = JSON.parse(data);
+          this.setState({ dfan: data['1'].power });
+          var speed = data['1'].speed;
+          this.setState({ dfanspeed: Math.round(speed / 20) });
+          this.setState({ dgovee: data['2'].power });
+          this.setState({ dwalllamp: data['4'].power });
+          this.setState({ dcurtainlight: data['5'].power });
+          this.setState({ dwallwasher: data['6'].power });
+          this.setState({ dtv: data['8'].power });
+          this.setState({ loading: false });
+        } catch (e) {
+          console.error("Failed to parse board status:", e);
+          this.setState({ loading: false }); // Still exit loading state on error
+        }
       });
   }
   render() {
